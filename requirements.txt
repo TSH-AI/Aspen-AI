@@ -1,0 +1,58 @@
+# Core dependencies for the AI-automated Aspen project
+# RAG and AI/ML related packages
+langchain>=0.1.0
+langchain-openai>=0.0.5
+langchain-community>=0.0.10
+langchain-experimental>=0.0.50
+langchain-core>=0.1.0
+
+# Vector database and embeddings
+qdrant-client>=1.7.0
+faiss-cpu>=1.7.4
+sentence-transformers>=2.2.2
+fastembed>=0.2.0
+
+# PDF parsing and document processing
+llama-parse>=0.3.4
+aiofiles>=23.2.1
+python-docx>=0.8.11
+unstructured>=0.10.30
+
+# Web scraping and HTTP requests
+requests>=2.31.0
+beautifulsoup4>=4.12.2
+arxiv>=2.1.0
+
+# Data processing and analysis
+pandas>=2.0.0
+numpy>=1.24.0
+tqdm>=4.65.0
+
+# Async and concurrency
+asyncio
+aiohttp>=3.8.5
+
+# Text processing and utilities
+python-dotenv>=1.0.0
+pathlib
+typing-extensions>=4.5.0
+
+# Windows-specific (for Aspen integration)
+pywin32>=306
+
+# Document compression and reranking
+flashrank>=0.1.0
+
+# Search and API utilities
+google-serper>=0.1.0
+
+# Optional: For advanced embeddings (if using DashScope)
+dashscope>=1.13.0
+
+# Development and testing (optional)
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0
+
+# Note: Some packages may have version conflicts, please test and adjust versions as needed
+# For production deployment, consider using exact versions (==) instead of >= 

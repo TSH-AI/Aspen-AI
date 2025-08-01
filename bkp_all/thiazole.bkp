@@ -1,0 +1,529 @@
+MM "40.0" FLAVOR "NO" VERSION "40.0" DATETIME "Mon Sep 12 09:40:04 2022" 
+MACHINE "WIN-NT/VC"  ; 
+startlibrary
+version1
+NumLibs = 4
+Built-In
+ACM Built-In
+ACM Models
+Hybrid Models
+NumCats = 13
+Mixers/Splitters
+active
+Separators
+active
+Exchangers
+active
+Columns
+active
+Reactors
+active
+Pressure Changers
+active
+Manipulators
+active
+Solids
+active
+Solids Separators
+active
+User Models
+active
+Controllers
+active
+Batch Models
+active
+ACM Models
+active
+endlibrary
+; 
+0
+? SETUP MAIN ? \ TITLE TITLE = "Property Estimation for Thiazole" \ \ 
+"RUN-CLASS" RUN-CLASS = PCES \ \ SIMULATE INTERACTIVE = NO MOLEFLOW = 
+MOLEFLOW TFFFILE = "GEN_E" VISITED = 1 \ ? SETUP GLOBAL ? \ "IN-UNITS" INSET
+ = ENG \ \ "STREAM-CLASS" SCLASS = CONVEN \ ? SETUP DIAGNOSTICS ? ? SETUP 
+"SIM-OPTIONS" ? ; "ENG_MOLE" ; ? SETUP "UNITS-SET" METCBAR ? \ DESCRIPTION 
+DESCRIPTION = "Metric Units with C, BAR, MMKCAL/HR, and CUM" \ \ MMLOCAL \ 
+\ UNITSET BASESET = MET ( 3 3 3 3 3 3 3 3 3 3 3 7 7 3 3 5 3 3 3 5 3 4 3 3 3 3 
+1 3 3 3 4 3 7 3 3 3 1 1 4 4 3 3 3 3 3 3 3 3 3 3 3 3 5 3 3 3 3 3 3 3 3 3 3 4 3 
+3 3 3 3 3 3 3 3 4 5 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 ) \ ? SETUP "UNITS-SET" METCKGCM ? \ DESCRIPTION 
+DESCRIPTION = "Metric Units with C, KG/SQCM, MMKCAL/HR, and CUM" \ \ MMLOCAL 
+\ \ UNITSET BASESET = MET ( 3 3 3 3 3 3 3 3 3 3 3 7 7 3 3 5 3 3 3 8 3 4 3 3 3 
+3 1 3 3 3 4 3 7 3 3 3 3 3 4 4 3 3 3 3 3 3 3 3 3 3 3 3 5 3 3 3 3 3 3 3 3 3 3 4 
+3 3 3 3 3 3 3 3 3 4 8 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 3 ) \ ? SETUP "UNITS-SET" "SI-CBAR" ? \ DESCRIPTION 
+DESCRIPTION = "International System Units with C, BAR, and /HR" \ \ MMLOCAL 
+\ \ UNITSET BASESET = SI ( 1 1 1 1 1 1 1 1 1 3 3 7 1 1 1 1 1 1 1 5 1 4 1 1 1 
+1 1 1 1 1 4 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 4 5 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 ) \ ? SETUP "SYS-OPTIONS" ? ? SETUP "ACCOUNT-INFO" 
+? ? SETUP "RUN-CONTROL" ? ? SETUP DESCRIPTION ? \ DESCRIP DESCRIP = ( 
+"This example is used in chapter 6 of 'Aspen Plus Getting Started - " 
+"Building and Running A Process Model'." ) \ ? ODATABANKS ? \ ODATABANKS 
+AUTO-PARAM = YES \ ? "DATA-SERVICE" ? ? DATABANKS ? \ DATABANKS FILE-SYM-NAM
+ = ( "APV140 PURE40" "APV140 AQUEOUS" "APV140 SOLIDS" "APV140 INORGANIC" ) 
+\ ? COMPONENTS MAIN ? \ COMPONENTS CID = THIAZOLE OUTNAME = THIAZOLE \ ? 
+COMPONENTS "ADA/PCS" "LE-PROP-DATA" ? ; "ENG_MOLE" ; ? COMPONENTS "COMP-LIST" 
+GLOBAL ? ? COMPONENTS "UNIFAC-GROUP" ? ? SOLVE ? \ "RUN-MODE" MODE = SIM \ ? 
+"DYN-OPTIONS" ? ? "BIO-COMPS" ? ? FLOWSHEET GLOBAL ? \ "DEF-STREAM" SCLASS = 
+"CONVEN" \ ? PROPERTIES MAIN ? \ GPROPERTIES PARCON = -2 \ ? PROPERTIES 
+COMPARE ? ? PROPERTIES "MOLEC-STRUCT" THIAZOLE ? \ BONDS ATOM1 = 1 DISPATOM1
+ = C ATOM2 = 2 DISPATOM2 = C BONDTYPE = D /  ATOM1 = 2 DISPATOM1 = C ATOM2 = 
+3 DISPATOM2 = S BONDTYPE = S /  ATOM1 = 3 DISPATOM1 = S ATOM2 = 4 DISPATOM2
+ = C BONDTYPE = S /  ATOM1 = 4 DISPATOM1 = C ATOM2 = 5 DISPATOM2 = N BONDTYPE
+ = D /  ATOM1 = 5 DISPATOM1 = N ATOM2 = 1 DISPATOM2 = C BONDTYPE = S \ ? 
+PROPERTIES REGPAR ? \ FRED REGCASE = "R-PCES" PARNAME = "TC" COMPI = THIAZOLE 
+VALUE = ( "6.32471008E+02" ) /  REGCASE = "R-PCES" PARNAME = "PC" COMPI = 
+THIAZOLE VALUE = ( "6.65302353E+06" ) /  REGCASE = "R-PCES" PARNAME = "VC" 
+COMPI = THIAZOLE VALUE = ( "2.12500000E-01" ) /  REGCASE = "R-PCES" PARNAME
+ = "ZC" COMPI = THIAZOLE VALUE = ( "2.68850045E-01" ) /  REGCASE = "R-PCES" 
+PARNAME = "DHFORM" COMPI = THIAZOLE VALUE = ( "1.69180000E+08" ) /  REGCASE
+ = "R-PCES" PARNAME = "DGFORM" COMPI = THIAZOLE VALUE = ( "1.95470000E+08" ) 
+/  REGCASE = "R-PCES" PARNAME = "OMEGA" COMPI = THIAZOLE VALUE = ( 
+"2.37926595E-01" ) /  REGCASE = "R-PCES" PARNAME = "DELTA" COMPI = THIAZOLE 
+VALUE = ( "2.33400458E+04" ) /  REGCASE = "R-PCES" PARNAME = "GMUQR" COMPI = 
+THIAZOLE VALUE = ( "2.72972973E+00" ) /  REGCASE = "R-PCES" PARNAME = "GMUQQ" 
+COMPI = THIAZOLE VALUE = ( "1.81600000E+00" ) /  REGCASE = "R-PCES" PARNAME
+ = "DHVLB" COMPI = THIAZOLE VALUE = ( "3.62106270E+07" ) /  REGCASE = "R-PCES" 
+PARNAME = "VB" COMPI = THIAZOLE VALUE = ( "7.84413662E-02" ) /  REGCASE = 
+"R-PCES" PARNAME = "RGYR" COMPI = THIAZOLE VALUE = ( "2.67352306E-10" ) /  
+REGCASE = "R-PCES" PARNAME = "CPIG" COMPI = THIAZOLE VALUE = ( 
+"-1.88200000E+04" "3.83170000E+02" "-3.24720000E-01" "1.11200000E-04" "0.E0" 
+"0.E0" "2.80000000E+02" "1.10000000E+03" "3.60292000E+04" "1.48179652E-01" 
+"2.16490922E+00" ) /  REGCASE = "R-PCES" PARNAME = "DHVLWT" COMPI = THIAZOLE 
+VALUE = ( "3.88931387E+07" "3.42150000E+02" "3.20515620E-01" "2.00121157E-01" 
+"3.42150000E+02" ) /  REGCASE = "R-PCES" PARNAME = "RKTZRA" COMPI = THIAZOLE 
+VALUE = ( "2.69203414E-01" ) /  REGCASE = "R-PCES" PARNAME = "MUVDIP" COMPI
+ = THIAZOLE VALUE = ( "4.16781984E-08" "9.43022154E-01" "0.E0" "0.E0" "0.E0" 
+"2.80000000E+02" "1.10000000E+03" ) /  REGCASE = "R-PCES" PARNAME = "MULAND" 
+COMPI = THIAZOLE VALUE = ( "7.31208960E+01" "-4.17184250E+03" "-1.18013063E+01" 
+"3.89950000E+02" "6.26146298E+02" ) /  REGCASE = "R-PCES" PARNAME = "KLDIP" 
+COMPI = THIAZOLE VALUE = ( "-8.99298926E-01" "9.23106669E-03" "-3.00792543E-05" 
+"4.23945520E-08" "-2.25114321E-11" "3.89950000E+02" "6.26146298E+02" ) /  
+REGCASE = "R-PCES" PARNAME = "SIGDIP" COMPI = THIAZOLE VALUE = ( 
+"9.01522119E-02" "1.22222222E+00" "2.49623844E-10" "-2.75923617E-10" 
+"1.11338731E-10" "3.89950000E+02" "6.19821588E+02" ) /  REGCASE = "R-PCES" 
+PARNAME = "VLSTD" COMPI = THIAZOLE VALUE = ( "7.06515898E-02" ) \ ? 
+PROPERTIES ESTIMATION ? ; "ENG_MOLE" ; \ DIRECTOR ALLONLY = ALL BINCHOICE = 
+NO \ \ UNARY PROPU = DELTA COMPU = THIAZOLE METHODU = ( DEFINITI ) \ \ UNARY 
+PROPU = UNIQUACR COMPU = THIAZOLE METHODU = ( BONDI ) \ \ UNARY PROPU = 
+UNIQUACQ COMPU = THIAZOLE METHODU = ( BONDI ) \ ? PROPERTIES PARAMETERS UNARY 
+SCALAR "PCES-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = TC SETNO = 1 UNITROW
+ = 22 UNITLABEL = F /  PARAMNAME = PC SETNO = 1 UNITROW = 20 UNITLABEL = psi 
+/  PARAMNAME = VC SETNO = 1 UNITROW = 43 UNITLABEL = "cuft/lbmol" /  
+PARAMNAME = ZC SETNO = 1 UNITROW = 0 /  PARAMNAME = DHFORM SETNO = 1 UNITROW
+ = 39 UNITLABEL = "Btu/lbmol" /  PARAMNAME = DGFORM SETNO = 1 UNITROW = 39 
+UNITLABEL = "Btu/lbmol" /  PARAMNAME = OMEGA SETNO = 1 UNITROW = 0 /  
+PARAMNAME = DHVLB SETNO = 1 UNITROW = 39 UNITLABEL = "Btu/lbmol" /  PARAMNAME
+ = VB SETNO = 1 UNITROW = 43 UNITLABEL = "cuft/lbmol" /  PARAMNAME = RKTZRA 
+SETNO = 1 UNITROW = 0 /  PARAMNAME = VLSTD SETNO = 1 UNITROW = 43 UNITLABEL
+ = "cuft/lbmol" /  PARAMNAME = DELTA SETNO = 1 UNITROW = 46 UNITLABEL = 
+"(Btu/cuft)**.5" /  PARAMNAME = GMUQR SETNO = 1 UNITROW = 0 /  PARAMNAME = 
+GMUQQ SETNO = 1 UNITROW = 0 /  PARAMNAME = RGYR SETNO = 1 UNITROW = 17 
+UNITLABEL = ft \ \ PVAL PARAMNAME2 = TC CID = THIAZOLE VALUE = "R-PCES" \ \ 
+PVAL PARAMNAME2 = PC CID = THIAZOLE VALUE = "R-PCES" \ \ PVAL PARAMNAME2 = VC 
+CID = THIAZOLE VALUE = "R-PCES" \ \ PVAL PARAMNAME2 = ZC CID = THIAZOLE VALUE 
+= "R-PCES" \ \ PVAL PARAMNAME2 = DHFORM CID = THIAZOLE VALUE = "R-PCES" \ \ 
+PVAL PARAMNAME2 = DGFORM CID = THIAZOLE VALUE = "R-PCES" \ \ PVAL PARAMNAME2
+ = OMEGA CID = THIAZOLE VALUE = "R-PCES" \ \ PVAL PARAMNAME2 = DHVLB CID = 
+THIAZOLE VALUE = "R-PCES" \ \ PVAL PARAMNAME2 = VB CID = THIAZOLE VALUE = 
+"R-PCES" \ \ PVAL PARAMNAME2 = RKTZRA CID = THIAZOLE VALUE = "R-PCES" \ \ 
+PVAL PARAMNAME2 = VLSTD CID = THIAZOLE VALUE = "R-PCES" \ \ PVAL PARAMNAME2
+ = DELTA CID = THIAZOLE VALUE = "R-PCES" \ \ PVAL PARAMNAME2 = GMUQR CID = 
+THIAZOLE VALUE = "R-PCES" \ \ PVAL PARAMNAME2 = GMUQQ CID = THIAZOLE VALUE = 
+"R-PCES" \ \ PVAL PARAMNAME2 = RGYR CID = THIAZOLE VALUE = "R-PCES" \ ? 
+PROPERTIES PARAMETERS UNARY SCALAR TBMW ? ; "ENG_MOLE" ; \ PROP-LIST 
+PARAMNAME = TB SETNO = 1 UNITROW = 22 UNITLABEL = C /  PARAMNAME = MW SETNO
+ = 1 UNITROW = 0 \ \ PVAL PARAMNAME2 = TB CID = THIAZOLE UVALUE = 116.8 <0> 
+<0> VALUE = "0$116.8" \ \ PVAL PARAMNAME2 = MW CID = THIAZOLE UVALUE = 85 <0> 
+<0> VALUE = "0$85" \ ? PROPERTIES PARAMETERS UNARY "T-DEPENDENT" "CPIG-1" ? ; 
+"ENG_MOLE" ; \ PROP-LIST PARAMNAME = CPIG SETNO = 1 UNITROW = 15 UNITLABEL = 
+"Btu/lbmol-R" TUNITROW = 22 TUNITLABEL = F NEL = 11 \ \ PVAL PARAMNAME2 = 
+CPIG CID = THIAZOLE UNITROW2 = 15 UNITLABEL2 = "Btu/lbmol-R" TUNITROW2 = 22 
+TUNITLABEL2 = F NEL2 = 11 VAL1 = "R-PCES" VAL2 = "R-PCES" VAL3 = "R-PCES" 
+VAL4 = "R-PCES" VAL5 = "R-PCES" VAL6 = "R-PCES" VAL7 = "R-PCES" VAL8 = "R-PCES" 
+VAL9 = "R-PCES" VAL10 = "R-PCES" VAL11 = "R-PCES" \ ? PROPERTIES PARAMETERS 
+UNARY "T-DEPENDENT" "DHVLWT-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = 
+DHVLWT SETNO = 1 UNITROW = 39 UNITLABEL = "Btu/lbmol" TUNITROW = 22 
+TUNITLABEL = F NEL = 5 \ \ PVAL PARAMNAME2 = DHVLWT CID = THIAZOLE UNITROW2
+ = 39 UNITLABEL2 = "Btu/lbmol" TUNITROW2 = 22 TUNITLABEL2 = F NEL2 = 5 VAL1 = 
+"R-PCES" VAL2 = "R-PCES" VAL3 = "R-PCES" VAL4 = "R-PCES" VAL5 = "R-PCES" \ ? 
+PROPERTIES PARAMETERS UNARY "T-DEPENDENT" "KLDIP-1" ? ; "ENG_MOLE" ; \ 
+PROP-LIST PARAMNAME = KLDIP SETNO = 1 UNITROW = 23 UNITLABEL = 
+"Btu-ft/hr-sqft-R" TUNITROW = 22 TUNITLABEL = F NEL = 7 \ \ PVAL PARAMNAME2
+ = KLDIP CID = THIAZOLE UNITROW2 = 23 UNITLABEL2 = "Btu-ft/hr-sqft-R" 
+TUNITROW2 = 22 TUNITLABEL2 = F NEL2 = 7 VAL1 = "R-PCES" VAL2 = "R-PCES" VAL3 
+= "R-PCES" VAL4 = "R-PCES" VAL5 = "R-PCES" VAL6 = "R-PCES" VAL7 = "R-PCES" 
+\ ? PROPERTIES PARAMETERS UNARY "T-DEPENDENT" "MULAND-1" ? ; "ENG_MOLE" ; \ 
+PROP-LIST PARAMNAME = MULAND SETNO = 1 UNITROW = 26 UNITLABEL = cP TUNITROW
+ = 22 TUNITLABEL = F NEL = 5 \ \ PVAL PARAMNAME2 = MULAND CID = THIAZOLE 
+UNITROW2 = 26 UNITLABEL2 = cP TUNITROW2 = 22 TUNITLABEL2 = F NEL2 = 5 VAL1 = 
+"R-PCES" VAL2 = "R-PCES" VAL3 = "R-PCES" VAL4 = "R-PCES" VAL5 = "R-PCES" \ ? 
+PROPERTIES PARAMETERS UNARY "T-DEPENDENT" "MUVDIP-1" ? ; "ENG_MOLE" ; \ 
+PROP-LIST PARAMNAME = MUVDIP SETNO = 1 UNITROW = 26 UNITLABEL = cP TUNITROW
+ = 22 TUNITLABEL = F NEL = 7 \ \ PVAL PARAMNAME2 = MUVDIP CID = THIAZOLE 
+UNITROW2 = 26 UNITLABEL2 = cP TUNITROW2 = 22 TUNITLABEL2 = F NEL2 = 7 VAL1 = 
+"R-PCES" VAL2 = "R-PCES" VAL3 = "R-PCES" VAL4 = "R-PCES" VAL5 = "R-PCES" VAL6 
+= "R-PCES" VAL7 = "R-PCES" \ ? PROPERTIES PARAMETERS UNARY "T-DEPENDENT" 
+"PLXANT-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = PLXANT SETNO = 1 UNITROW
+ = 20 UNITLABEL = psia TUNITROW = 22 TUNITLABEL = F NEL = 9 \ \ PVAL 
+PARAMNAME2 = PLXANT CID = THIAZOLE UNITROW2 = 20 UNITLABEL2 = mmHg TUNITROW2
+ = 22 TUNITLABEL2 = C NEL2 = 9 UVAL1 = 16.445 <0> <0> UVAL2 = -3281 <0> <0> 
+UVAL3 = 216.255 <0> <0> UVAL4 = 0 <0> <0> UVAL5 = 0 <0> <0> UVAL6 = 0 <0> <0> 
+UVAL7 = 0 <0> <0> UVAL8 = 69 <0> <0> UVAL9 = 118 <0> <0> VAL1 = "0$16.445" 
+VAL2 = "0$-3281" VAL3 = "0$216.255" VAL4 = "0$0" VAL5 = "0$0" VAL6 = "0$0" 
+VAL7 = "0$0" VAL8 = "0$69" VAL9 = "0$118" \ ? PROPERTIES PARAMETERS UNARY 
+"T-DEPENDENT" "SIGDIP-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = SIGDIP 
+SETNO = 1 UNITROW = 21 UNITLABEL = "dyne/cm" TUNITROW = 22 TUNITLABEL = F NEL
+ = 7 \ \ PVAL PARAMNAME2 = SIGDIP CID = THIAZOLE UNITROW2 = 21 UNITLABEL2 = 
+"dyne/cm" TUNITROW2 = 22 TUNITLABEL2 = F NEL2 = 7 VAL1 = "R-PCES" VAL2 = 
+"R-PCES" VAL3 = "R-PCES" VAL4 = "R-PCES" VAL5 = "R-PCES" VAL6 = "R-PCES" VAL7 
+= "R-PCES" \ ? PROPERTIES PARAMETERS BINARY SCALAR "MLQKIJ-1" ? ; "ENG_MOLE" 
+; \ PROP-LIST PARAMNAME = MLQKIJ SETNO = 1 UNITROW = 0 \ ? PROPERTIES 
+PARAMETERS BINARY SCALAR "RKTKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = 
+RKTKIJ SETNO = 1 UNITROW = 0 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" 
+"ANDKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = ANDKIJ SETNO = 1 UNITROW
+ = 0 TUNITROW = 22 TUNITLABEL = F NEL = 2 \ ? PROPERTIES PARAMETERS BINARY 
+"T-DEPENDENT" "ANDMIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = ANDMIJ 
+SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = F NEL = 2 \ ? PROPERTIES 
+PARAMETERS BINARY "T-DEPENDENT" "MUKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST 
+PARAMNAME = MUKIJ SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = F NEL = 6 
+\ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "MULIJ-1" ? ; "ENG_MOLE" ; \ 
+PROP-LIST PARAMNAME = MULIJ SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = 
+F NEL = 11 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "NRTL-1" ? ; 
+"ENG_MOLE" ; \ PROP-LIST PARAMNAME = NRTL SETNO = 1 UNITROW = 0 TUNITROW = 22 
+TUNITLABEL = F BDBANK = ( "APV140 VLE-IG" "APV140 LLE-ASPEN" "APV140 VLE-LIT" 
+) NEL = 12 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "SRKKIJ-1" ? ; 
+"ENG_MOLE" ; \ PROP-LIST PARAMNAME = SRKKIJ SETNO = 1 UNITROW = 0 TUNITROW = 
+22 TUNITLABEL = F NEL = 5 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" 
+"UNIQ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = UNIQ SETNO = 1 UNITROW = 0 
+TUNITROW = 22 TUNITLABEL = F BDBANK = ( "APV140 VLE-IG" "APV140 LLE-LIT" 
+"APV140 LLE-ASPEN" "APV140 VLE-LIT" ) NEL = 12 \ ? PROPERTIES PARAMETERS 
+BINARY "T-DEPENDENT" "WILSON-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = 
+WILSON SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = F BDBANK = ( 
+"APV140 VLE-IG" "APV140 VLE-LIT" ) NEL = 12 \ ? PROPERTIES "ATTR-COMPS" ? ? 
+POLYMERS ? ? "PROP-SET" MAIN HXDESIGN ? ; "ENG_MOLE" ; \ P1 ID = MASSVFRA \ 
+\ P1 ID = MASSFLMX UNITS = ( "kg/sec" ) \ \ P1 ID = HMX UNITS = ( "J/kg" ) 
+\ \ P1 ID = RHOMX UNITS = ( "kg/cum" ) \ \ P1 ID = CPMX UNITS = ( "J/kg-K" ) 
+\ \ P1 ID = PCMX UNITS = ( "N/sqm" ) \ \ P1 ID = MUMX UNITS = ( "N-sec/sqm" ) 
+\ \ P1 ID = KMX UNITS = ( "Watt/m-K" ) \ \ P1 ID = SIGMAMX UNITS = ( "N/m" ) 
+\ \ P1 ID = MWMX \ \ P2 PHASE = ( T V L ) SYSPRES = YES \ \ DESCRIPTION 
+DESCRIPTION = "Thermal and Transport, for heat exchanger design" \ ? "PROP-SET" 
+MAIN THERMAL ? ; "ENG_MOLE" ; \ P1 ID = HMX UNITS = ( "Btu/lb" ) \ \ P1 ID = 
+CPMX UNITS = ( "Btu/lb-R" ) \ \ P1 ID = KMX \ \ P2 SUBSTREAM = MIXED PHASE = 
+( V L ) SYSPRES = YES \ \ DESCRIPTION DESCRIPTION = 
+"Enthalpy, heat capacity, and thermal conductivity" \ ? "PROP-SET" MAIN 
+TXPORT ? ; "ENG_MOLE" ; \ P1 ID = RHOMX UNITS = ( "lb/cuft" ) \ \ P1 ID = 
+MUMX \ \ P1 ID = SIGMAMX \ \ P2 SUBSTREAM = MIXED PHASE = ( V L ) SYSPRES = 
+YES \ \ DESCRIPTION DESCRIPTION = "Density, viscosity, and surface tension" 
+\ ? "PROP-SET" MAIN VLE ? ; "ENG_MOLE" ; \ P1 ID = PHIMX \ \ P1 ID = GAMMA 
+\ \ P1 ID = PL \ \ P2 SUBSTREAM = MIXED PHASE = ( V L ) SYSPRES = YES \ \ 
+DESCRIPTION DESCRIPTION = "Fugacity, activity, and vapor pressure" \ ? 
+"PROP-SET" MAIN VLLE ? ; "ENG_MOLE" ; \ P1 ID = PHIMX \ \ P1 ID = GAMMA \ \ 
+P1 ID = PL \ \ P2 SUBSTREAM = MIXED PHASE = ( V L1 L2 ) SYSPRES = YES \ \ 
+DESCRIPTION DESCRIPTION = "Fugacity, activity, and vapor pressure" \ ? 
+"STREAM-NAMES" ? ? "STREAM-GROUP" All ? \ DESCRIPTION DESCRIPTION = 
+"All streams" \ ? "STREAM-GROUP" Boundary ? \ DESCRIPTION DESCRIPTION = 
+"Boundary streams" \ ? "STREAM-GROUP" Charge ? \ DESCRIPTION DESCRIPTION = 
+"Charge streams" \ ? "STREAM-GROUP" Feeds ? \ DESCRIPTION DESCRIPTION = 
+"Feed streams" \ ? "STREAM-GROUP" Initial ? \ DESCRIPTION DESCRIPTION = 
+"Streams with user-specified values entered" \ ? "STREAM-GROUP" Products ? 
+\ DESCRIPTION DESCRIPTION = "Product streams" \ ? "STREAM-GROUP" Tears ? \ 
+DESCRIPTION DESCRIPTION = 
+"Tear streams manipulated by the convergence algorithms" \ ? "EO-VARS" ? ? 
+"EO-CONV-OPTI" ? \ DMO-PARAMS MODE = DEFAULT \ \ DMO-PARAMS MODE = SIMULATION 
+\ \ DMO-PARAMS MODE = "PARAMETER-ESTIMATION" \ \ DMO-PARAMS MODE = 
+RECONCILIATION \ \ DMO-PARAMS MODE = OPTIMIZATION \ \ LSSQP-PARAMS MODE-L = 
+DEFAULT \ \ LSSQP-PARAMS MODE-L = SIMULATION \ \ LSSQP-PARAMS MODE-L = 
+"PARAMETER-ESTIMATION" \ \ LSSQP-PARAMS MODE-L = RECONCILIATION \ \ 
+LSSQP-PARAMS MODE-L = OPTIMIZATION \ \ NSOLVE-PARAM NSOLVE-MODE = DEFAULT \ 
+\ NSOLVE-PARAM NSOLVE-MODE = SIMULATION \ \ NSOLVE-PARAM NSOLVE-MODE = 
+"PARAMETER-ESTIMATION" \ \ XSLP-PARAMS XSLP-MODE = DEFAULT \ \ XSLP-PARAMS 
+XSLP-MODE = SIMULATION \ \ XSLP-PARAMS XSLP-MODE = "PARAMETER-ESTIMATION" \ 
+\ XSLP-PARAMS XSLP-MODE = RECONCILIATION \ \ XSLP-PARAMS XSLP-MODE = 
+OPTIMIZATION \ ? REPORT "STREAM-REPOR" ? \ OPTIONS MOLEFLOW = MOLEFLOW \ ? 
+REPORT "PROPERTY-REP" ? \ OPTIONS PCES = PCES PROP-DATA = "PROP-DATA" DFMS = 
+DFMS \ 
+
+ GRAPHICS_BACKUP
+PFS V 5.00
+$CONFIG
+paramdata APV140 ENRTL-RK
+paramdata APV140 VLE-IG
+paramdata APV140 VLE-RK
+paramdata APV140 VLE-HOC
+paramdata APV140 LLE-LIT
+paramdata APV140 LLE-ASPEN
+paramdata APV140 VLE-LIT
+paramdata APV140 BINARY
+paramdata APV140 EOS-LIT
+paramdata APV140 HENRY-AP
+paramdata APV140 SRK-ASPEN
+paramdata APV140 PC-SAFT
+paramdata APV140 POLYPCSF
+purebank APV140 PURE40
+purebank APV140 AQUEOUS
+purebank APV140 SOLIDS
+purebank APV140 INORGANIC
+regdbank 1
+ftn_check 1
+autoblockid 1
+autostreamid 1
+showblockid 1
+showstreamid 1
+autoplacement 1
+grid 2
+gridresolution 0.100000
+scale 0
+streamprefix S
+blockprefix B
+labelscale 1.000000
+3DOn 1
+qwformat %.0f
+wformat %.0f
+tempformat %.0f
+presformat %.0f
+flowformat %.0f
+strmqwformat %.0f
+strmwformat %.0f
+vflowformat %.0f
+mflowformat %.0f
+vfracformat %.2f
+pseudobatch 0
+partial 1
+animation 1
+runanyway 0
+globalqw 0
+globalw 0
+globaltemp 0
+globalpres 0
+globalflow 0
+globalstrmqw 0
+globalstrmw 0
+globalvflow 0
+globalmflow 0
+globalvfrac 0
+globalshowcalcerror 1
+globalshowcalcwarning 1
+globalshowdisabled 1
+tooldrawvisible 0
+browserheight 7575
+browserwidth 10725
+browsertreewidth 2445
+polyplusenabled 1
+dynaplusenabled 1
+bfracenabled 1
+rtfenabled 1
+rspenabled 0
+initializeicarus 17
+pinchenabled 0
+linklimit 5000
+material_color 0
+material_style 0
+material_width 1
+material_termid  
+heat_color 0
+heat_style 2
+heat_width 1
+heat_termid Q
+work_color 0
+work_style 1
+work_width 1
+work_termid W
+connections_color 9
+connections_style 3
+connections_width 1
+connections_termid C
+measurements_color 4
+measurements_style 3
+measurements_width 1
+measurements_termid M
+power_color 10
+power_style 5
+power_width 1
+power_termid I
+displayeoconn 0
+displaycalcs 0
+displaytransfers 0
+displaymeas 0
+displaydesignspecs 0
+displaycalccons 0
+displaymeascons 0
+displayothercons 0
+displayeomeas 1
+displayeomeastype 2
+displayothermanipconn 0
+showeoviews 1
+eoautosave 1
+lockflowsheet 0
+allow_system_userprops 0
+copy_estimation 1
+copy_retrieved 1
+purge_incomp_params 0
+set_default_biparams 0
+set_default_dataset1 0
+set_default_dataset0 1
+bestinput 0
+autosmrun 0
+genallpropset 0
+strmresformdefault 0
+roottype 0
+exchangerfile 1
+streamformat 1
+runsettingfile 1
+usermodelfile 1
+fortranfile 0
+timeout 1000
+auto_evaluate 0
+customglobaldatapropset1 0 | Custom1 | * | %.2f | 0 | 6
+customglobaldatapropset2 0 | Custom2 | * | %.2f | 1 | 7
+customglobaldatapropset3 0 | Custom3 | * | %.2f | 2 | 8
+customglobaldatapropset4 0 | Custom4 | * | %.2f | 4 | 9
+customglobaldatapropset5 0 | Custom5 | * | %.2f | 5 | 10
+customglobaldatapropset6 0 | Custom6 | * | %.2f | 6 | 11
+customglobaldatapropset7 0 | Custom7 | * | %.2f | 7 | 12
+economics_active 0
+ignoreEOVarNameFixupsOnImport 1
+tpsaupgrade 0
+#
+$_APWNSHELL_SETTINGS
+<FileRootSettings><CaseFileSettings>&lt;CaseFileSettings StreamSummaryFormSettings="&amp;lt;src&amp;gt;&amp;lt;ReferencedPaths&amp;gt;&amp;lt;Path&amp;gt;Top.appModelV8.Results Summary&amp;lt;/Path&amp;gt;&amp;lt;/ReferencedPaths&amp;gt;&amp;lt;ReferencedTemplates /&amp;gt;&amp;lt;/src&amp;gt;" xmlns="clr-namespace:AspenTech.AspenPlus.Infrastructure;assembly=AspenTech.AspenPlus.Infrastructure" /&gt;</CaseFileSettings><CommonShellSettings>&lt;CommonShellSettings xmlns="http://schemas.aspentech.com/xaml/presentation/visualisation/commonshell" xmlns:atapmaa="clr-namespace:AspenTech.AspenPlus.Modules.ApwnApplication;assembly=ApwnShell" xmlns:atapie="clr-namespace:AspenTech.AspenPlus.Infrastructure.Events;assembly=AspenTech.AspenPlus.Infrastructure" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:apmab="clr-namespace:AspenPlus.Modules.ApwnBrowser;assembly=ApwnShell" xmlns:cxv="http://schemas.aspentech.com/xaml/presentation/cxsviewmodel" xmlns:atapi="clr-namespace:AspenTech.AspenPlus.Infrastructure;assembly=AspenTech.AspenPlus.Infrastructure"&gt;&lt;CommonShellSettings.CurrentWorkspace&gt;&lt;ShellWorkspace Layout="&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;xamDockManager version=&amp;quot;21.1.20211.27&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;contentPanes&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen1&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2022-09-12T16:40:04.9024651Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/contentPanes&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;documents splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;splitPane name=&amp;quot;Zabf5f45ca38d4bcda8be701805f9c38f&amp;quot; splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;tabGroup name=&amp;quot;Zc73020e479ea4c5585f4a46fdc15e8c6&amp;quot; selectedIndex=&amp;quot;0&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen1&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;/tabGroup&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;/splitPane&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/documents&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;/xamDockManager&amp;gt;" NavigationGroupToSelect="Properties" IsNavigationPaneMinimized="False" IsRibbonMinimized="False"&gt;&lt;ShellWorkspace.Screens&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen1" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Estimation.Results" NavigationGroupKey="Properties"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMPROPESTI.MMPROPESTI_OUT" FormKey="Estimation.Results" Header="Estimation - Results" ResultsOnly="True" PathKey="Top.appModelV8.Properties.Estimation"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;Estimation&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Properties.Estimation&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Properties.Estimation" /&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Properties.Estimation" /&gt;&lt;cxv:CxvParameter Name="id" Value="Estimation" /&gt;&lt;cxv:CxvParameter Name="extra_message_path" Value="Estimate" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;cxv:CxvParameter Name="choice" Value="THIAZOLE" /&gt;&lt;cxv:CxvParameter Name="selected_tab" Value="tab0" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;/ShellWorkspace.Screens&gt;&lt;/ShellWorkspace&gt;&lt;/CommonShellSettings.CurrentWorkspace&gt;&lt;CommonShellSettings.SavedWorkspaces&gt;&lt;ShellWorkspaceFolder /&gt;&lt;/CommonShellSettings.SavedWorkspaces&gt;&lt;CommonShellSettings.NavigatorGroupWorkspaces&gt;&lt;ShellWorkspace Name="Simulation" ActivationBarState="&amp;lt;DashboardPanel IsExpanded=&amp;quot;true&amp;quot; IsTurnedOff=&amp;quot;false&amp;quot; Version=&amp;quot;38&amp;quot;&amp;gt;&amp;#xA;  &amp;lt;Item Type=&amp;quot;AspenTech.ActivationDashboard.EconomicAnalysis.DashboardItem&amp;quot;&amp;gt;&amp;amp;lt;!--This is the current state of Economics Analysis Dashboard--&amp;amp;gt;&amp;#xA;&amp;amp;lt;Root&amp;amp;gt;&amp;#xA;  &amp;amp;lt;OnOffState Value=&amp;quot;Off&amp;quot; /&amp;amp;gt;&amp;#xA;  &amp;amp;lt;CapitalCost Value=&amp;quot;&amp;quot; Units=&amp;quot;USD&amp;quot; /&amp;amp;gt;&amp;#xA;  &amp;amp;lt;UtilityCost Value=&amp;quot;&amp;quot; Units=&amp;quot;USD/Year&amp;quot; /&amp;amp;gt;&amp;#xA;  &amp;amp;lt;HasError&amp;amp;gt;false&amp;amp;lt;/HasError&amp;amp;gt;&amp;#xA;  &amp;amp;lt;_statusCode Value=&amp;quot;-1&amp;quot; /&amp;amp;gt;&amp;#xA;  &amp;amp;lt;Flags&amp;amp;gt;&amp;#xA;    &amp;amp;lt;_isRunCompleted Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xA;    &amp;amp;lt;_isRunning Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xA;    &amp;amp;lt;_incompleteButActivated Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xA;    &amp;amp;lt;_incompleteButLoaded Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xA;    &amp;amp;lt;_incompleteButSized Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xA;    &amp;amp;lt;_incompleteButMapped Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xA;    &amp;amp;lt;_completeEvaluatedNotAutoRun Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xA;    &amp;amp;lt;_isSimulationChanged Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xA;    &amp;amp;lt;_isInStopping Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xA;    &amp;amp;lt;_isOnOffButtonCanBeUsed Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xA;    &amp;amp;lt;_isResetDashboardButLeaveItOn Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xA;  &amp;amp;lt;/Flags&amp;amp;gt;&amp;#xA;&amp;amp;lt;/Root&amp;amp;gt;&amp;lt;/Item&amp;gt;&amp;#xA;  &amp;lt;Item Type=&amp;quot;AspenTech.ActivationDashboard.EnergyAnalysis.DashboardItem&amp;quot;&amp;gt;&amp;amp;lt;!--This is the current state of Energy Analysis Dashboard--&amp;amp;gt;&amp;#xA;&amp;amp;lt;Root&amp;amp;gt;&amp;#xA;  &amp;amp;lt;IsExpanded&amp;amp;gt;true&amp;amp;lt;/IsExpanded&amp;amp;gt;&amp;#xA;  &amp;amp;lt;OnOff&amp;amp;gt;Off&amp;amp;lt;/OnOff&amp;amp;gt;&amp;#xA;  &amp;amp;lt;Status&amp;amp;gt;InputIncomplete&amp;amp;lt;/Status&amp;amp;gt;&amp;#xA;  &amp;amp;lt;PUS&amp;amp;gt;&amp;amp;lt;/PUS&amp;amp;gt;&amp;#xA;  &amp;amp;lt;Percent&amp;amp;gt;&amp;amp;lt;/Percent&amp;amp;gt;&amp;#xA;  &amp;amp;lt;Units&amp;amp;gt;MW&amp;amp;lt;/Units&amp;amp;gt;&amp;#xA;&amp;amp;lt;/Root&amp;amp;gt;&amp;lt;/Item&amp;gt;&amp;#xA;  &amp;lt;Item Type=&amp;quot;AspenTech.ActivationDashboard.EdrActivation.DashboardItem&amp;quot;&amp;gt;&amp;amp;lt;EDR&amp;amp;gt;&amp;#xA;  &amp;amp;lt;IsShowModelStatus&amp;amp;gt;false&amp;amp;lt;/IsShowModelStatus&amp;amp;gt;&amp;#xA;  &amp;amp;lt;IsShowRiskStatus&amp;amp;gt;false&amp;amp;lt;/IsShowRiskStatus&amp;amp;gt;&amp;#xA;  &amp;amp;lt;IsShowLegend&amp;amp;gt;false&amp;amp;lt;/IsShowLegend&amp;amp;gt;&amp;#xA;  &amp;amp;lt;DetailCount&amp;amp;gt;0&amp;amp;lt;/DetailCount&amp;amp;gt;&amp;#xA;&amp;amp;lt;/EDR&amp;amp;gt;&amp;lt;/Item&amp;gt;&amp;#xA;&amp;lt;/DashboardPanel&amp;gt;" Layout="&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&amp;#xA;&amp;lt;xamDockManager version=&amp;quot;19.2.20192.90&amp;quot;&amp;gt;&amp;#xA;  &amp;lt;contentPanes&amp;gt;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;FlowsheetScreenFactory&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2020-08-07T13:54:56.188789Z&amp;quot; /&amp;gt;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;ModelLibraryScreenFactoryKey&amp;quot; location=&amp;quot;DockedBottom&amp;quot; lastActivatedTime=&amp;quot;2013-07-10T19:54:06.0621461Z&amp;quot; /&amp;gt;&amp;#xA;  &amp;lt;/contentPanes&amp;gt;&amp;#xA;  &amp;lt;panes&amp;gt;&amp;#xA;    &amp;lt;splitPane name=&amp;quot;Z9d0b3de78d9f4daa94656a917247ad3c&amp;quot; splitterOrientation=&amp;quot;Vertical&amp;quot; location=&amp;quot;DockedBottom&amp;quot;&amp;gt;&amp;#xA;      &amp;lt;contentPane name=&amp;quot;ModelLibraryScreenFactoryKey&amp;quot; /&amp;gt;&amp;#xA;    &amp;lt;/splitPane&amp;gt;&amp;#xA;  &amp;lt;/panes&amp;gt;&amp;#xA;  &amp;lt;documents splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xA;    &amp;lt;splitPane name=&amp;quot;Z1c023cd2e09c42ac99ffef1c42fb6813&amp;quot; splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xA;      &amp;lt;tabGroup name=&amp;quot;Z33266e3f951a4420a74cca6fe5aed0af&amp;quot; selectedIndex=&amp;quot;0&amp;quot;&amp;gt;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;FlowsheetScreenFactory&amp;quot; /&amp;gt;&amp;#xA;      &amp;lt;/tabGroup&amp;gt;&amp;#xA;    &amp;lt;/splitPane&amp;gt;&amp;#xA;  &amp;lt;/documents&amp;gt;&amp;#xA;&amp;lt;/xamDockManager&amp;gt;" NavigationGroupToSelect="Simulation" IsNavigationPaneMinimized="False" IsRibbonMinimized="False"&gt;&lt;ShellWorkspace.Screens&gt;&lt;WorkspaceScreenData PaneName="FlowsheetScreenFactory" ScreenFactoryKey="FlowsheetScreenFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapi:StringScreenSubject subject="{assembly:Null}" fatherNodePath="{assembly:Null}" NavigationGroupKey="Simulation" /&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;ScreenState Zoom="1.000001" /&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="ModelLibraryScreenFactoryKey" ScreenFactoryKey="ModelLibraryScreenFactoryKey"&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;ScreenState /&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;/ShellWorkspace.Screens&gt;&lt;/ShellWorkspace&gt;&lt;/CommonShellSettings.NavigatorGroupWorkspaces&gt;&lt;/CommonShellSettings&gt;</CommonShellSettings></FileRootSettings>
+$_END_APWNSHELL_SETTINGS
+#
+PFSVData
+# of PFS Objects = 1
+SIZE -3 3 -3 3
+LEGEND
+Version: 2
+Dim: -3.73553 -3.2 -3.00548 -3.34038
+Size: 0.0181472
+Font: 1 0 =Times New Roman
+# of PFS Objects = 0
+VIEWPORT -3.223248 21.602110 3.210758 -4.229589
+LAYOUT
+TableFormat 1
+Pages 1 1 1 1
+PAGESETUP
+PAPERSIZE 1
+PAPERSOURCE 1
+ORIENTATION 1
+PRINTPAGENO 1 1
+LEFTMARGIN 0.5"
+RIGHTMARGIN 0.5"
+TOPMARGIN 0.5"
+BOTTOMMARGIN 0.5"
+VISIBILITY 0.030000
+PFDFLAG 255 255
+PFDMODE 0
+SCALE 0.018147
+
+$_SUMMARY_FILE
+ MMSUMMARY40.0                                                                  
+ IDSET RUNID (PROPERTIES) (114 *5)                                              
+ IDSET IT (PROPERTIES) (117 *6 119 *6 115 *1)                                   
+ LSET RUNID (%RUNID)                                                            
+ LSET IT (%IT)                                                                  
+ IDSET VERS (PROPERTIES) (345 *6 346 *6 347 *6 348 *6 355 *6)                   
+ LSET VERS (%VERS)                                                              
+ DSET RUN-STATUS VERS @VERS ( "40.0" "WIN-X64" "" "HASSANJS" "MAGIK" )          
+ IDSET STRNAM (PROPERTIES) (1233 *6)                                            
+ LSET STRNAM (%STRNAM)                                                          
+ IDSET ID_STRPR (PROPERTIES) ( 454 *2 <119> 1236 *2 <125> 1237 *2 <29> 1238 *2  
+ <55> 1239 *2 <55> 1083 *6 1084 *6 )                                            
+ LSET L_STRPR (%ID_STRPR)                                                       
+ IDSET ID_GUID (PROPERTIES) ( 1270 *6 )                                         
+ LSET L_GUID (%ID_GUID)                                                         
+ IDSET ID_1 (NCOL) ( "THIAZOLE" )                                               
+ IDSET ID_2 (PROPERTIES) (339 *6)                                               
+ IDSET ID_3 (PROPERTIES) (742 *6 743 *5 744 *2 262 *6 745 *6 )                  
+ IDSET ID_4 (NPOINT) ( #4)                                                      
+ LSET L_1 ((%ID_2 (%ID_3 & %ID_4) ) & %ID_1)                                    
+ DSET PROPERTIES ESTIMATION COMP_EST @L_1  ( "C3H3NS"                           
+ "SOLUBILITY PARAMETER" DELTA 2.33400458D+04 "(J/CUM)**.5" "DEFINITI"           
+ "UNIQUAC R PARAMETER" GMUQR 2.72972973D+00 "" "BONDI" "UNIQUAC Q PARAMETER"    
+ GMUQQ 1.81600000D+00 "" "BONDI" "PARACHOR" PARC 1.68600000D+02 "" "PARACHOR" ) 
+ DSET PROPERTIES REGRESSION PCES FRED @L_1 (DELTA THIAZOLE 2.33400458D+04)      
+ DSET PROPERTIES REGRESSION PCES FRED @L_1 (GMUQR THIAZOLE 2.72972973D+00)      
+ DSET PROPERTIES REGRESSION PCES FRED @L_1 (GMUQQ THIAZOLE 1.81600000D+00)      
+ DSET PROPERTIES REGRESSION PCES FRED @L_1 (DHVLB THIAZOLE 3.62106270D+07)      
+ DSET PROPERTIES REGRESSION PCES FRED @L_1 (VB THIAZOLE 7.84413662D-02)         
+ DSET PROPERTIES REGRESSION PCES FRED @L_1 (RGYR THIAZOLE 2.67352306D-10)       
+ IDSET PCES (PROPERTIES) (740 *1)                                               
+ LSET PCES (%PCES)                                                              
+ DSET RUN-STATUS PCES @PCES (2)                                                 
+ DSET PROPERTIES ESTIMATION COMPSTAT @L_1 (2)                                   
+ IDSET ID_5 (NPOINTS) ( #48)                                                    
+ IDSET ID_6 (PROPERTIES) (747 *6)                                               
+ LSET L_2 (%ID_6 & %ID_5)                                                       
+ DSET PROPERTIES ESTIMATION ERRTXT @L_2 (                                       
+ "*  WARNING"                                                                   
+ "   FUNCTIONAL GROUP GENERATION FOR THE UNIFAC METHOD CANNOT BE COMPLETED"     
+ "   FOR COMPONENT THIAZOLE.  THE FOLLOWING ATOMS WERE NOT MATCHED:"            
+ "   S 3  C 4  N 5"                                                             
+ "                    THE FUNCTIONAL GROUPS GENERATED"                          
+ "       GROUP NUMBER  NO. OF OCCUR.     GROUP NUMBER  NO. OF OCCUR."           
+ "            1065          1"                                                  
+ ""                                                                             
+ "*  WARNING"                                                                   
+ "   FUNCTIONAL GROUP GENERATION FOR THE UNIF-LBY METHOD CANNOT BE COMPLETED"   
+ "   FOR COMPONENT THIAZOLE.  THE FOLLOWING ATOMS WERE NOT MATCHED:"            
+ "   S 3  C 4  N 5"                                                             
+ "                    THE FUNCTIONAL GROUPS GENERATED"                          
+ "       GROUP NUMBER  NO. OF OCCUR.     GROUP NUMBER  NO. OF OCCUR."           
+ "            1065          1"                                                  
+ ""                                                                             
+ "*  WARNING"                                                                   
+ "   FUNCTIONAL GROUP GENERATION FOR THE UNIF-DMD METHOD CANNOT BE COMPLETED"   
+ "   FOR COMPONENT THIAZOLE.  THE FOLLOWING ATOMS WERE NOT MATCHED:"            
+ "   C 1  N 5"                                                                  
+ "                    THE FUNCTIONAL GROUPS GENERATED"                          
+ "       GROUP NUMBER  NO. OF OCCUR.     GROUP NUMBER  NO. OF OCCUR."           
+ "            3750          1"                                                  
+ ""                                                                             
+ "*  WARNING"                                                                   
+ "   FUNCTIONAL GROUP GENERATION FOR THE UNIF-R4 METHOD CANNOT BE COMPLETED"    
+ "   FOR COMPONENT THIAZOLE.  THE FOLLOWING ATOMS WERE NOT MATCHED:"            
+ "   S 3  C 4  N 5"                                                             
+ "                    THE FUNCTIONAL GROUPS GENERATED"                          
+ "       GROUP NUMBER  NO. OF OCCUR.     GROUP NUMBER  NO. OF OCCUR."           
+ "            1065          1"                                                  
+ ""                                                                             
+ "*  WARNING"                                                                   
+ "   FUNCTIONAL GROUP GENERATION FOR THE PPR78 METHOD CANNOT BE COMPLETED"      
+ "   FOR COMPONENT THIAZOLE.  THE FOLLOWING ATOMS WERE NOT MATCHED:"            
+ "   S 3  N 5"                                                                  
+ "                    THE FUNCTIONAL GROUPS GENERATED"                          
+ "       GROUP NUMBER  NO. OF OCCUR.     GROUP NUMBER  NO. OF OCCUR."           
+ "            1040          3"                                                  
+ ""                                                                             
+ "*  WARNING"                                                                   
+ "   FUNCTIONAL GROUP GENERATION FOR THE RUZICKA METHOD CANNOT BE COMPLETED"    
+ "   FOR COMPONENT THIAZOLE.  THE FOLLOWING ATOMS WERE NOT MATCHED:"            
+ "   C 1  N 5"                                                                  
+ "                    THE FUNCTIONAL GROUPS GENERATED"                          
+ "       GROUP NUMBER  NO. OF OCCUR.     GROUP NUMBER  NO. OF OCCUR."           
+ "             358          1                  109          1"                  
+ "             399          1                  347          2"                  
+ )                                                                              
+ IDSET TITLE (PROPERTIES) (113 *6)                                              
+ LSET TITLE (%TITLE)                                                            
+ DSET RUN-STATUS TITLE @TITLE ( "PROPERTY ESTIMATION FOR THIAZOLE" )            
+ IDSET STATUS (PROPERTIES) (125 *1 126 *1 127 *1 128 *1 129 *1 130 *1)          
+ LSET STATUS (%STATUS)                                                          
+ DSET RUN-STATUS STATUS @STATUS ( 10 * * * * * )                                
+ DSET RUN-STATUS COMPSTAT @L_1 (2)                                              
+ IDSET ID_7 (NPOINT) ( #2)                                                      
+ IDSET ID_8 (PROPERTIES) (747 *6)                                               
+ LSET L_3 ( %ID_7 & %ID_8)                                                      
+ DSET RUN-STATUS ERRTXT @L_3 (                                                  
+ "Properties estimation was completed with warnings"                            
+ ""                                                                             
+ )                                                                              
+ DSET RUN-STATUS RUNID @RUNID ("_3031cbi")                                      
+ DSET RUN-STATUS IT @IT ( "SEPTEMBER 12, 2022  9:33:23 A.M." "_3031cbi.inm" 33) 
+$_ADS_FILE
+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
+$_END_ADS_FILE

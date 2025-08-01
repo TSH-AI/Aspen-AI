@@ -1,0 +1,139 @@
+;
+;Input Summary created by Aspen Plus Rel. 40.0 at 11:22:03 Thu Jul 17, 2025
+;Directory D:\×ÀÃæ\aspen ai-project1\NEWBKP\bkp_added  Filename D:\×ÀÃæ\aspen ai-project1\NEWBKP\inp_outputs\propiedades_termo_ap.inp
+;
+
+
+PROP
+
+DYNAMICS
+    DYNAMICS RESULTS=ON
+
+IN-UNITS MET ENTHALPY='J/kmol' VOLUME-FLOW='cum/hr'  &
+        ENTHALPY-FLO='Gcal/hr' HEAT-TRANS-C='kcal/hr-sqm-K'  &
+        PRESSURE=bar TEMPERATURE=C VOLUME=cum DELTA-T=C  &
+        HEAD=meter MOLE-DENSITY='kmol/cum' MASS-DENSITY='kg/cum'  &
+        MOLE-ENTHALP='kcal/mol' MASS-ENTHALP='kcal/kg' HEAT=Gcal  &
+        MOLE-CONC='mol/l' PDROP=bar VOL-ENTHALPY='kJ/cum'  &
+        SHORT-LENGTH=mm 
+
+DESCRIPTION "
+    General Simulation with Metric Units : 
+    C, bar, kg/hr, kmol/hr, Gcal/hr, cum/hr. 
+      
+    Property Method: None 
+      
+    Flow basis for input: Mole 
+      
+    Stream report composition: Mole flow 
+    "
+
+DATABANKS 'APV140 PURE39' / 'APV140 AQUEOUS' / 'APV140 SOLIDS' &
+         / 'APV140 INORGANIC' / NOASPENPCD
+
+PROP-SOURCES 'APV140 PURE39' / 'APV140 AQUEOUS' /  &
+        'APV140 SOLIDS' / 'APV140 INORGANIC'
+
+COMPONENTS 
+    AMMONIA H3N / 
+    WATER H2O 
+
+PROPERTIES REFPROP 
+
+PROP-SET H HMX UNITS='kJ/kmol' SUBSTREAM=MIXED 
+
+PROP-SET RHO RHOMX SUBSTREAM=MIXED 
+
+PROP-SET TBUBBLE TBUB SUBSTREAM=MIXED 
+
+PROP-SET U UMX UNITS='kJ/kmol' SUBSTREAM=MIXED 
+
+PROPERTY-REP PCES 
+
+PROP-TABLE AGUACF FLASHCURVE 
+    IN-UNITS MET ENTHALPY='J/kmol' VOLUME-FLOW='cum/hr'  &
+        ENTHALPY-FLO='Gcal/hr' HEAT-TRANS-C='kcal/hr-sqm-K'  &
+        PRESSURE='kg/sqcm' TEMPERATURE=C VOLUME=cum DELTA-T=C  &
+        HEAD=meter MOLE-DENSITY='kmol/cum' MASS-DENSITY='kg/cum'  &
+        MOLE-ENTHALP='kcal/mol' MASS-ENTHALP='kcal/kg' HEAT=Gcal  &
+        MOLE-CONC='mol/l' PDROP=bar VOL-ENTHALPY='kJ/cum'  &
+        SHORT-LENGTH=mm 
+    MASS-FLOW WATER 1. 
+    VARY PRES 
+    RANGE VARVALUE=LIST LIST=3.5 
+    VARY TEMP 
+    RANGE VARVALUE=RANGE LOWER=30. UPPER=38. NPOINT=100 
+    PARAM 
+    TABULATE PROPERTIES=RHO H U 
+
+PROP-TABLE C FLASHCURVE 
+    IN-UNITS MET ENTHALPY='J/kmol' VOLUME-FLOW='cum/hr'  &
+        ENTHALPY-FLO='Gcal/hr' HEAT-TRANS-C='kcal/hr-sqm-K'  &
+        PRESSURE=bar TEMPERATURE=C VOLUME=cum DELTA-T=C  &
+        HEAD=meter MOLE-DENSITY='kmol/cum' MASS-DENSITY='kg/cum'  &
+        MOLE-ENTHALP='kcal/mol' MASS-ENTHALP='kcal/kg' HEAT=Gcal  &
+        MOLE-CONC='mol/l' PDROP=bar VOL-ENTHALPY='kJ/cum'  &
+        SHORT-LENGTH=mm 
+    MASS-FLOW WATER 0.2 / AMMONIA 0.8 
+    VARY PRES 
+    RANGE VARVALUE=LIST LIST=0.1 1. 2. 3. 4. 5. 6. 7. 8.  &
+        9. 
+    VARY VFRAC 
+    RANGE VARVALUE=RANGE LOWER=0 UPPER=1. NPOINT=1 
+    PARAM 
+    TABULATE PROPERTIES=RHO 
+
+PROP-TABLE RHOP FLASHCURVE 
+    IN-UNITS MET ENTHALPY='J/kmol' VOLUME-FLOW='cum/hr'  &
+        ENTHALPY-FLO='Gcal/hr' HEAT-TRANS-C='kcal/hr-sqm-K'  &
+        PRESSURE=bar TEMPERATURE=C VOLUME=cum DELTA-T=C  &
+        HEAD=meter MOLE-DENSITY='kmol/cum' MASS-DENSITY='kg/cum'  &
+        MOLE-ENTHALP='kcal/mol' MASS-ENTHALP='kcal/kg' HEAT=Gcal  &
+        MOLE-CONC='mol/l' PDROP=bar VOL-ENTHALPY='kJ/cum'  &
+        SHORT-LENGTH=mm 
+    MASS-FLOW WATER 0.05 / AMMONIA 0.95 
+    VARY PRES 
+    RANGE VARVALUE=LIST LIST=7. 
+    VARY TEMP 
+    RANGE VARVALUE=RANGE LOWER=0 UPPER=100.0000000 NPOINT=50 
+    PARAM 
+    TABULATE PROPERTIES=RHO 
+
+PROP-TABLE SR FLASHCURVE 
+    IN-UNITS MET ENTHALPY='J/kmol' VOLUME-FLOW='cum/hr'  &
+        ENTHALPY-FLO='Gcal/hr' HEAT-TRANS-C='kcal/hr-sqm-K'  &
+        PRESSURE=bar TEMPERATURE=C VOLUME=cum DELTA-T=C  &
+        HEAD=meter MOLE-DENSITY='kmol/cum' MASS-DENSITY='kg/cum'  &
+        MOLE-ENTHALP='kcal/mol' MASS-ENTHALP='kcal/kg' HEAT=Gcal  &
+        MOLE-CONC='mol/l' PDROP=bar VOL-ENTHALPY='kJ/cum'  &
+        SHORT-LENGTH=mm 
+    MASS-FLOW WATER 0.8 / AMMONIA 0.2 
+    VARY PRES 
+    RANGE VARVALUE=LIST LIST=0.1 1. 2. 3. 4. 5. 6. 7. 8.  &
+        9. 
+    VARY VFRAC 
+    RANGE VARVALUE=RANGE LOWER=0. UPPER=1. NPOINT=1 
+    PARAM 
+    TABULATE PROPERTIES=RHO 
+
+PROP-TABLE TBUBP FLASHCURVE 
+    IN-UNITS MET ENTHALPY='J/kmol' VOLUME-FLOW='cum/hr'  &
+        ENTHALPY-FLO='Gcal/hr' HEAT-TRANS-C='kcal/hr-sqm-K'  &
+        PRESSURE=bar TEMPERATURE=C VOLUME=cum DELTA-T=C  &
+        HEAD=meter MOLE-DENSITY='kmol/cum' MASS-DENSITY='kg/cum'  &
+        MOLE-ENTHALP='kcal/mol' MASS-ENTHALP='kcal/kg' HEAT=Gcal  &
+        MOLE-CONC='mol/l' PDROP=bar VOL-ENTHALPY='kJ/cum'  &
+        SHORT-LENGTH=mm 
+    MASS-FLOW WATER 0.05 / AMMONIA 0.95 
+    VARY PRES 
+    RANGE VARVALUE=LIST LIST=7. 8. 9. 10. 11. 12. 13. 14.  &
+        15. 16. 
+    VARY VFRAC 
+    RANGE VARVALUE=RANGE LOWER=0 UPPER=0. NPOINT=1 
+    PARAM 
+    TABULATE PROPERTIES=TBUBBLE 
+;
+;
+;
+;
+;

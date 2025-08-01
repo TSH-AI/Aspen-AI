@@ -1,0 +1,29 @@
+{  
+    "filesystem": {
+        "command": "docker",
+        "args": [
+            "run",
+            "-i",
+            "--rm",
+            "--mount", "type=bind,src=<your_absolute_data_path>,dst=/projects/data",
+            "mcp/filesystem",
+            "/projects"
+        ],
+        "transport": "stdio"
+    }, 
+
+    "github": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "GITHUB_PERSONAL_ACCESS_TOKEN",
+          "mcp/github"
+        ],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "<your_github_personal_access_token>"
+        }
+    }
+}

@@ -1,0 +1,8 @@
+/src/data_collection_agent/.langgraph_api
+/src/data_collection_agent/__pycache__
+/src/data_collection_agent/mcp_tools/__pycache__
+configs/mcp_config.json
+*.pyc
+.env
+.langgraph_api/ 
+/data

@@ -1,0 +1,59 @@
+;
+;Input Summary created by Aspen Plus Rel. 40.0 at 15:32:47 Wed Jul 16, 2025
+;Directory D:\×ÀÃæ\aspen ai-project1\NEWBKP\bkp_all  Filename D:\×ÀÃæ\aspen ai-project1\NEWBKP\inp_outputs\part_1_start.inp
+;
+
+
+DYNAMICS
+    DYNAMICS RESULTS=ON
+
+IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
+        HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=C  &
+        VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
+        MASS-DENSITY='kg/cum' MOLE-ENTHALP='kcal/mol'  &
+        MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
+        PDROP=bar SHORT-LENGTH=mm 
+
+DEF-STREAMS CONVEN ALL 
+
+DESCRIPTION "
+    General Simulation with Metric Units : 
+    C, bar, kg/hr, kmol/hr, Gcal/hr, cum/hr. 
+      
+    Property Method: None 
+      
+    Flow basis for input: Mole 
+      
+    Stream report composition: Mole flow 
+    "
+
+DATABANKS 'APV140 PURE37' / 'APV140 AQUEOUS' / 'APV140 SOLIDS' &
+         / 'APV140 INORGANIC' / 'APESV140 AP-EOS' /  &
+        'NISTV140 NIST-TRC' / NOASPENPCD
+
+PROP-SOURCES 'APV140 PURE37' / 'APV140 AQUEOUS' /  &
+        'APV140 SOLIDS' / 'APV140 INORGANIC' / 'APESV140 AP-EOS' &
+         / 'NISTV140 NIST-TRC'
+
+COMPONENTS 
+    ETH C2H6O-2 / 
+    AA C2H4O2-1 / 
+    WATER H2O / 
+    EA C4H8O2-3 
+
+SOLVE 
+    RUN-MODE MODE=SIM 
+
+FLOWSHEET 
+
+PROPERTIES UNIFAC 
+
+EO-CONV-OPTI 
+
+STREAM-REPOR MOLEFLOW 
+;
+;
+;
+;
+;
+;

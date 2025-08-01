@@ -1,0 +1,872 @@
+MM "37.0" FLAVOR "NO" VERSION "37.0" DATETIME "Sun Oct 18 08:50:53 2020" 
+MACHINE "WIN-NT/VC"  ; 
+startlibrary
+version1
+NumLibs = 2
+Built-In
+ACM Built-In
+NumCats = 12
+Mixers/Splitters
+active
+Separators
+active
+Exchangers
+active
+Columns
+active
+Reactors
+active
+Pressure Changers
+active
+Manipulators
+active
+Solids
+active
+Solids Separators
+active
+Controllers
+active
+Batch Models
+active
+User Models
+active
+endlibrary
+; 
+1
+>VERSION 0
+B1
+RCSTR
+Built-In
+RCSTR
+? SETUP MAIN ? \ "RUN-CLASS" RUN-CLASS = FLOWSHEET \ \ SIMULATE INTERACTIVE
+ = NO MOLEFLOW = MOLEFLOW \ ? SETUP GLOBAL ? \ "IN-UNITS" INSET = METCBAR \ ? 
+SETUP DIAGNOSTICS ? ? SETUP "SIM-OPTIONS" ? ; "METCBAR_MOLE" ; ? SETUP 
+"UNITS-SET" METCBAR ? \ DESCRIPTION DESCRIPTION = "User-defined units set" \ 
+\ MMLOCAL \ \ UNITSET BASESET = MET ( 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 5 
+3 4 3 3 3 3 3 3 3 3 4 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 5 3 3 3 3 3 3 5 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+7 3 3 3 3 3 3 3 3 ) \ ? "DATA-SERVICE" ? ? DATABANKS ? ? COMPONENTS MAIN ? \ 
+COMPONENTS CID = "2:3-D-01" ANAME = C6H10-E3 OUTNAME = "2:3-D-01" DBNAME1 = 
+"2,3-DIMETHYL-1,3-BUTADIENE" ANAME1 = "C6H10-E3" /  CID = "ACROL-01" ANAME = 
+C3H4O OUTNAME = "ACROL-01" DBNAME1 = "ACROLEIN" ANAME1 = "C3H4O" /  CID = 
+"ISOPH-01" ANAME = C9H14O OUTNAME = "ISOPH-01" DBNAME1 = "ISOPHORONE" ANAME1
+ = "C9H14O" \ ? COMPONENTS "ADA/PCS" "LE-PROP-DATA" ? ; "METCBAR_MOLE" ; ? 
+COMPONENTS "COMP-LIST" GLOBAL ? ? COMPONENTS "UNIFAC-GROUP" ? ? SOLVE ? \ 
+"RUN-MODE" MODE = SIM \ ? "DYN-OPTIONS" ? ? FLOWSHEET GLOBAL ? \ BLOCK BLKID
+ = B1 BLKTYPE = RCSTR MDLTYPE = "RCSTR" IN = ( 1 M0-1 ) OUT = ( 2 M0-1 ) \ ? 
+PROPERTIES MAIN ? \ GPROPERTIES GBASEOPSET = UNIFAC GOPSETNAME = UNIFAC 
+PARCON = -2 \ ? PROPERTIES "OPTION-SETS" UNIFAC ? \ PARAM BASE = UNIFAC \ ? 
+PROPERTIES "NC-PROPS" ? ? PROPERTIES "USER-PROPS" ? \ ALLOWSYSTEM SYSALLOWED
+ = NO \ ? PROPERTIES "MOLEC-STRUCT" "2:3-D-01" ? ? PROPERTIES "MOLEC-STRUCT" 
+"ACROL-01" ? ? PROPERTIES "MOLEC-STRUCT" "ISOPH-01" ? ? PROPERTIES PARAMETERS 
+BINARY SCALAR "MLQKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = MLQKIJ 
+SETNO = 1 \ ? PROPERTIES PARAMETERS BINARY SCALAR "RKTKIJ-1" ? ; "ENG_MOLE" ; 
+\ PROP-LIST PARAMNAME = RKTKIJ SETNO = 1 \ ? PROPERTIES PARAMETERS BINARY 
+"T-DEPENDENT" "ANDKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = ANDKIJ 
+SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = F NEL = 2 \ ? PROPERTIES 
+PARAMETERS BINARY "T-DEPENDENT" "ANDMIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST 
+PARAMNAME = ANDMIJ SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = F NEL = 2 
+\ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "HENRY-1" ? ; "METCBAR_MOLE" ; 
+\ PROP-LIST PARAMNAME = HENRY SETNO = 1 UNITROW = 20 UNITLABEL = bar TUNITROW
+ = 22 TUNITLABEL = C BDBANK = ( "APV110 ENRTL-RK" "APV110 BINARY" 
+"APV110 HENRY-AP" ) NEL = 7 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" 
+"MUKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = MUKIJ SETNO = 1 UNITROW = 0 
+TUNITROW = 22 TUNITLABEL = F NEL = 6 \ ? PROPERTIES PARAMETERS BINARY 
+"T-DEPENDENT" "MULIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = MULIJ SETNO
+ = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = F NEL = 11 \ ? PROPERTIES 
+PARAMETERS UNIBINARY SCALAR "GMUFB-1" ? ; "METCBAR_MOLE" ; \ PROP-LIST 
+PARAMNAME = GMUFB SETNO = 1 \ ? PROPERTIES "ATTR-COMPS" ? ? POLYMERS ? ? 
+"STREAM-CLASS" SUBSTREAMS ? \ DEF-SUBS-CLA SUBSTREAMS = MIXED \ \ 
+DEF-SUBS-CLA SUBSTREAMS = CISOLID \ \ DEF-SUBS-CLA SUBSTREAMS = NC \ \ 
+DEF-SUBS-CLA SUBSTREAMS = NCPSD \ \ DEF-SUBS-CLA SUBSTREAMS = CIPSD \ ? 
+"STREAM-CLASS" "STREAM-CLASS" ? \ DEFINITION SCLASS = CONVEN \ \ DEFINITION 
+SCLASS = MIXNC \ \ DEFINITION SCLASS = MIXCISLD \ \ DEFINITION SCLASS = 
+MIXNCPSD \ \ DEFINITION SCLASS = MIXCIPSD \ \ DEFINITION SCLASS = MIXCINC \ \ 
+DEFINITION SCLASS = MCINCPSD \ \ HEAT-DEFINE H-SCLASS = HEAT STREAM-ATTR = 
+HEAT \ \ HEAT-DEFINE H-SCLASS = LOAD STREAM-ATTR = LOAD \ ? "STREAM-CLASS" 
+"DEF-STREAMS" ? ? "STREAM-NAMES" ? ? "STREAM-GROUP" All ? \ DESCRIPTION 
+DESCRIPTION = "All streams" \ ? "STREAM-GROUP" Boundary ? \ DESCRIPTION 
+DESCRIPTION = "Boundary streams" \ ? "STREAM-GROUP" Charge ? \ DESCRIPTION 
+DESCRIPTION = "Charge streams" \ ? "STREAM-GROUP" Feeds ? \ DESCRIPTION 
+DESCRIPTION = "Feed streams" \ ? "STREAM-GROUP" Initial ? \ DESCRIPTION 
+DESCRIPTION = "Streams with user-specified values entered" \ ? "STREAM-GROUP" 
+Products ? \ DESCRIPTION DESCRIPTION = "Product streams" \ ? "STREAM-GROUP" 
+Tears ? \ DESCRIPTION DESCRIPTION = 
+"Tear streams manipulated by the convergence algorithms" \ ? STREAM MATERIAL 
+1 ? ; "METCBAR_MOLE" ; \ SUBSTREAM SSID = MIXED TEMP = 25. <22> <4> PRES = 1. 
+<20> <5> TOTAL = 20. <-89> <0> JUNK = 2 \ \ MOLE-FLOW SSID1 = MIXED CID = 
+"2:3-D-01" FLOW = 10. <-89> <3> /  SSID1 = MIXED CID = "ACROL-01" FLOW = 10. 
+<-89> <3> \ ? "EO-VARS" ? \ "SS-FLOWEMBED" SSXML = ( 
+"<tffString><GroupName>All</GroupName><TemplateName>Full</TemplateName>" 
+"<IsTemplateGroupDefaulted>false</IsTemplateGroupDefaulted><IsTemplateG" 
+"lobalDefaulted>true</IsTemplateGlobalDefaulted><IncludesChildHierarchy" 
+"Streams>false</IncludesChildHierarchyStreams><CommonShellSettings>&lt;" 
+"srcSettings$StreamIds=""1,2""$TemplateName=""Full""&gt;&lt;TFFTable&gt;&lt" 
+";GeneralOptions&gt;Description,SourceAndDestination,StreamClass,Maximu" 
+"mErrorTolerance,CostFlow,PhaseLabel,ComponentAttributes,ParticleSizeDi" 
+"stributions,Temperature,Pressure,MolarVaporFraction,MolarLiquidFractio" 
+"n,MolarSolidFraction,MolarEnthalpy,MolarEntropy,MolarDensity,MassVapor" 
+"Fraction,MassLiquidFraction,MassSolidFraction,MassEnthalpy,MassEntropy" 
+",MassDensity,EnthalpyFlow,AverageMolecularWeight,BatchProperties&lt;/G" 
+"eneralOptions&gt;&lt;ScopeOptions&gt;PhasesForMixedSubstream,TotalStre" 
+"am,Substreams,MoleFlows,MassFlows,MoleFractions,MassFractions,VolumeFl" 
+"ows&lt;/ScopeOptions&gt;&lt;Properties&gt;&lt;Property$Type=""StateCond" 
+"itionProperty""$EngineName=""TEMP""$/&gt;&lt;Property$Type=""StateConditio" 
+"nProperty""$EngineName=""PRES""$/&gt;&lt;Property$Type=""StateConditionPro" 
+"perty""$EngineName=""VFRAC""$/&gt;&lt;Property$Type=""StateConditionProper" 
+"ty""$EngineName=""LFRAC""$/&gt;&lt;Property$Type=""StateConditionProperty""" 
+"$EngineName=""SFRAC""$/&gt;&lt;Property$Type=""StateConditionProperty""$En" 
+"gineName=""MASSVFRA""$/&gt;&lt;Property$Type=""StateConditionProperty""$En" 
+"gineName=""MASSLFRA""$/&gt;&lt;Property$Type=""StateConditionProperty""$En" 
+"gineName=""MASSSFRA""$/&gt;&lt;Property$Type=""StateConditionProperty""$En" 
+"gineName=""HMX""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineN" 
+"ame=""MASSHMX""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineNa" 
+"me=""SMX""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""M" 
+"ASSSMX""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""RH" 
+"OMX""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""MASSR" 
+"HOM""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""HFLMX" 
+"""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""MWMX""$/&" 
+"gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""MOLEFLOW""$/&" 
+"gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""MOLEFRAC""$/&" 
+"gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""MASSFLOW""$/&" 
+"gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""MASSFRAC""$/&" 
+"gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""VOLFLMX""$/&g" 
+"t;&lt;Property$Type=""BatchProperty""$EngineName=""cmole_cycle""$/&gt;&lt;" 
+"Property$Type=""BatchProperty""$EngineName=""cmole_time""$/&gt;&lt;Propert" 
+"y$Type=""BatchProperty""$EngineName=""cmass_cycle""$/&gt;&lt;Property$Type" 
+"=""BatchProperty""$EngineName=""cmass_time""$/&gt;&lt;Property$Type=""Batch" 
+"Property""$EngineName=""vol_cycle""$/&gt;&lt;Property$Type=""BatchProperty" 
+"""$EngineName=""vol_time""$/&gt;&lt;Property$Type=""BatchProperty""$EngineN" 
+"ame=""enth_cycle""$/&gt;&lt;Property$Type=""BatchProperty""$EngineName=""en" 
+"th_time""$/&gt;&lt;Property$Type=""BatchProperty""$EngineName=""cycle_time" 
+"""$/&gt;&lt;Property$Type=""BatchProperty""$EngineName=""oper_time""$/&gt;&" 
+"lt;Property$Type=""BatchProperty""$EngineName=""ntrain""$/&gt;&lt;/Propert" 
+"ies&gt;&lt;/TFFTable&gt;&lt;/srcSettings&gt;</CommonShellSettings></tf" 
+"fString>" ) \ ? BLOCK RCSTR B1 ? ; "METCBAR_MOLE" ; ; ICON1 ; \ PARAM VOL = 
+10. <27> <1> TEMP = 25. <22> <4> PRES = 1. <20> <5> NPHASE = 2 \ \ PRODUCTS 
+SID = 2 \ \ "BLOCK-OPTION" BLKOPFREWAT = NO \ \ REACTIONS RXN-ID = ( "R-1" ) 
+\ \ FORCONTROL FCVAR1 = "ISOPH-01" \ ? "EO-CONV-OPTI" ? \ DMO-PARAMS MODE = 
+DEFAULT \ \ DMO-PARAMS MODE = SIMULATION \ \ DMO-PARAMS MODE = 
+"PARAMETER-ESTIMATION" \ \ DMO-PARAMS MODE = RECONCILIATION \ \ DMO-PARAMS 
+MODE = OPTIMIZATION \ \ LSSQP-PARAMS MODE-L = DEFAULT \ \ LSSQP-PARAMS MODE-L
+ = SIMULATION \ \ LSSQP-PARAMS MODE-L = "PARAMETER-ESTIMATION" \ \ 
+LSSQP-PARAMS MODE-L = RECONCILIATION \ \ LSSQP-PARAMS MODE-L = OPTIMIZATION \ 
+\ NSOLVE-PARAM NSOLVE-MODE = DEFAULT \ \ NSOLVE-PARAM NSOLVE-MODE = 
+SIMULATION \ \ NSOLVE-PARAM NSOLVE-MODE = "PARAMETER-ESTIMATION" \ \ 
+XSLP-PARAMS XSLP-MODE = DEFAULT \ \ XSLP-PARAMS XSLP-MODE = SIMULATION \ \ 
+XSLP-PARAMS XSLP-MODE = "PARAMETER-ESTIMATION" \ \ XSLP-PARAMS XSLP-MODE = 
+RECONCILIATION \ \ XSLP-PARAMS XSLP-MODE = OPTIMIZATION \ ? REPORT 
+"BLOCK-REPORT" ? ? REPORT "STREAM-REPOR" ? \ OPTIONS MOLEFLOW = MOLEFLOW \ ? 
+REPORT "BATCH-OPERAT" ? ; "METCBAR_MOLE" ; ? REACTIONS GENERAL "R-1" ? ; 
+"METCBAR_MOLE" ; \ REAC-DATA R-D-REACNO = 1 REACNAME = "R-1" PRE-EXP = 
+13805059.64 <0> <0> ACT-ENERGY = 47.85518182 <39> <18> REVERSIBLE = NO 
+RATE-UNITV = "KMOL/CUM-HR" DUMEXPONENT = 0. <0> <0> \ \ STOIC REACNO = 1 
+STOIC-CID = "2:3-D-01" STOIC-SUBS = MIXED COEF = -1. <0> <0> EXPONENT = 1. 
+<0> <0> /  REACNO = 1 STOIC-CID = "ACROL-01" STOIC-SUBS = MIXED COEF = -1. 
+<0> <0> EXPONENT = 0. <0> <0> \ \ STOIC1 REACNO1 = 1 STOIC-CID1 = "ISOPH-01" 
+STOIC-SUBS1 = MIXED COEF1 = 1. <0> <0> EXPONENT1 = 0. <0> <0> \ \ FORCONTROL 
+FCVAR1 = "ISOPH-01" \ ? "PROP-TABLE" BINARY "BINRY-1" ? ; "METCBAR_MOLE" ; \ 
+PROPERTIES OPSETNAME = UNIFAC FRWATEROPSET = "STEAM-TA" SOLU-WATER = 3 
+TRUE-COMPS = YES \ \ "MASS-FLOW" COMP1 = "ACROL-01" COMP2 = "ISOPH-01" \ \ 
+STATE VFRAC = 0.0 <0> <0> PRES = 1.013250000 <20> <5> GUNITLABEL = "cal/mol" 
+\ \ ANALTYP ANALTYPE = TXY \ \ TVARY TVARNAME = TEMP TUNITLABEL = C TVARVALUE
+ = LIST TLIST = ( 25.00000000 <0> <0> ) \ \ PVARY PVARNAME = PRES PUNITLABEL
+ = bar PVARVALUE = LIST PLIST = ( 1.013250000 <0> <0> ) \ \ CVARY CVARNAME = 
+MOLEFRAC CCOMP = "ACROL-01" VARVALUE = RANGE CLOWER = 0.0 <0> <0> CUPPER = 
+1.0 <0> <0> CINCR = 0.020000 <0> <0> CNPOINT = 50 \ \ PARAM NPHASE = 3 TAGID
+ = "BINRY-1" \ \ PROPTY LOCALPROP = UNIFAC \ \ P2 PCOMPS1 = "ACROL-01" 
+PCOMPS2 = "ISOPH-01" \ 
+
+ GRAPHICS_BACKUP
+PFS V 5.00
+$CONFIG
+paramdata APV110 ENRTL-RK
+paramdata APV110 VLE-IG
+paramdata APV110 VLE-RK
+paramdata APV110 VLE-HOC
+paramdata APV110 LLE-LIT
+paramdata APV110 LLE-ASPEN
+paramdata APV110 VLE-LIT
+paramdata APV110 BINARY
+paramdata APV110 EOS-LIT
+paramdata APV110 HENRY-AP
+paramdata APV110 SRK-ASPEN
+paramdata APV110 PC-SAFT
+paramdata APV110 POLYPCSF
+paramdata APV110 HYSYS
+paramdata APESV110 AP-EOS
+paramdata NISTV110 NIST-HOC
+paramdata NISTV110 NIST-IG
+paramdata NISTV110 NIST-RK
+paramdata NISTV110 NIST-EOS
+purebank APV110 PURE37
+purebank APV110 AQUEOUS
+purebank APV110 SOLIDS
+purebank APV110 INORGANIC
+purebank APESV110 AP-EOS
+purebank NISTV110 NIST-TRC
+regdbank 1
+ftn_check 1
+autoblockid 1
+autostreamid 1
+showblockid 1
+showstreamid 1
+autoplacement 1
+grid 2
+gridresolution 0.100000
+scale 0
+blockprefix B
+labelscale 1.000000
+3DOn 1
+qwformat %.0f
+tempformat %.0f
+presformat %.0f
+flowformat %.0f
+strmqwformat %.0f
+vflowformat %.0f
+mflowformat %.0f
+vfracformat %.2f
+pseudobatch 0
+partial 1
+animation 1
+runanyway 0
+globalqw 0
+globaltemp 0
+globalpres 0
+globalflow 0
+globalstrmqw 0
+globalvflow 0
+globalmflow 0
+globalvfrac 0
+globalshowcalcerror 1
+globalshowcalcwarning 1
+globalshowdisabled 1
+tooldrawvisible 0
+browserheight 7530
+browserwidth 10725
+browsertreewidth 2450
+polyplusenabled 1
+dynaplusenabled 1
+bfracenabled 1
+rtfenabled 1
+rspenabled 1
+initializeicarus 17
+pinchenabled 0
+linklimit 5000
+material_color 0
+material_style 0
+material_width 1
+material_termid  
+heat_color 0
+heat_style 2
+heat_width 1
+heat_termid Q
+work_color 0
+work_style 1
+work_width 1
+work_termid W
+connections_color 9
+connections_style 3
+connections_width 1
+connections_termid C
+measurements_color 4
+measurements_style 3
+measurements_width 1
+measurements_termid M
+displayeoconn 0
+displaycalcs 0
+displaytransfers 0
+displaymeas 0
+displaydesignspecs 0
+displaycalccons 0
+displaymeascons 0
+displayothercons 0
+displayeomeas 1
+displayeomeastype 2
+displayothermanipconn 0
+showeoviews 0
+eoautosave 1
+allow_system_userprops 0
+copy_estimation 1
+copy_retrieved 1
+purge_incomp_params 0
+set_default_biparams 0
+set_default_dataset1 0
+set_default_dataset0 1
+bestinput 0
+autosmrun 0
+genallpropset 0
+strmresformdefault 0
+roottype 0
+exchangerfile 1
+streamformat 1
+runsettingfile 1
+usermodelfile 1
+fortranfile 0
+timeout 1000
+auto_evaluate 0
+customglobaldatapropset1 0 | Custom1 | * | %.2f | 0 | 6
+customglobaldatapropset2 0 | Custom2 | * | %.2f | 1 | 7
+customglobaldatapropset3 0 | Custom3 | * | %.2f | 2 | 8
+customglobaldatapropset4 0 | Custom4 | * | %.2f | 4 | 9
+customglobaldatapropset5 0 | Custom5 | * | %.2f | 5 | 10
+customglobaldatapropset6 0 | Custom6 | * | %.2f | 6 | 11
+economics_active 0
+ignoreEOVarNameFixupsOnImport 1
+tpsaupgrade 0
+#
+$_APWNSHELL_SETTINGS
+<FileRootSettings><CaseFileSettings>&lt;CaseFileSettings StreamSummaryFormSettings="&amp;lt;src&amp;gt;&amp;lt;ReferencedPaths&amp;gt;&amp;lt;Path&amp;gt;Top.appModelV8.Results Summary&amp;lt;/Path&amp;gt;&amp;lt;Path&amp;gt;Top.appModelV8.Streams.1&amp;lt;/Path&amp;gt;&amp;lt;Path&amp;gt;Top.appModelV8.Streams.2&amp;lt;/Path&amp;gt;&amp;lt;Path&amp;gt;Top.appModelV8.Blocks.B1&amp;lt;/Path&amp;gt;&amp;lt;/ReferencedPaths&amp;gt;&amp;lt;ReferencedTemplates /&amp;gt;&amp;lt;/src&amp;gt;" xmlns="clr-namespace:AspenTech.AspenPlus.Infrastructure;assembly=AspenTech.AspenPlus.Infrastructure" /&gt;</CaseFileSettings><CommonShellSettings>&lt;CommonShellSettings xmlns="http://schemas.aspentech.com/xaml/presentation/visualisation/commonshell" xmlns:atapi="clr-namespace:AspenTech.AspenPlus.Infrastructure;assembly=AspenTech.AspenPlus.Infrastructure" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:atapmaa="clr-namespace:AspenTech.AspenPlus.Modules.ApwnApplication;assembly=ApwnShell" xmlns:atapie="clr-namespace:AspenTech.AspenPlus.Infrastructure.Events;assembly=AspenTech.AspenPlus.Infrastructure" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:apmab="clr-namespace:AspenPlus.Modules.ApwnBrowser;assembly=ApwnShell" xmlns:cxv="http://schemas.aspentech.com/xaml/presentation/cxsviewmodel" xmlns:apmas="clr-namespace:AspenPlus.Modules.ApwnSimulation;assembly=ApwnShell" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib"&gt;&lt;CommonShellSettings.CurrentWorkspace&gt;&lt;ShellWorkspace ActivationBarState="&amp;lt;DashboardPanel IsExpanded=&amp;quot;false&amp;quot; IsTurnedOff=&amp;quot;false&amp;quot; Version=&amp;quot;37&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Item Type=&amp;quot;AspenTech.ActivationDashboard.EconomicAnalysis.DashboardItem&amp;quot;&amp;gt;&amp;amp;lt;!--This is the current state of Economics Analysis Dashboard--&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;Root&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;OnOffState Value=&amp;quot;Off&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;CapitalCost Value=&amp;quot;&amp;quot; Units=&amp;quot;USD&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;UtilityCost Value=&amp;quot;&amp;quot; Units=&amp;quot;USD/Year&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;HasError&amp;amp;gt;false&amp;amp;lt;/HasError&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;_statusCode Value=&amp;quot;-1&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;StatusText Value=&amp;quot;&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;Flags&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isRunCompleted Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isRunning Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_incompleteButActivated Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_incompleteButLoaded Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_incompleteButSized Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_incompleteButMapped Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_completeEvaluatedNotAutoRun Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isSimulationChanged Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isInStopping Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isOnOffButtonCanBeUsed Value=&amp;quot;true&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isResetDashboardButLeaveItOn Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;/Flags&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;/Root&amp;amp;gt;&amp;lt;/Item&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Item Type=&amp;quot;AspenTech.ActivationDashboard.EnergyAnalysis.DashboardItem&amp;quot;&amp;gt;&amp;amp;lt;!--This is the current state of Energy Analysis Dashboard--&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;Root&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;IsExpanded&amp;amp;gt;false&amp;amp;lt;/IsExpanded&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;OnOff&amp;amp;gt;Off&amp;amp;lt;/OnOff&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;Status&amp;amp;gt;NotReady&amp;amp;lt;/Status&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;PUS&amp;amp;gt;&amp;amp;lt;/PUS&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;Percent&amp;amp;gt;&amp;amp;lt;/Percent&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;Units&amp;amp;gt;MW&amp;amp;lt;/Units&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;/Root&amp;amp;gt;&amp;lt;/Item&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Item Type=&amp;quot;AspenTech.ActivationDashboard.EdrActivation.DashboardItem&amp;quot;&amp;gt;&amp;amp;lt;EDR&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;IsShowModelStatus&amp;amp;gt;false&amp;amp;lt;/IsShowModelStatus&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;IsShowRiskStatus&amp;amp;gt;false&amp;amp;lt;/IsShowRiskStatus&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;IsShowLegend&amp;amp;gt;false&amp;amp;lt;/IsShowLegend&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;DetailCount&amp;amp;gt;0&amp;amp;lt;/DetailCount&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;/EDR&amp;amp;gt;&amp;lt;/Item&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;/DashboardPanel&amp;gt;" Layout="&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;xamDockManager version=&amp;quot;17.2.20172.2029&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;contentPanes&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;FlowsheetScreenFactory&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2020-10-18T05:50:10.8345626Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen2&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2020-10-18T05:49:37.8405047Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;ControlPanelScreenFactory&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2020-10-18T05:49:33.3008967Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;ModelLibraryScreenFactoryKey&amp;quot; location=&amp;quot;DockedBottom&amp;quot; lastActivatedTime=&amp;quot;2020-10-18T05:27:38.9752156Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/contentPanes&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;panes&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;splitPane name=&amp;quot;Z04793d60904c40f1aa0675ed5c8d47d0&amp;quot; splitterOrientation=&amp;quot;Vertical&amp;quot; location=&amp;quot;DockedBottom&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;contentPane name=&amp;quot;ModelLibraryScreenFactoryKey&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;/splitPane&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/panes&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;documents splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;splitPane name=&amp;quot;Zdc82316b6b8345338cb378c1c0512a57&amp;quot; splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;tabGroup name=&amp;quot;Z33e7788fe2dd4cdb98bd46e5e6dceee1&amp;quot; selectedIndex=&amp;quot;0&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;FlowsheetScreenFactory&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;ControlPanelScreenFactory&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen2&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;/tabGroup&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;/splitPane&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/documents&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;/xamDockManager&amp;gt;" NavigationGroupToSelect="Simulation" IsNavigationPaneMinimized="False" IsRibbonMinimized="False"&gt;&lt;ShellWorkspace.Screens&gt;&lt;WorkspaceScreenData PaneName="FlowsheetScreenFactory" ScreenFactoryKey="FlowsheetScreenFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapi:StringScreenSubject subject="{assembly:Null}" fatherNodePath="{assembly:Null}" NavigationGroupKey="Simulation" /&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;ScreenState Zoom="1.800001" /&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen2" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Reactions.R-1.Input" NavigationGroupKey="Simulation"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMGENERAL.MMGENERAL_Input" FormKey="Reactions.R-1.Input" Header="R-1 (GENERAL) - Input" ResultsOnly="False" PathKey="Top.appModelV8.Reactions.Reactions.R-1"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;R-1&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Reactions.Reactions.R-1&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Reactions.Reactions.R-1" /&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Reactions.Reactions.R-1" /&gt;&lt;cxv:CxvParameter Name="id" Value="R-1" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;cxv:CxvParameter Name="SpeVisible" Value="1" /&gt;&lt;cxv:CxvParameter Name="SumVisible" Value="0" /&gt;&lt;cxv:CxvParameter Name="ReactingPhase0_Visible"&gt;&lt;cxv:CxvParameter.Value&gt;&lt;s:Boolean&gt;True&lt;/s:Boolean&gt;&lt;/cxv:CxvParameter.Value&gt;&lt;/cxv:CxvParameter&gt;&lt;cxv:CxvParameter Name="ReactingPhase1_Visible"&gt;&lt;cxv:CxvParameter.Value&gt;&lt;s:Boolean&gt;False&lt;/s:Boolean&gt;&lt;/cxv:CxvParameter.Value&gt;&lt;/cxv:CxvParameter&gt;&lt;cxv:CxvParameter Name="reactnok" Value="#0" /&gt;&lt;cxv:CxvParameter Name="select" Value="Forward" /&gt;&lt;cxv:CxvParameter Name="exponent" Value="EXPONENT" /&gt;&lt;cxv:CxvParameter Name="exponent1" Value="EXPONENT1" /&gt;&lt;cxv:CxvParameter Name="df1" Value="DF1_A" /&gt;&lt;cxv:CxvParameter Name="df2" Value="DF1_B" /&gt;&lt;cxv:CxvParameter Name="df3" Value="DF1_C" /&gt;&lt;cxv:CxvParameter Name="df4" Value="DF1_D" /&gt;&lt;cxv:CxvParameter Name="reactnok3" Value="1" /&gt;&lt;cxv:CxvParameter Name="CiUnit_MOLARITY" Value="kmol/cum" /&gt;&lt;cxv:CxvParameter Name="selected_tab" Value="tab1" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="ControlPanelScreenFactory" ScreenFactoryKey="ControlPanelScreenFactory"&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;apmas:ControlPanelScreenState IsConvergencePaneExpanded="False" SelectedWatchItem="Overall Max-Error/Tol" /&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="ModelLibraryScreenFactoryKey" ScreenFactoryKey="ModelLibraryScreenFactoryKey"&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;ScreenState /&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;/ShellWorkspace.Screens&gt;&lt;/ShellWorkspace&gt;&lt;/CommonShellSettings.CurrentWorkspace&gt;&lt;CommonShellSettings.SavedWorkspaces&gt;&lt;ShellWorkspaceFolder /&gt;&lt;/CommonShellSettings.SavedWorkspaces&gt;&lt;CommonShellSettings.NavigatorGroupWorkspaces&gt;&lt;ShellWorkspace Name="Properties" Layout="&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;xamDockManager version=&amp;quot;17.2.20172.2029&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;contentPanes&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;Pane_ApwnPfsPlotWizardScreen_0&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2020-10-18T05:34:53.2325818Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen1&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2020-10-18T05:34:47.086171Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/contentPanes&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;documents splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;splitPane name=&amp;quot;Z524de77b75eb413c935bac6cea9b8a21&amp;quot; splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;tabGroup name=&amp;quot;Zb5d6dc6cc7bf4a0988bde6d28f1c5fd1&amp;quot; selectedIndex=&amp;quot;1&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen1&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;Pane_ApwnPfsPlotWizardScreen_0&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;/tabGroup&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;/splitPane&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/documents&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;/xamDockManager&amp;gt;" NavigationGroupToSelect="Properties" IsNavigationPaneMinimized="False" IsRibbonMinimized="False"&gt;&lt;ShellWorkspace.Screens&gt;&lt;WorkspaceScreenData PaneName="Pane_ApwnPfsPlotWizardScreen_0" ScreenFactoryKey="ApwnPlotWizardScreenFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnPfsPlotWizardScreenSubject Title="BINRY-1 (Binary) - T-xy - Plot" PlotID="T-xy" TagID="BINRY-1$" RibbonPlotMgrID="WpfPLANALYSIS.RibbonPlotWizardMgr" PlotWizardPath="Top.appModelV8.Properties.Analysis.BINRY-1" PersistXML="&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-16&amp;quot;?&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;Plot&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;PlotSettings Value=&amp;quot;Type:0&amp;amp;#xA;Title:T-xy diagram for ACROL-01/ISOPH-01&amp;amp;#xA;ShowTitle:1&amp;amp;#xA;Xlab:Liquid/vapor mole fraction, ACROL-01&amp;amp;#xA;Ylab:Temperature, C&amp;amp;#xA;Nvars:2&amp;amp;#xA;MultiY:1&amp;amp;#xA;Subst:&amp;amp;#xA;NYaxes:1&amp;amp;#xA;RunPlot:0&amp;amp;#xA;PhasePlot:0&amp;amp;#xA;SizeToData:0&amp;amp;#xA;CommunicationIntervals:1&amp;amp;#xA;UseVar:0&amp;amp;#xA;IgnoreLegend:0&amp;amp;#xA;TimeWin:1&amp;amp;#xA;TimeScroll:0.2&amp;amp;#xA;AlwaysShow:0&amp;amp;#xA;PhaseX:&amp;amp;#xA;XLabel:Liquid/vapor mole fraction, ACROL-01&amp;amp;#xA;XLabelColor:0&amp;amp;#xA;XAxisColor:0&amp;amp;#xA;Var:1&amp;amp;#xA;AxisMap:1&amp;amp;#xA;Label:Temperature, C&amp;amp;#xA;LabelColor:0&amp;amp;#xA;AxisColor:0&amp;amp;#xA;Legend:x  1.0132 bar&amp;amp;#xA;SubstValue:&amp;amp;#xA;Hidden:0&amp;amp;#xA;Var:2&amp;amp;#xA;AxisMap:1&amp;amp;#xA;Label:Temperature, C&amp;amp;#xA;LabelColor:0&amp;amp;#xA;AxisColor:0&amp;amp;#xA;Legend:y  1.0132 bar&amp;amp;#xA;SubstValue:&amp;amp;#xA;Hidden:0&amp;amp;#xA;Axis:0&amp;amp;#xA;Range:0 1&amp;amp;#xA;AxisInterval:0.025 0&amp;amp;#xA;AxisRange:0 1&amp;amp;#xA;AxisResetRange:1&amp;amp;#xA;AxisScale:0 0&amp;amp;#xA;Multiplier:0&amp;amp;#xA;MultiplierType:0&amp;amp;#xA;AxisFlag:0&amp;amp;#xA;Axis:1&amp;amp;#xA;Range:52.7366 215.436&amp;amp;#xA;AxisInterval:5 0&amp;amp;#xA;AxisRange:50 220&amp;amp;#xA;AxisResetRange:1&amp;amp;#xA;AxisScale:0 0&amp;amp;#xA;Multiplier:0&amp;amp;#xA;MultiplierType:0&amp;amp;#xA;AxisFlag:0&amp;amp;#xA;Attrib:0 3 0 1 1&amp;amp;#xA;Attrib2:0 0 0 0 0&amp;amp;#xA;Attrib:1 3 0 2 2&amp;amp;#xA;Attrib2:1 0 0 0 0&amp;amp;#xA;Font:0 9 2:Segoe UI&amp;amp;#xA;Font:1 8 0:Segoe UI&amp;amp;#xA;Font:2 8 0:Segoe UI&amp;amp;#xA;Font:3 8 0:Segoe UI&amp;amp;#xA;Grid:3&amp;amp;#xA;Line:2&amp;amp;#xA;Square:0 0 0 0&amp;amp;#xA;Marker:4 1&amp;amp;#xA;LegendBox:1 1.000000 0.030000&amp;amp;#xA;LegendBox2:20 1.250000 6&amp;amp;#xA;&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;PlwConfigSettings Value=&amp;quot;&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;DataFields&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;Field Name=&amp;quot;Component&amp;quot; Value=&amp;quot;ACROL-01&amp;quot; Options=&amp;quot;ACROL-01,ISOPH-01&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;Field Name=&amp;quot;Temperature&amp;quot; Value=&amp;quot;C&amp;quot; Options=&amp;quot;K,F,C,R&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;Field Name=&amp;quot;Pressure&amp;quot; Value=&amp;quot;bar&amp;quot; Options=&amp;quot;N/sqm,psia,atm,lbf/sqft,bar,torr,in-water,kg/sqcm,mmHg,kPa,mm-water,mbar,psig,atmg,barg,kg/sqcmg,lb/ft-sqsec,kg/m-sqsec,Pa,MPa,Pag,kPag,MPag,mbarg,in-Hg,mmHg-vac,in-Hg-vac,in-water-60F,in-water-vac,in-water-60F-vac,in-water-g,in-water-60F-g,mm-water-g,mm-water-60F-g,psi,mm-water-60F,bara&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/DataFields&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;PlotData&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;NumofPoints npoint=&amp;quot;51&amp;quot; nxvar=&amp;quot;3&amp;quot; nvar=&amp;quot;2&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;Points&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0 0 1E+28&amp;quot; YData=&amp;quot;215.4362 215.4362&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.02 0.4900338 1E+28&amp;quot; YData=&amp;quot;187.7694 187.7694&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.04 0.7236475 1E+28&amp;quot; YData=&amp;quot;165.7336 165.7336&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.06 0.8345865 1E+28&amp;quot; YData=&amp;quot;149.1852 149.1852&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.08 0.8919854 1E+28&amp;quot; YData=&amp;quot;136.6083 136.6083&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.1 0.9245602 1E+28&amp;quot; YData=&amp;quot;126.7653 126.7653&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.12 0.9445525 1E+28&amp;quot; YData=&amp;quot;118.8334 118.8334&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.14 0.9576176 1E+28&amp;quot; YData=&amp;quot;112.2799 112.2799&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.16 0.9665942 1E+28&amp;quot; YData=&amp;quot;106.7525 106.7525&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.18 0.9730157 1E+28&amp;quot; YData=&amp;quot;102.0114 102.0114&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.2 0.9777633 1E+28&amp;quot; YData=&amp;quot;97.8882 97.8882&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.22 0.9813704 1E+28&amp;quot; YData=&amp;quot;94.26084 94.26084&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.24 0.9841744 1E+28&amp;quot; YData=&amp;quot;91.03896 91.03896&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.26 0.9863971 1E+28&amp;quot; YData=&amp;quot;88.15394 88.15394&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.28 0.9881887 1E+28&amp;quot; YData=&amp;quot;85.5527 85.5527&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.3 0.9896539 1E+28&amp;quot; YData=&amp;quot;83.19343 83.19343&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.32 0.9908675 1E+28&amp;quot; YData=&amp;quot;81.0427 81.0427&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.34 0.9918842 1E+28&amp;quot; YData=&amp;quot;79.07341 79.07341&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.36 0.9927444 1E+28&amp;quot; YData=&amp;quot;77.26333 77.26333&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.38 0.9934788 1E+28&amp;quot; YData=&amp;quot;75.59398 75.59398&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.4 0.9941109 1E+28&amp;quot; YData=&amp;quot;74.04991 74.04991&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.42 0.994659 1E+28&amp;quot; YData=&amp;quot;72.61804 72.61804&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.44 0.9951374 1E+28&amp;quot; YData=&amp;quot;71.28718 71.28718&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.46 0.9955576 1E+28&amp;quot; YData=&amp;quot;70.04773 70.04773&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.48 0.9959288 1E+28&amp;quot; YData=&amp;quot;68.89137 68.89137&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.5 0.9962585 1E+28&amp;quot; YData=&amp;quot;67.81082 67.81082&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.52 0.9965528 1E+28&amp;quot; YData=&amp;quot;66.79966 66.79966&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.54 0.9968169 1E+28&amp;quot; YData=&amp;quot;65.85223 65.85223&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.56 0.9970548 1E+28&amp;quot; YData=&amp;quot;64.96344 64.96344&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.58 0.9972702 1E+28&amp;quot; YData=&amp;quot;64.12872 64.12872&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.6 0.997466 1E+28&amp;quot; YData=&amp;quot;63.34391 63.34391&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.62 0.9976449 1E+28&amp;quot; YData=&amp;quot;62.60519 62.60519&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.64 0.9978091 1E+28&amp;quot; YData=&amp;quot;61.90901 61.90901&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.66 0.9979605 1E+28&amp;quot; YData=&amp;quot;61.25203 61.25203&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.68 0.9981007 1E+28&amp;quot; YData=&amp;quot;60.6311 60.6311&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.7 0.9982313 1E+28&amp;quot; YData=&amp;quot;60.04315 60.04315&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.72 0.9983537 1E+28&amp;quot; YData=&amp;quot;59.48517 59.48517&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.74 0.9984692 1E+28&amp;quot; YData=&amp;quot;58.95418 58.95418&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.76 0.9985789 1E+28&amp;quot; YData=&amp;quot;58.44712 58.44712&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.78 0.998684 1E+28&amp;quot; YData=&amp;quot;57.96087 57.96087&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.8 0.9987856 1E+28&amp;quot; YData=&amp;quot;57.49212 57.49212&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.82 0.9988851 1E+28&amp;quot; YData=&amp;quot;57.03732 57.03732&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.84 0.9989837 1E+28&amp;quot; YData=&amp;quot;56.59262 56.59262&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.86 0.9990828 1E+28&amp;quot; YData=&amp;quot;56.15377 56.15377&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.88 0.9991841 1E+28&amp;quot; YData=&amp;quot;55.71597 55.71597&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.9 0.9992896 1E+28&amp;quot; YData=&amp;quot;55.27378 55.27378&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.92 0.9994019 1E+28&amp;quot; YData=&amp;quot;54.82095 54.82095&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.94 0.9995241 1E+28&amp;quot; YData=&amp;quot;54.3502 54.3502&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.96 0.9996604 1E+28&amp;quot; YData=&amp;quot;53.85298 53.85298&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;0.98 0.9998164 1E+28&amp;quot; YData=&amp;quot;53.31914 53.31914&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;Point XData=&amp;quot;1 1 1E+28&amp;quot; YData=&amp;quot;52.73659 52.73659&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;/Points&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;XVariables Value=&amp;quot;1 2&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/PlotData&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;/Plot&amp;gt;" LivePlot="True" Orphan="False" UserModified="False" LivePlotSupport="True"&gt;&lt;atapmaa:ApwnPfsPlotWizardScreenSubject.PlotData&gt;&lt;assembly:Null /&gt;&lt;/atapmaa:ApwnPfsPlotWizardScreenSubject.PlotData&gt;&lt;atapmaa:ApwnPfsPlotWizardScreenSubject.AdditionalPlots&gt;&lt;sc:ArrayList Capacity="0" /&gt;&lt;/atapmaa:ApwnPfsPlotWizardScreenSubject.AdditionalPlots&gt;&lt;/atapmaa:ApwnPfsPlotWizardScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;ScreenState /&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen1" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Analysis.BINRY-1.Input" NavigationGroupKey="Properties"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMANALYSIS_BI.MMANALYSIS_BI_INP" FormKey="Analysis.BINRY-1.Input" Header="BINRY-1 (BINARY) - Input" ResultsOnly="False" PathKey="Top.appModelV8.Properties.Analysis.BINRY-1"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;BINRY-1&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Properties.Analysis.BINRY-1&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Properties.Analysis.BINRY-1"&gt;&lt;apmab:ApwnPlotwizardRule.ProgId&gt;&lt;s:String&gt;WpfPLANALYSIS.RibbonPlotWizardMgr&lt;/s:String&gt;&lt;/apmab:ApwnPlotwizardRule.ProgId&gt;&lt;/apmab:ApwnPlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Properties.Analysis.BINRY-1" /&gt;&lt;cxv:CxvParameter Name="id" Value="BINRY-1" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;cxv:CxvParameter Name="selected_tab" Value="tab0" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;/ShellWorkspace.Screens&gt;&lt;/ShellWorkspace&gt;&lt;/CommonShellSettings.NavigatorGroupWorkspaces&gt;&lt;/CommonShellSettings&gt;</CommonShellSettings></FileRootSettings>
+$_END_APWNSHELL_SETTINGS
+#
+$_GRID_TEMPLATES
+$_START_TEMPLATE_Econ
+<?xml version="1.0" encoding="utf-8"?>
+
+<TabbedSummaryGridTemplateCol>
+
+  <TabbedSummaryGridTemplates />
+
+</TabbedSummaryGridTemplateCol>
+$_END_TEMPLATE_Econ
+$_END_GRID_TEMPLATES
+PFSVData
+# of PFS Objects = 4
+SIZE -4.79862 1.19587 -0.338 0.563
+BLOCK
+ID: B1
+Version: 1
+ICON: "ICON1"
+Flag 0
+Section GLOBAL
+At -1.500000 0.200000
+Label At 1.125000 0.225000
+Scale 1.000000 Modifier 0
+STREAM
+ID: 1
+Version: 2
+Flag 0
+GLOBAL 117
+TYPE 0 TERMINAL 1
+At -4.798625 0.403670
+Label At 0.711812 0.000000
+ROUTE 0 0
+$ $ 0.0 0.0
+ROUTE 1 0
+r r -4.798625 0.403670 0
+x x -3.375000 0.403670 0
+y y -3.375000 0.200112 0
+x x -2.151005 0.200112 0
+t l -1.951005 0.200112 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: 2
+Version: 2
+Flag 0
+GLOBAL 117
+TYPE 0 TERMINAL 2
+At 1.195871 0.201835
+Label At -0.560435 0.000000
+ROUTE 0 0
+r l 1.195871 0.201835 0
+x y 0.075000 0.201835 0
+y x 0.075000 0.200112 0
+x 0 -0.846474 0.200112 0
+t r -1.046474 0.200112 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+ROUTE 1 0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+LEGEND
+Version: 2
+Unfixed
+# of PFS Objects = 0
+VIEWPORT -8.520511 8.507611 3.298492 -3.294990
+LAYOUT
+TableFormat 1
+Pages 1 1 1 1
+PAGESETUP
+PAPERSIZE 
+PAPERSOURCE 
+ORIENTATION -1
+PRINTPAGENO 1 1
+LEFTMARGIN 0.5"
+RIGHTMARGIN 0.5"
+TOPMARGIN 0.5"
+BOTTOMMARGIN 0.5"
+VISIBILITY 0.030000
+PFDFLAG 255 255
+PFDMODE 0
+SCALE 0.010082
+
+$_SUMMARY_FILE
+ MMSUMMARY37.0                                                                  
+ IDSET RUNID (PROPERTIES) (114 *5)                                              
+ IDSET IT (PROPERTIES) (117 *6 119 *6 115 *1)                                   
+ LSET RUNID (%RUNID)                                                            
+ LSET IT (%IT)                                                                  
+ IDSET VERS (PROPERTIES) (345 *6 346 *6 347 *6 348 *6 355 *6)                   
+ LSET VERS (%VERS)                                                              
+ DSET RUN-STATUS VERS @VERS ( "37.0" "WIN-X64" "" "chris" "WIN-NGKO8303JUM" )   
+ IDSET STRNAM (PROPERTIES) (1233 *6)                                            
+ LSET STRNAM (%STRNAM)                                                          
+ IDSET ID_STRPR (PROPERTIES) ( 454 *2 <119> 1236 *2 <125> 1237 *2 <29> 1238 *2  
+ <55> 1239 *2 <55> 1083 *6 1084 *6 )                                            
+ LSET L_STRPR (%ID_STRPR)                                                       
+ IDSET ID_GUID (PROPERTIES) ( 1270 *6 )                                         
+ LSET L_GUID (%ID_GUID)                                                         
+ DSET RUN-STATUS IT @IT ( "OCTOBER 18, 2020    8:48:44 A.M." "_2229hsa.inm" 0)  
+ DSET RUN-STATUS CURRENCY @CURRENCY ( "$" )                                     
+ IDSET ID_NCC (COMPONENTS) (2:3-D-01 ACROL-01 ISOPH-01)                         
+ IDSET ID_NCCNS (COMPONENTS) (2:3-D-01 ACROL-01 ISOPH-01)                       
+ IDSET ALIAS (COMPONENTS) (1 *6)                                                
+ LSET ALIAS ( %ID_NCC & %ALIAS)                                                 
+ DSET RUN-STATUS RUNID @RUNID ("_2229hsa")                                      
+ DSET RUN-STATUS RUNID @RUNID ("_2229hsa")                                      
+ IDSET STATUS (PROPERTIES) (125 *1 126 *1 127 *1 128 *1 129 *1 130 *1)          
+ LSET STATUS (%STATUS)                                                          
+ IDSET PPSTAT (PROPERTIES) (272 *1)                                             
+ LSET PPSTAT (%PPSTAT)                                                          
+ IDSET IDRXBAL0 (PROPERTIES) ( 73 *2 <11> 74 *2 75 *2 <10> 76 *2 77 *2 <13> 78  
+ *2)                                                                            
+ IDSET ID_RXBAL (PROPERTIES) ( 73 *2 <11> 358 *2 <11> 359 *2 <11> 74 *2 75 *2   
+ <10> 360 *2 <10> 361 *2 <10> 76 *2 362 *2 <10> 363 *2 <10> 364 *2 <10> 365 *2  
+ 366 *2 <11> 367 *2 <11> 368 *2 <11> 369 *2 370 *2 <10> 371 *2 <10> 372 *2 <10> 
+ 373 *2 77 *2 <13> 374 *2 <13> 375 *2 <13> 78 *2 1266 *2 <10> 1267 *2 <10> 1262 
+ *2 <10> 1263 *2 <10> 1264 *2 <10> )                                            
+ IDSET ID_MOLE (PROPERTIES) ( 79 *2 <11> 80 *2)                                 
+ LSET FLWBAL ( %ID_NCCNS & %ID_MOLE %IDRXBAL0)                                  
+ IDSET ID_XY (PROPERTIES) (43 *2 36 *2 39 *2 40 *2)                             
+ IDSET ID_XX (PROPERTIES) (43 *2 37 *2 38 *2 40 *2)                             
+ IDSET ID_XXY (PROPERTIES) (43 *2 37 *2 38 *2 39 *2 41 *2 42 *2)                
+ LSET VLE ( %ID_XY & %ID_NCC)                                                   
+ LSET LLE ( %ID_XX & %ID_NCC)                                                   
+ LSET VLE3 ( %ID_XXY & %ID_NCC)                                                 
+ IDSET ID_KODE (PROPERTIES) (44 *1)                                             
+ IDSET BLKIN (BLKIN) (STREAMID ?)                                               
+ LSET BLKIN (%BLKIN)                                                            
+ IDSET BLKOUT (BLKOUT) (STREAMID ?)                                             
+ LSET BLKOUT (%BLKOUT)                                                          
+ IDSET TYPIN (TYPIN) (STREAMID ?)                                               
+ LSET TYPIN (%TYPIN)                                                            
+ IDSET TYPOUT (TYPOUT) (STREAMID ?)                                             
+ LSET TYPOUT (%TYPOUT)                                                          
+ IDSET PORT_NO (PROPERTIES) (236 *1 237 *1 238 *1)                              
+ IDSET IDS_0 (SUBSTREAM) ($TOTAL)                                               
+ IDSET IDS_1 (SUBSTREAM) (MIXED)                                                
+ IDSET BLKSTAT (PROPERTIES) (120 *1 121 *1)                                     
+ IDSET BLKMSG (PROPERTIES) (122 *6)                                             
+ LSET BLKSTAT (%BLKSTAT)                                                        
+ LSET BLKMSG (%BLKMSG)                                                          
+ IDSET DESC (PROPERTIES) (113 *6)                                               
+ LSET DESC (%DESC)                                                              
+ IDSET IDPH_V (PHASE) (VAPOR)                                                   
+ IDSET IDPH_L (PHASE) (LIQUID)                                                  
+ IDSET IDPH_S (PHASE) (SOLID)                                                   
+ IDSET IDPH_L1 (PHASE) (LIQUID_1)                                               
+ IDSET IDPH_T (PHASE) (TOTAL)                                                   
+ IDSET IDPH_L2 (PHASE) (LIQUID_2)                                               
+ IDSET IDWET (BASIS) (WET)                                                      
+ IDSET IDDRY (BASIS) (DRY)                                                      
+ IDSET SP (PROPERTIES) (118 *6)                                                 
+ LSET SP (%SP)                                                                  
+ IDSET SPSTAT (SPSTAT) (116 *1)                                                 
+ LSET SPSTAT ( %SPSTAT)                                                         
+ IDSET IDERR (PROPERTIES) (131 *1)                                              
+ DSET RUN-STATUS SP @SP ( "OCTOBER 18, 2020 8:48:44 A.M." )                     
+ IDSET FOR (PROPERTIES) (737 *1)                                                
+ LSET FOR (%FOR)                                                                
+ IDSET FORSTAT (PROPERTIES) (738 *1)                                            
+ LSET FORSTAT (%FORSTAT)                                                        
+ IDSET MW (PROPERTIES) (269 *2)                                                 
+ LSET MW (%MW & %ID_NCCNS)                                                      
+ DSET MW MW @MW (8.21454000D+01 5.60641600D+01 1.38209560D+02)                  
+ IDSET VST (PROPERTIES) (270 *2 <43> )                                          
+ LSET VST (%VST & %ID_NCCNS)                                                    
+ DSET VST VST @VST (1.13650000D+02 <3> 6.71900000D+01 <3> 1.50100000D+02 <3> )  
+ IDSET TB (PROPERTIES) (271 *2 <22> )                                           
+ LSET TB (%TB & %ID_NCC)                                                        
+ DSET TB TB @TB (6.87800000D+01 <4> 5.26900000D+01 <4> 2.15200000D+02 <4> )     
+ IDSET CASN (PROPERTIES) (37100 *6)                                             
+ LSET CASN (%ID_NCC & %CASN)                                                    
+ DSET CASN CASN @CASN ( "513-81-5" "107-02-8" "78-59-1" )                       
+ IDSET PAMB (PROPERTIES) (32 *2)                                                
+ LSET PAMB (%PAMB)                                                              
+ DSET PAMB PAMB @PAMB (1.01325000D+05)                                          
+ IDSET PAMB2 (PROPERTIES) (32 *2 <20> )                                         
+ LSET PAMB2 (%PAMB2)                                                            
+ DSET RUN-STATUS PAMB @PAMB2 (1.01325000D+00 <5> )                              
+ IDSET ISODES (PROPERTIES) (123 *5 124 *5 132 *5 1269 *5)                       
+ IDSET ISODESHW (PROPERTIES) (123 *5 124 *5 132 *5)                             
+ IDSET ISTRCV (PROPERTIES) (1251 *2)                                            
+ IDSET ID_WORK (PROPERTIES) (112 *2 <19> 195 *2 <28> )                          
+ LSET L_WORK (%ISODESHW %ID_WORK)                                               
+ IDSET ID_HEAT (PROPERTIES) (1 *2 <13> 815 *2 <22> 816 *2 <22> )                
+ LSET L_HEAT (%ISODESHW %ID_HEAT)                                               
+ IDSET ID_LTVC (PROPERTIES) (817 *2 <22> )                                      
+ IDSET ID_LQVC (PROPERTIES) (818 *2 <13> )                                      
+ IDSET ID_TPQV (PROPERTIES) (1 *2 <13> 31 *2 <22> 32 *2 <20> 2 *2 3 *2)         
+ IDSET ID_QTP (PROPERTIES) (1 *2 <13> 31 *2 <22> 32 *2 <20> 3 *2)               
+ IDSET TOTAL (PROPERTIES) (524 *2 <10> 525 *2 <10> 526 *2 <10> )                
+ IDSET ENERGY (PROPERTIES) (504 *2 <13> 505 *2 <13> 506 *2 <13> 1 *2 <13> )     
+ IDSET TOTAX (PROPERTIES) (524 *2 <18> 525 *2 <18> 526 *2 <18> )                
+ IDSET ENERGX (PROPERTIES) (504 *2 <5> 505 *2 <5> 506 *2 <5> 1 *2 <5> )         
+ LSET BPSBAL3 ( %TOTAL %ENERGY)                                                 
+ LSET BPBATCH ( %TOTAX %ENERGX)                                                 
+ DSET RUN-STATUS FORSTAT @FORSTAT (2)                                           
+ DSET FLWBAL @FLWBAL (2.51544660D+00 <3> 2.51544660D+00 <3> -2.51544660D+00 <3> 
+ 2.51544660D-01 2.51544660D-01 -1.00000000D+00 2.51544660D+00 <3> 0.D0          
+ -2.27373675D-13 <3> -1.64513711D-16 3.57357261D+04 <3> 3.57723631D-01)         
+ DSET ALIAS @ALIAS ( "C6H10-E3" "C3H4O" "C9H14O" )                              
+ IDSET ID_1 (NPOINT) (#3)                                                       
+ IDSET ID_2 (PROPERTIES) (339 *6 132 *5 1196 *6 1197 *6 1198 *6)                
+ LSET L_1 (%ID_2 & %ID_1)                                                       
+ DSET COMPONENTS MAIN COMPS @L_1 ("2:3-D-01" C "C6H10-E3" "C6H10-E3" "2:3-D-01" 
+ "ACROL-01" C "C3H4O" "C3H4O" "ACROL-01" "ISOPH-01" C "C9H14O" "C9H14O"         
+ "ISOPH-01" )                                                                   
+ IDSET ID_3 (RXNNO) ( 1 )                                                       
+ IDSET ID_4 (PROPERTIES) ( 1221 *6 1212 *2 1213 *2 1214 *2 <39> 1215 *2 <22>    
+ )                                                                              
+ LSET L_2 ( %ID_4 & %ID_3)                                                      
+ DSET REACTIONS GENERAL R-1 KIN_RES @L_2 ( R-1 1.38050596D+07 0.D0              
+ 1.14300138D+04 <3> * <4> )                                                     
+ IDSET ID_5 (PROPERTIES) (1 *2 <13> 31 *2 <22> 1052 *2 <13> 515 *2 <27> 148 *2  
+ <24> 1053 *2 <27> 1054 *2 <27> 1055 *2 <27> 1056 *2 <27> 1057 *2 <27> 1058 *2  
+ <24> 1059 *2 <24> 2 *2 32 *2 <20> )                                            
+ LSET L_3 (%ID_RXBAL %ID_5)                                                     
+ DSET BLOCK RCSTR B1 BLKSTAT @BLKSTAT (0 0)                                     
+ DSET BLOCK RCSTR B1 COMPSTAT @L1 (0)                                           
+ DSET BLOCK RCSTR B1 SYNCSTAT @L1 (0)                                           
+ DSET BLOCK RCSTR B1 BLKIN @BLKIN (1 1 "0c769f51-41b2-453a-a0b0-9fc6418b937f" * 
+ )                                                                              
+ DSET BLOCK RCSTR B1 TYPIN @TYPIN (1 MATERIAL)                                  
+ DSET BLOCK RCSTR B1 BLKOUT @BLKOUT (1 2 "0c769f51-41b2-453a-a0b0-9fc6418b937f" 
+ * )                                                                            
+ DSET BLOCK RCSTR B1 TYPOUT @TYPOUT (1 MATERIAL)                                
+ DSET BLOCK RCSTR B1 RES_Q @L_3 (2.00000000D+01 <3> 1.74845534D+01 <3>          
+ -2.51544660D+00 <3> 1.77635684D-16 1.38209560D+03 <3> 1.38209560D+03 <3> * <3> 
+ 1.64513711D-16 * <3> * <3> * <3> * 2.00000000D+01 <3> 1.74845534D+01 <3>       
+ -2.51544660D+00 <3> 1.77635684D-16 1.38209560D+03 <3> 1.38209560D+03 <3> * <3> 
+ 1.64513711D-16 -6.41618569D+04 <3> -9.98975830D+04 <3> * <3> 3.57723631D-01    
+ 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> -3.57357261D+04 <3>               
+ 2.50000000D+01 <4> -3.57357261D+04 <3> 1.00000000D+04 <3> 5.89399523D+00 <2>   
+ 0.D0 <3> 1.00000000D+04 <3> * <3> * <3> 1.00000000D+04 <3> * <2>               
+ 5.89399523D+00 <2> 0.D0 1.00000000D+00 <5> )                                   
+ IDSET ID_6 (PROPERTIES) (1 *2 <13> 31 *2 <22> 32 *2 <20> 515 *2 <27> 7001 *2   
+ <22> 576 *2 <27> 577 *2 148 *2 <24> 578 *2 <24> 579 *2 <27> 580 *2 <27> 298 *2 
+ <75> )                                                                         
+ LSET L_4 ( %ID_6 )                                                             
+ DSET BLOCK RCSTR B1 RCST_INR @L_4 ( * <1> 2.98150000D+02 <1> 1.00000000D+05 <1>
+ 1.00000000D+01 <1> * <1> * <1> * * <1> * <1> * <1> * <1> 0.D0 <1> )            
+ IDSET ID_7 (PROPERTIES) ( 8101 *2 <11> 8103 *2 <10> 8105 *2 <12> )             
+ IDSET ID_8 (PROPERTIES) ( 8103 *2 <10> )                                       
+ LSET L_5 ( (( %ID_NCCNS & %ID_7) & %IDS_1) )                                   
+ DSET BLOCK RCSTR B1 RCST_EST @L_5 ( 7.48455340D+00 <3> 7.48455340D+00 <3>      
+ 2.51544660D+00 <3> 6.14821632D+02 <3> 4.19615199D+02 <3> 3.47658768D+02 <3>    
+ 1.41769916D+01 <3> 8.38145238D+00 <3> 6.29280892D+00 <3> )                     
+ IDSET ID_9 (PROPERTIES) (253 *2)                                               
+ IDSET ID_10 (PROPERTIES) (253 *2 <11> )                                        
+ IDSET ID_11 (PROPERTIES) (253 *2 <12> )                                        
+ IDSET ID_12 (PROPERTIES) (253 *2 <17> )                                        
+ IDSET ID_13 (PROPERTIES) (253 *2 <27> )                                        
+ IDSET ID_14 (PROPERTIES) (253 *2 <59> )                                        
+ IDSET ID_15 ( NCOMPS) ( #3 )                                                   
+ IDSET ID_16 ( PROPERTIES) ( 303 *2 <11> )                                      
+ IDSET ID_17 ( PROPERTIES) ( 304 *2 <11> )                                      
+ IDSET ID_18 ( PROPERTIES) ( 515 *2 <27> )                                      
+ IDSET ID_19 ( SUBSTREAM) ( #1 )                                                
+ IDSET ID_20 ( REACTIONS) ( #1 )                                                
+ LSET L_6 ( ( %ID_17 & %ID_15 & %ID_19) ( %ID_16 & %ID_20) ( %ID_18 &           
+ %ID_20) )                                                                      
+ DSET BLOCK RCSTR B1 DPLS_R1 @L_6 ( 0.D0 <3> 0.D0 <3> 0.D0 <3> 2.51544660D+00   
+ <3> 0.D0 <3> )                                                                 
+ IDSET ID_21 (PROPERTIES) (7001 *2 <22> 7002 *2 <20> 8103 *2 <10> 204 *2 <12>   
+ 8101 *2 <11> 7003 *2 )                                                         
+ LSET L_7 ( %ID_21 )                                                            
+ IDSET ID_22 (PROPERTIES) (253 *2)                                              
+ IDSET ID_23 (PROPERTIES) (253 *2 <11> )                                        
+ IDSET ID_24 (PROPERTIES) (253 *2 <12> )                                        
+ IDSET ID_25 (PROPERTIES) (253 *2 <17> )                                        
+ IDSET ID_26 (PROPERTIES) (253 *2 <27> )                                        
+ IDSET ID_27 (PROPERTIES) (253 *2 <59> )                                        
+ IDSET ID_28 (PROPERTIES) (253 *2 <10> )                                        
+ IDSET ID_29 (PROPERTIES) (8101 *2 <11> 8002 *2 8103 *2 <10> 8004 *2 )          
+ IDSET ID_30 (PROPERTIES) (8001 *2 <11> 8003 *2 <10> 8010 *2 <12> 7001 *2 <22>  
+ 7002 *2 <20> 7003 *2 7004 *2 7006 *2 2002 *2 <39> 41142 *2 <40> 41143 *2 <13>  
+ 2003 *2 <41> 41144 *2 <42> 11006 *2 <37> 41145 *2 <38> 11007 *2 8005 *2 <12> ) 
+ LSET L_8 ( %ISODES (( %ID_NCCNS & %ID_29 %ID_30) & %IDS_1) )                   
+ DSET STREAM MATERIAL 1 BLKSTAT @BLKSTAT (0 0)                                  
+ DSET STREAM MATERIAL 1 COMPSTAT @L1 (0)                                        
+ DSET STREAM MATERIAL 1 STR_MAIN @L_8 (* B1 LIQUID UNIFAC 1.00000000D+01 <3>    
+ 1.00000000D+01 <3> 0.D0 <3> 5.00000000D-01 5.00000000D-01 0.D0 8.21454000D+02  
+ <3> 5.60641600D+02 <3> 0.D0 <3> 5.94353965D-01 4.05646035D-01 0.D0             
+ 2.00000000D+01 <3> 1.38209560D+03 <3> 2.96790805D+01 <3> 2.50000000D+01 <4>    
+ 1.00000000D+00 <5> 0.D0 1.00000000D+00 0.D0 -1.15491342D+04 <3>                
+ -1.67124969D+02 <3> -6.41618569D+04 <3> -7.03685325D+01 <3> -1.01828748D+00 <3>
+ 1.12312554D-02 <3> 7.76133433D-01 <3> 6.91047800D+01 3.01400000D+01 <3> )      
+ DSET STREAM MATERIAL 1 RES_STR @L_7 (2.50000000D+01 <4> 1.00000000D+00 <5>     
+ 1.38209560D+03 <3> 2.96790805D+01 <3> 2.00000000D+01 <3> 0.D0 )                
+ DSET STREAM MATERIAL 2 BLKSTAT @BLKSTAT (0 0)                                  
+ DSET STREAM MATERIAL 2 COMPSTAT @L1 (0)                                        
+ DSET STREAM MATERIAL 2 STR_MAIN @L_8 (B1 * LIQUID UNIFAC 7.48455340D+00 <3>    
+ 7.48455340D+00 <3> 2.51544660D+00 <3> 4.28066604D-01 4.28066604D-01            
+ 1.43866792D-01 6.14821632D+02 <3> 4.19615199D+02 <3> 3.47658768D+02 <3>        
+ 4.44847399D-01 3.03607941D-01 2.51544660D-01 1.74845534D+01 <3> 1.38209560D+03 
+ <3> 2.82773671D+01 <3> 2.50000000D+01 <4> 1.00000000D+00 <5> 0.D0              
+ 1.00000000D+00 0.D0 -2.05685150D+04 <3> -2.60207253D+02 <3> -9.98975830D+04 <3>
+ -8.63012142D+01 <3> -1.09177555D+00 <3> 1.03053874D-02 <3> 8.14606488D-01 <3>  
+ 7.90466630D+01 2.88512529D+01 <3> )                                            
+ DSET STREAM MATERIAL 2 RES_STR @L_7 (2.50000000D+01 <4> 1.00000000D+00 <5>     
+ 1.38209560D+03 <3> 2.82773671D+01 <3> 1.74845534D+01 <3> 0.D0 )                
+ IDSET ID_31 (PROPERTIES) (757 *1)                                              
+ IDSET ID_32 (PROPERTIES) (36 *2 37 *2 38 *2 39 *2 8103 *2 <10> )               
+ LSET L_9 ( %ID_NCCNS & %ID_32 %ID_31)                                          
+ DSET STREAM MATERIAL 1 STRM_XY @L_9 ( 5.00000000D-01 5.00000000D-01 0.D0       
+ 5.00000000D-01 5.00000000D-01 0.D0 0.D0 0.D0 0.D0 0.D0 0.D0 0.D0               
+ 8.21454000D+02 <3> 5.60641600D+02 <3> 0.D0 <3> 0 )                             
+ DSET STREAM MATERIAL 2 STRM_XY @L_9 ( 4.28066604D-01 4.28066604D-01            
+ 1.43866792D-01 4.28066604D-01 4.28066604D-01 1.43866792D-01 0.D0 0.D0 0.D0     
+ 0.D0 0.D0 0.D0 6.14821632D+02 <3> 4.19615199D+02 <3> 3.47658768D+02 <3> * )    
+ IDSET ID_33 (PROPERTIES) (64 *2 <11> 63 *2 <11> 94 *2 <11> 95 *2 <11> 88 *2    
+ <39> 61 *2 <39> 89 *2 <39> 90 *2 <39> 991 *2 <7> 992 *2 <7> 993 *2 <7> 994 *2  
+ <7> 926 *2 <37> 925 *2 <37> 995 *2 <37> 996 *2 <37> 928 *2 927 *2 997 *2 998   
+ *2 2 *2 3 *2 606 *2 <11> 103 *2 <12> 269 *2 1246 *2 <10> 1247 *2 <10> 1248 *2  
+ <12> 1249 *2 <12> 8010 *2 <12> 7007 *2 7008 *2 )                               
+ LSET L_10 ( %ID_33)                                                            
+ DSET STREAM MATERIAL 1 STR_PHAS @L_10 ( 0.D0 <3> 2.00000000D+01 <3>            
+ 2.00000000D+01 <3> 0.D0 <3> * <3> -1.15491342D+04 <3> -1.15491342D+04 <3> * <3>
+ * <3> -7.03685325D+01 <3> -7.03685325D+01 <3> * <3> * <3> 1.12312554D-02 <3>   
+ 1.12312554D-02 <3> * <3> * 6.91047800D+01 6.91047800D+01 * 0.D0 1.00000000D+00 
+ 2.00000000D+01 <3> 3.01400000D+01 <3> 6.91047800D+01 0.D0 <3> 1.38209560D+03   
+ <3> * <3> 2.96790805D+01 <3> 2.96790805D+01 <3> 0.D0 0.D0 )                    
+ DSET STREAM MATERIAL 2 STR_PHAS @L_10 ( 0.D0 <3> 1.74845534D+01 <3>            
+ 1.74845534D+01 <3> 0.D0 <3> * <3> -2.05685150D+04 <3> -2.05685150D+04 <3> * <3>
+ * <3> -8.63012142D+01 <3> -8.63012142D+01 <3> * <3> * <3> 1.03053874D-02 <3>   
+ 1.03053874D-02 <3> * <3> * 7.90466630D+01 7.90466630D+01 * 0.D0 1.00000000D+00 
+ 1.74845534D+01 <3> 2.88512529D+01 <3> 7.90466630D+01 0.D0 <3> 1.38209560D+03   
+ <3> * <3> 2.82773671D+01 <3> 2.82773671D+01 <3> 0.D0 0.D0 )                    
+ IDSET ID_34 (PROPERTIES) (8103 *2 <10> 1265 *2 <10> )                          
+ IDSET ID_35 (HIER-ID) ( PLANT )                                                
+ IDSET ID_36 (STREAM-ID) ( 1 )                                                  
+ LSET L_11 ( %ID_35 & %ID_34 & %ID_36)                                          
+ DSET UTIL-SUMMARY FEEDSUM @L_11 ( 1.38209560D+03 <3> 0.D0 <3> )                
+ IDSET ID_37 (HIER-ID) ( PLANT )                                                
+ IDSET ID_38 (STREAM-ID) ( 2 )                                                  
+ LSET L_12 ( %ID_37 & %ID_34 & %ID_38)                                          
+ DSET UTIL-SUMMARY PRODSUM @L_12 ( 1.38209560D+03 <3> 0.D0 <3> )                
+ IDSET ID_39 (PROPERTIES) ( 1266 *2 <10> 1267 *2 <10> 1262 *2 <10> 1263 *2 <10> 
+ 1264 *2 <10> 1268 *2 <119> )                                                   
+ LSET L_13 ( %ID_39)                                                            
+ DSET UTIL-SUMMARY PLANTSUM @L_13 ( 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>
+ 0.D0 <3> )                                                                     
+ IDSET ID_40 (HIER-ID) ( PLANT )                                                
+ LSET L_14 ( %ID_40 & %ID_39)                                                   
+ DSET UTIL-SUMMARY HIERSUM @L_14 ( 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 
+ 0.D0 <3> )                                                                     
+ IDSET RSTAT (PROPERTIES) (739 *1)                                              
+ LSET RSTAT ( %RSTAT)                                                           
+ DSET RUN-STATUS RPTSTAT @RSTAT (0)                                             
+ IDSET ID_41 (PROPERTIES) (7002 *2 <20> )                                       
+ IDSET ID_42 ( PROPERTIES, COMPONENTS) (8002 *2 , "ACROL-01" )                  
+ IDSET ID_43 ( PROPERTIES, PHASE) (7001 *2 <22> , TOTAL )                       
+ IDSET ID_44 ( PROPERTIES,  PHASE, COMPONENTS) (6001 *2 , TOTAL , "ACROL-01"    
+ 6001 *2 , TOTAL , "ISOPH-01" 2010 *2 , LIQUID1 , "ACROL-01" 2010 *2 , LIQUID1  
+ , "ISOPH-01" 2010 *2 , LIQUID2 , "ACROL-01" 2010 *2 , LIQUID2 , "ISOPH-01"     
+ 6002 *2 , TOTAL , "ACROL-01" 6002 *2 , TOTAL , "ISOPH-01" )                    
+ IDSET ID_45 ( PROPERTIES, PHASE) (7005 *2 , TOTAL )                            
+ IDSET ID_46 ( PROPERTIES,  PHASE, COMPONENTS) (8002 *2 , VAPOR , "ACROL-01"    
+ 8002 *2 , VAPOR , "ISOPH-01" 8002 *2 , LIQUID1 , "ACROL-01" 8002 *2 , LIQUID1  
+ , "ISOPH-01" 8002 *2 , LIQUID2 , "ACROL-01" 8002 *2 , LIQUID2 , "ISOPH-01" )   
+ IDSET ID_47 (NPOINT) ( #51)                                                    
+ LSET L_15 ((%IDERR %ID_41 %ID_42 %ID_43 %ID_44 %ID_45 %ID_46) & %ID_47)        
+ DSET PROP-TABLE FLASHCURVE BINRY-1 PROPTAB @L_15 (0 1.01325000D+00 <5> 0.D0    
+ 2.15436154D+02 <4> 3.30698131D+01 1.00000000D+00 1.35269704D+00 1.00000000D+00 
+ * * * * 1.00000000D+00 0.D0 1.00000000D+00 0.D0 1.00000000D+00 * * 0           
+ 1.01325000D+00 <5> 2.00000000D-02 1.87769396D+02 <4> 2.45016323D+01            
+ 5.20377397D-01 1.37443906D+00 1.00004105D+00 * * * * 1.00000000D+00            
+ 4.90033777D-01 5.09966223D-01 2.00000000D-02 9.80000000D-01 * * 0              
+ 1.01325000D+00 <5> 4.00000000D-02 1.65733615D+02 <4> 1.80911877D+01            
+ 2.87867207D-01 1.39081016D+00 1.00018278D+00 * * * * 1.00000000D+00            
+ 7.23647529D-01 2.76352471D-01 4.00000000D-02 9.60000000D-01 * * 0              
+ 1.01325000D+00 <5> 6.00000000D-02 1.49185232D+02 <4> 1.39097743D+01            
+ 1.75971853D-01 1.40136658D+00 1.00044813D+00 * * * * 1.00000000D+00            
+ 8.34586459D-01 1.65413541D-01 6.00000000D-02 9.40000000D-01 * * 0              
+ 1.01325000D+00 <5> 8.00000000D-02 1.36608347D+02 <4> 1.11498169D+01            
+ 1.17407227D-01 1.40738691D+00 1.00085566D+00 * * * * 1.00000000D+00            
+ 8.91985352D-01 1.08014648D-01 8.00000000D-02 9.20000000D-01 * * 0              
+ 1.01325000D+00 <5> 1.00000000D-01 1.26765263D+02 <4> 9.24560214D+00            
+ 8.38219849D-02 1.41008077D+00 1.00142238D+00 * * * * 1.00000000D+00            
+ 9.24560214D-01 7.54397862D-02 1.00000000D-01 9.00000000D-01 * * 0              
+ 1.01325000D+00 <5> 1.20000000D-01 1.18833410D+02 <4> 7.87127090D+00            
+ 6.30085136D-02 1.41031127D+00 1.00216528D+00 * * * * 1.00000000D+00            
+ 9.44552508D-01 5.54474919D-02 1.20000000D-01 8.80000000D-01 * * 0              
+ 1.01325000D+00 <5> 1.40000000D-01 1.12279857D+02 <4> 6.84012551D+00            
+ 4.92818945D-02 1.40866551D+00 1.00310200D+00 * * * * 1.00000000D+00            
+ 9.57617571D-01 4.23824292D-02 1.40000000D-01 8.60000000D-01 * * 0              
+ 1.01325000D+00 <5> 1.60000000D-01 1.06752488D+02 <4> 6.04121387D+00            
+ 3.97687870D-02 1.40554645D+00 1.00425125D+00 * * * * 1.00000000D+00            
+ 9.66594219D-01 3.34057811D-02 1.60000000D-01 8.40000000D-01 * * 0              
+ 1.01325000D+00 <5> 1.80000000D-01 1.02011450D+02 <4> 5.40564302D+00            
+ 3.29076299D-02 1.40123763D+00 1.00563312D+00 * * * * 1.00000000D+00            
+ 9.73015743D-01 2.69842565D-02 1.80000000D-01 8.20000000D-01 * * 0              
+ 1.01325000D+00 <5> 2.00000000D-01 9.78881958D+01 <4> 4.88881648D+00            
+ 2.77958792D-02 1.39594419D+00 1.00726929D+00 * * * * 1.00000000D+00            
+ 9.77763297D-01 2.22367034D-02 2.00000000D-01 8.00000000D-01 * * 0              
+ 1.01325000D+00 <5> 2.20000000D-01 9.42608395D+01 <4> 4.46077433D+00            
+ 2.38841630D-02 1.38981862D+00 1.00918333D+00 * * * * 1.00000000D+00            
+ 9.81370353D-01 1.86296471D-02 2.20000000D-01 7.80000000D-01 * * 0              
+ 1.01325000D+00 <5> 2.40000000D-01 9.10389573D+01 <4> 4.10072669D+00            
+ 2.08231527D-02 1.38297713D+00 1.01140094D+00 * * * * 1.00000000D+00            
+ 9.84174402D-01 1.58255981D-02 2.40000000D-01 7.60000000D-01 * * 0              
+ 1.01325000D+00 <5> 2.60000000D-01 8.81539424D+01 <4> 3.79383492D+00            
+ 1.83823253D-02 1.37551040D+00 1.01395022D+00 * * * * 1.00000000D+00            
+ 9.86397078D-01 1.36029219D-02 2.60000000D-01 7.40000000D-01 * * 0              
+ 1.01325000D+00 <5> 2.80000000D-01 8.55527031D+01 <4> 3.52924519D+00            
+ 1.64046481D-02 1.36749065D+00 1.01686206D+00 * * * * 1.00000000D+00            
+ 9.88188653D-01 1.18113473D-02 2.80000000D-01 7.20000000D-01 * * 0              
+ 1.01325000D+00 <5> 3.00000000D-01 8.31934333D+01 <4> 3.29884626D+00            
+ 1.47801764D-02 1.35897663D+00 1.02017043D+00 * * * * 1.00000000D+00            
+ 9.89653876D-01 1.03461239D-02 3.00000000D-01 7.00000000D-01 * * 0              
+ 1.01325000D+00 <5> 3.20000000D-01 8.10427037D+01 <4> 3.09646109D+00            
+ 1.34300768D-02 1.35001700D+00 1.02391283D+00 * * * * 1.00000000D+00            
+ 9.90867547D-01 9.13245251D-03 3.20000000D-01 6.80000000D-01 * * 0              
+ 1.01325000D+00 <5> 3.40000000D-01 7.90734143D+01 <4> 2.91730654D+00            
+ 1.22966328D-02 1.34065283D+00 1.02813076D+00 * * * * 1.00000000D+00            
+ 9.91884222D-01 8.11577786D-03 3.40000000D-01 6.60000000D-01 * * 0              
+ 1.01325000D+00 <5> 3.60000000D-01 7.72633251D+01 <4> 2.75762345D+00            
+ 1.13368069D-02 1.33091943D+00 1.03287029D+00 * * * * 1.00000000D+00            
+ 9.92744443D-01 7.25555655D-03 3.60000000D-01 6.40000000D-01 * * 0              
+ 1.01325000D+00 <5> 3.80000000D-01 7.55939813D+01 <4> 2.61441803D+00            
+ 1.05179846D-02 1.32084770D+00 1.03818267D+00 * * * * 1.00000000D+00            
+ 9.93478849D-01 6.52115052D-03 3.80000000D-01 6.20000000D-01 * * 0              
+ 1.01325000D+00 <5> 4.00000000D-01 7.40499137D+01 <4> 2.48527736D+00            
+ 9.81509536D-03 1.31046518D+00 1.04412510D+00 * * * * 1.00000000D+00            
+ 9.94110943D-01 5.88905729D-03 4.00000000D-01 6.00000000D-01 * * 0              
+ 1.01325000D+00 <5> 4.20000000D-01 7.26180351D+01 <4> 2.36823571D+00            
+ 9.20862477D-03 1.29979686D+00 1.05076162D+00 * * * * 1.00000000D+00            
+ 9.94658998D-01 5.34100242D-03 4.20000000D-01 5.80000000D-01 * * 0              
+ 1.01325000D+00 <5> 4.40000000D-01 7.12871775D+01 <4> 2.26167591D+00            
+ 8.68321549D-03 1.28886585D+00 1.05816408D+00 * * * * 1.00000000D+00            
+ 9.95137399D-01 4.86260071D-03 4.40000000D-01 5.60000000D-01 * * 0              
+ 1.01325000D+00 <5> 4.60000000D-01 7.00477330D+01 <4> 2.16425565D+00            
+ 8.22666727D-03 1.27769389D+00 1.06641344D+00 * * * * 1.00000000D+00            
+ 9.95557600D-01 4.44240036D-03 4.60000000D-01 5.40000000D-01 * * 0              
+ 1.01325000D+00 <5> 4.80000000D-01 6.88913716D+01 <4> 2.07485169D+00            
+ 7.82921110D-03 1.26630184D+00 1.07560114D+00 * * * * 1.00000000D+00            
+ 9.95928810D-01 4.07118980D-03 4.80000000D-01 5.20000000D-01 * * 0              
+ 1.01325000D+00 <5> 5.00000000D-01 6.78108164D+01 <4> 1.99251702D+00            
+ 7.48297548D-03 1.25471006D+00 1.08583089D+00 * * * * 1.00000000D+00            
+ 9.96258512D-01 3.74148775D-03 5.00000000D-01 5.00000000D-01 * * 0              
+ 1.01325000D+00 <5> 5.20000000D-01 6.67996626D+01 <4> 1.91644776D+00            
+ 7.18158973D-03 1.24293874D+00 1.09722068D+00 * * * * 1.00000000D+00            
+ 9.96552837D-01 3.44716309D-03 5.20000000D-01 4.80000000D-01 * * 0              
+ 1.01325000D+00 <5> 5.40000000D-01 6.58522303D+01 <4> 1.84595713D+00            
+ 6.91988647D-03 1.23100824D+00 1.10990530D+00 * * * * 1.00000000D+00            
+ 9.96816852D-01 3.18314779D-03 5.40000000D-01 4.60000000D-01 * * 0              
+ 1.01325000D+00 <5> 5.60000000D-01 6.49634427D+01 <4> 1.78045497D+00            
+ 6.69367687D-03 1.21893942D+00 1.12403935D+00 * * * * 1.00000000D+00            
+ 9.97054782D-01 2.94521783D-03 5.60000000D-01 4.40000000D-01 * * 0              
+ 1.01325000D+00 <5> 5.80000000D-01 6.41287239D+01 <4> 1.71943134D+00            
+ 6.49958056D-03 1.20675395D+00 1.13980093D+00 * * * * 1.00000000D+00            
+ 9.97270176D-01 2.72982384D-03 5.80000000D-01 4.20000000D-01 * * 0              
+ 1.01325000D+00 <5> 6.00000000D-01 6.33439131D+01 <4> 1.66244340D+00            
+ 6.33489697D-03 1.19447460D+00 1.15739607D+00 * * * * 1.00000000D+00            
+ 9.97466041D-01 2.53395879D-03 6.00000000D-01 4.00000000D-01 * * 0              
+ 1.01325000D+00 <5> 6.20000000D-01 6.26051896D+01 <4> 1.60910475D+00            
+ 6.19750910D-03 1.18212562D+00 1.17706436D+00 * * * * 1.00000000D+00            
+ 9.97644947D-01 2.35505346D-03 6.20000000D-01 3.80000000D-01 * * 0              
+ 1.01325000D+00 <5> 6.40000000D-01 6.19090070D+01 <4> 1.55907673D+00            
+ 6.08581310D-03 1.16973306D+00 1.19908577D+00 * * * * 1.00000000D+00            
+ 9.97809107D-01 2.19089272D-03 6.40000000D-01 3.60000000D-01 * * 0              
+ 1.01325000D+00 <5> 6.60000000D-01 6.12520345D+01 <4> 1.51206129D+00            
+ 5.99866927D-03 1.15732523D+00 1.22378925D+00 * * * * 1.00000000D+00            
+ 9.97960452D-01 2.03954755D-03 6.60000000D-01 3.40000000D-01 * * 0              
+ 1.01325000D+00 <5> 6.80000000D-01 6.06311019D+01 <4> 1.46779512D+00            
+ 5.93537172D-03 1.14493315D+00 1.25156355D+00 * * * * 1.00000000D+00            
+ 9.98100681D-01 1.89931895D-03 6.80000000D-01 3.20000000D-01 * * 0              
+ 1.01325000D+00 <5> 7.00000000D-01 6.00431483D+01 <4> 1.42604473D+00            
+ 5.89563495D-03 1.13259107D+00 1.28287092D+00 * * * * 1.00000000D+00            
+ 9.98231310D-01 1.76869049D-03 7.00000000D-01 3.00000000D-01 * * 0              
+ 1.01325000D+00 <5> 7.20000000D-01 5.94851715D+01 <4> 1.38660238D+00            
+ 5.87959710D-03 1.12033711D+00 1.31826467D+00 * * * * 1.00000000D+00            
+ 9.98353713D-01 1.64628719D-03 7.20000000D-01 2.80000000D-01 * * 0              
+ 1.01325000D+00 <5> 7.40000000D-01 5.89541769D+01 <4> 1.34928265D+00            
+ 5.88784057D-03 1.10821402D+00 1.35841181D+00 * * * * 1.00000000D+00            
+ 9.98469161D-01 1.53083855D-03 7.40000000D-01 2.60000000D-01 * * 0              
+ 1.01325000D+00 <5> 7.60000000D-01 5.84471248D+01 <4> 1.31391955D+00            
+ 5.92143210D-03 1.09627006D+00 1.40412253D+00 * * * * 1.00000000D+00            
+ 9.98578856D-01 1.42114370D-03 7.60000000D-01 2.40000000D-01 * * 0              
+ 1.01325000D+00 <5> 7.80000000D-01 5.79608740D+01 <4> 1.28036406D+00            
+ 5.98198581D-03 1.08456008D+00 1.45638906D+00 * * * * 1.00000000D+00            
+ 9.98683963D-01 1.31603688D-03 7.80000000D-01 2.20000000D-01 * * 0              
+ 1.01325000D+00 <5> 8.00000000D-01 5.74921189D+01 <4> 1.24848206D+00            
+ 6.07175497D-03 1.07314688D+00 1.51643730D+00 * * * * 1.00000000D+00            
+ 9.98785649D-01 1.21435099D-03 8.00000000D-01 2.00000000D-01 * * 0              
+ 1.01325000D+00 <5> 8.20000000D-01 5.70373203D+01 <4> 1.21815259D+00            
+ 6.19376065D-03 1.06210283D+00 1.58579647D+00 * * * * 1.00000000D+00            
+ 9.98885123D-01 1.11487692D-03 8.20000000D-01 1.80000000D-01 * * 0              
+ 1.01325000D+00 <5> 8.40000000D-01 5.65926241D+01 <4> 1.18926629D+00            
+ 6.35196959D-03 1.05151195D+00 1.66639401D+00 * * * * 1.00000000D+00            
+ 9.98983685D-01 1.01631513D-03 8.40000000D-01 1.60000000D-01 * * 0              
+ 1.01325000D+00 <5> 8.60000000D-01 5.61537673D+01 <4> 1.16172417D+00            
+ 6.55153924D-03 1.04147247D+00 1.76068685D+00 * * * * 1.00000000D+00            
+ 9.99082785D-01 9.17215493D-04 8.60000000D-01 1.40000000D-01 * * 0              
+ 1.01325000D+00 <5> 8.80000000D-01 5.57159661D+01 <4> 1.13543648D+00            
+ 6.79915636D-03 1.03210023D+00 1.87184569D+00 * * * * 1.00000000D+00            
+ 9.99184101D-01 8.15898763D-04 8.80000000D-01 1.20000000D-01 * * 0              
+ 1.01325000D+00 <5> 9.00000000D-01 5.52737811D+01 <4> 1.11032183D+00            
+ 7.10350862D-03 1.02353286D+00 2.00401792D+00 * * * * 1.00000000D+00            
+ 9.99289649D-01 7.10350861D-04 9.00000000D-01 1.00000000D-01 * * 0              
+ 1.01325000D+00 <5> 9.20000000D-01 5.48209531D+01 <4> 1.08630644D+00            
+ 7.47594893D-03 1.01593546D+00 2.16270959D+00 * * * * 1.00000000D+00            
+ 9.99401924D-01 5.98075913D-04 9.20000000D-01 8.00000000D-02 * * 0              
+ 1.01325000D+00 <5> 9.40000000D-01 5.43502019D+01 <4> 1.06332352D+00            
+ 7.93144457D-03 1.00950791D+00 2.35535100D+00 * * * * 1.00000000D+00            
+ 9.99524113D-01 4.75886673D-04 9.40000000D-01 6.00000000D-02 * * 0              
+ 1.01325000D+00 <5> 9.60000000D-01 5.38529803D+01 <4> 1.04131304D+00            
+ 8.48995726D-03 1.00449484D+00 2.59215276D+00 * * * * 1.00000000D+00            
+ 9.99660401D-01 3.39599308D-04 9.60000000D-01 4.00000000D-02 * * 0              
+ 1.01325000D+00 <5> 9.80000000D-01 5.33191434D+01 <4> 1.02022085D+00            
+ 9.17847444D-03 1.00119901D+00 2.88743235D+00 * * * * 1.00000000D+00            
+ 9.99816431D-01 1.83569487D-04 9.80000000D-01 2.00000000D-02 * * 0              
+ 1.01325000D+00 <5> 1.00000000D+00 5.27365939D+01 <4> 9.99999996D-01            
+ 1.00341105D-02 1.00000000D+00 3.26172457D+00 * * * * 1.00000000D+00            
+ 1.00000000D+00 0.D0 1.00000000D+00 0.D0 * * )                                  
+ DSET PROP-TABLE FLASHCURVE BINRY-1 COMPSTAT @L_1 (0)                           
+ DSET RUN-STATUS PPSTAT @PPSTAT (0)                                             
+ DSET RUN-STATUS OLDSTAT @STATUS ( 0 2 2 2 0 0 )                                
+ DSET RUN-STATUS STATUS @STATUS ( 8 * * * * * )                                 
+ DSET RUN-STATUS COMPSTAT @L_1 (0)                                              
+ IDSET TSTAT (PROPERTIES) (741 *1)                                              
+ LSET TSTAT ( %TSTAT)                                                           
+ DSET RUN-STATUS TOTSTAT @TSTAT (0)                                             
+ DSET SPSTAT @SPSTAT (0)                                                        
+$_ADS_FILE
+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
+$_END_ADS_FILE

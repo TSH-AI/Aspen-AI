@@ -1,0 +1,86 @@
+;
+;Input Summary created by Aspen Plus Rel. 40.0 at 10:58:57 Thu Jul 17, 2025
+;Directory D:\×ÀÃæ\aspen ai-project1\NEWBKP\bkp_added  Filename D:\×ÀÃæ\aspen ai-project1\NEWBKP\inp_outputs\flash_optimization.inp
+;
+
+
+DYNAMICS
+    DYNAMICS RESULTS=ON
+
+IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
+        HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=C  &
+        VOLUME=cum DELTA-T=C HEAD=meter MASS-DENSITY='kg/cum'  &
+        MOLE-ENTHALP='kcal/mol' MASS-ENTHALP='kcal/kg'  &
+        MOLE-VOLUME='cum/kmol' HEAT=Gcal MOLE-CONC='mol/l'  &
+        PDROP=bar SHORT-LENGTH=mm 
+
+DEF-STREAMS CONVEN ALL 
+
+DESCRIPTION "
+    Chemical Simulation with Metric Units : 
+    C, bar, kg/hr, kmol/hr, Gcal/hr, cum/hr. 
+      
+    Property Method: NRTL 
+      
+    Flow basis for input: Mole 
+      
+    Stream report composition: Mole flow 
+    "
+
+DATABANKS 'APV140 PURE36' / 'APV140 AQUEOUS' / 'APV140 SOLIDS' &
+         / 'APV140 INORGANIC' / 'APESV140 AP-EOS' /  &
+        'NISTV140 NIST-TRC' / NOASPENPCD
+
+PROP-SOURCES 'APV140 PURE36' / 'APV140 AQUEOUS' /  &
+        'APV140 SOLIDS' / 'APV140 INORGANIC' / 'APESV140 AP-EOS' &
+         / 'NISTV140 NIST-TRC'
+
+COMPONENTS 
+    ETHAN-01 C2H6O-2 / 
+    CARBO-01 CO2 
+
+SOLVE 
+    RUN-MODE MODE=SIM 
+
+FLOWSHEET 
+    BLOCK FLASH IN=ETH-CO2 OUT=CO2 ETH 
+
+PROPERTIES UNIFAC 
+    PROPERTIES NRTL 
+
+STREAM ETH-CO2 
+    SUBSTREAM MIXED TEMP=25. PRES=100. MASS-FLOW=100. 
+    MASS-FRAC ETHAN-01 0.5 / CARBO-01 0.5 
+
+BLOCK FLASH FLASH2 
+    PARAM TEMP=25. PRES=1. 
+
+EO-CONV-OPTI 
+
+OPTIMIZATION O-1 
+    DEFINE CO2 MASS-FLOW STREAM=CO2 SUBSTREAM=MIXED  &
+        COMPONENT=CARBO-01 UOM="kg/hr" 
+    DEFINE ETH MASS-FLOW STREAM=ETH SUBSTREAM=MIXED  &
+        COMPONENT=ETHAN-01 UOM="kg/hr" 
+    DEFINE PRESSURE BLOCK-VAR BLOCK=FLASH VARIABLE=PRES  &
+        SENTENCE=PARAM UOM="bar" 
+F      PROFIT=(5*CO2) + (30*ETH) 
+    MAXIMIZE "PROFIT" 
+    VARY BLOCK-VAR BLOCK=FLASH VARIABLE=PRES SENTENCE=PARAM UOM= &
+        "bar" 
+    LIMITS "1" "80" 
+
+CONV-OPTIONS 
+    BROYDEN XTOL=1E-008 
+    NEWTON XTOL=1E-008 
+    SQP TOL=1E-008 
+
+STREAM-REPOR MOLEFLOW 
+
+DISABLE 
+    OPTIMIZATION O-1 
+;
+;
+;
+;
+;

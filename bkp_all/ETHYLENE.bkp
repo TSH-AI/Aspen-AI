@@ -1,0 +1,675 @@
+MM "40.0" FLAVOR "NO" VERSION "40.0" DATETIME "Sun Mar  2 18:25:52 2025" 
+MACHINE "WIN-NT/VC"  ; 
+startlibrary
+version1
+NumLibs = 4
+Built-In
+ACM Built-In
+ACM Models
+Hybrid Models
+NumCats = 12
+Mixers/Splitters
+active
+Separators
+active
+Exchangers
+active
+Columns
+active
+Reactors
+active
+Pressure Changers
+active
+Manipulators
+active
+Solids
+active
+Solids Separators
+active
+Controllers
+active
+Batch Models
+active
+User Models
+active
+endlibrary
+; 
+3
+>VERSION 0
+MIXER
+Mixer
+Built-In
+MIXER
+>VERSION 0
+HEATX
+HeatX
+Built-In
+HEATX
+>VERSION 0
+RSTOIC
+RStoic
+Built-In
+RSTOIC
+? SETUP MAIN ? \ "RUN-CLASS" RUN-CLASS = FLOWSHEET \ \ SIMULATE INTERACTIVE
+ = NO MOLEFLOW = MOLEFLOW VISITED = 1 \ ? SETUP GLOBAL ? \ "IN-UNITS" INSET
+ = METCBAR \ ? SETUP DIAGNOSTICS ? ? SETUP "SIM-OPTIONS" ? ; "METCBAR_MOLE" ; 
+? SETUP "MODEL-OPTION" ? ; "METCBAR_MOLE" ; ? SETUP "UNITS-SET" METCBAR ? \ 
+DESCRIPTION DESCRIPTION = "User-defined units set" \ \ MMLOCAL \ \ UNITSET 
+BASESET = MET ( 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 5 3 4 3 3 3 3 3 3 3 3 4 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 5 3 3 3 3 3 3 5 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 7 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 ) \ ? "DATA-SERVICE" ? ? DATABANKS ? \ DATABANKS \ ? COMPONENTS 
+MAIN ? \ COMPONENTS CID = ETHYLOX ANAME = C2H4O-2 OUTNAME = ETHYLOX DBNAME1
+ = "ETHYLENE-OXIDE" ANAME1 = "C2H4O-2" /  CID = WATER ANAME = H2O OUTNAME = 
+WATER DBNAME1 = "WATER" ANAME1 = "H2O" /  CID = "SULFU-01" ANAME = H2SO4 
+OUTNAME = "SULFU-01" DBNAME1 = "SULFURIC-ACID" ANAME1 = "H2SO4" /  CID = 
+"ETHYL-01" ANAME = C2H6O2 OUTNAME = "ETHYL-01" DBNAME1 = "ETHYLENE-GLYCOL" 
+ANAME1 = "C2H6O2" /  CID = DIETHY ANAME = C4H10O3 OUTNAME = DIETHY DBNAME1 = 
+"DIETHYLENE-GLYCOL" ANAME1 = "C4H10O3" \ ? COMPONENTS "ADA/PCS" "LE-PROP-DATA" 
+? ; "METCBAR_MOLE" ; ? COMPONENTS "COMP-LIST" GLOBAL ? ? COMPONENTS 
+"UNIFAC-GROUP" ? ? SOLVE ? \ "RUN-MODE" MODE = SIM \ ? "DYN-OPTIONS" ? ? 
+"BIO-COMPS" ? ? FLOWSHEET GLOBAL ? \ BLOCK BLKID = MIXER BLKTYPE = "MIXER" 
+MDLTYPE = "Mixer" IN = ( CATALYST M0-1 ETHYLENE M0-1 ) OUT = ( HEATIN M0-1 ) 
+\ \ BLOCK BLKID = HEATX BLKTYPE = "HEATX" MDLTYPE = "HeatX" IN = ( HEATIN 
+M1-2 H2OIN M0-1 ) OUT = ( H2OOUT M0-1 INRSTOIC M1-2 ) \ \ BLOCK BLKID = 
+RSTOIC BLKTYPE = "RSTOIC" MDLTYPE = "RStoic" IN = ( INRSTOIC M0-1 ) OUT = ( 
+OUTSTR M0-1 ) \ ? PROPERTIES MAIN ? \ GPROPERTIES GBASEOPSET = NRTL 
+GOPSETNAME = NRTL PARCON = -2 \ ? PROPERTIES COMPARE ? ? PROPERTIES 
+"OPTION-SETS" NRTL ? \ PARAM BASE = NRTL \ ? PROPERTIES "OPTION-SETS" 
+"PENG-ROB" ? \ PARAM BASE = "PENG-ROB" \ ? PROPERTIES "NC-PROPS" ? ? 
+PROPERTIES "MOLEC-STRUCT" DIETHY ? ? PROPERTIES "MOLEC-STRUCT" "ETHYL-01" ? ? 
+PROPERTIES "MOLEC-STRUCT" ETHYLOX ? ? PROPERTIES "MOLEC-STRUCT" "SULFU-01" ? 
+? PROPERTIES "MOLEC-STRUCT" WATER ? ? PROPERTIES ESTIMATION ? ; "METCBAR_MOLE" 
+; \ DIRECTOR BINCHOICE = NO \ ? PROPERTIES PARAMETERS SUMMARY ? ? PROPERTIES 
+PARAMETERS BINARY SCALAR "MLQKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = 
+MLQKIJ SETNO = 1 UNITROW = 0 \ ? PROPERTIES PARAMETERS BINARY SCALAR "RKTKIJ-1" 
+? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = RKTKIJ SETNO = 1 UNITROW = 0 \ ? 
+PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "ANDKIJ-1" ? ; "ENG_MOLE" ; \ 
+PROP-LIST PARAMNAME = ANDKIJ SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL
+ = F NEL = 2 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "ANDMIJ-1" ? ; 
+"ENG_MOLE" ; \ PROP-LIST PARAMNAME = ANDMIJ SETNO = 1 UNITROW = 0 TUNITROW = 
+22 TUNITLABEL = F NEL = 2 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" 
+"HENRY-1" ? ; "METCBAR_MOLE" ; \ PROP-LIST PARAMNAME = HENRY SETNO = 1 
+UNITROW = 20 UNITLABEL = bar TUNITROW = 22 TUNITLABEL = C BDBANK = ( 
+"APV140 BINARY" "APV140 HENRY-AP" ) NEL = 7 \ ? PROPERTIES PARAMETERS BINARY 
+"T-DEPENDENT" "MUKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = MUKIJ SETNO
+ = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = F NEL = 6 \ ? PROPERTIES 
+PARAMETERS BINARY "T-DEPENDENT" "MULIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST 
+PARAMNAME = MULIJ SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = F NEL = 11 
+\ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "NRTL-1" ? ; "METCBAR_MOLE" ; 
+\ PROP-LIST PARAMNAME = NRTL SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL
+ = C BDBANK = ( "APV140 VLE-IG" "APV140 LLE-ASPEN" "APV140 VLE-LIT" ) NEL = 12 
+\ \ BPVAL PARAMNAME2 = NRTL CID1 = ETHYLOX CID2 = WATER UNITROW2 = 0 
+TUNITROW2 = 22 TUNITLABEL2 = C VAL1 = "APV140 VLE-IG" VAL2 = "APV140 VLE-IG" 
+VAL3 = "APV140 VLE-IG" VAL4 = "APV140 VLE-IG" VAL5 = "APV140 VLE-IG" VAL6 = 
+"APV140 VLE-IG" VAL7 = "APV140 VLE-IG" VAL8 = "APV140 VLE-IG" VAL9 = 
+"APV140 VLE-IG" VAL10 = "APV140 VLE-IG" VAL11 = "APV140 VLE-IG" VAL12 = 
+"APV140 VLE-IG" /  PARAMNAME2 = NRTL CID1 = WATER CID2 = "ETHYL-01" UNITROW2
+ = 0 TUNITROW2 = 22 TUNITLABEL2 = C VAL1 = "APV140 VLE-IG" VAL2 = 
+"APV140 VLE-IG" VAL3 = "APV140 VLE-IG" VAL4 = "APV140 VLE-IG" VAL5 = 
+"APV140 VLE-IG" VAL6 = "APV140 VLE-IG" VAL7 = "APV140 VLE-IG" VAL8 = 
+"APV140 VLE-IG" VAL9 = "APV140 VLE-IG" VAL10 = "APV140 VLE-IG" VAL11 = 
+"APV140 VLE-IG" VAL12 = "APV140 VLE-IG" /  PARAMNAME2 = NRTL CID1 = WATER 
+CID2 = DIETHY UNITROW2 = 0 TUNITROW2 = 22 TUNITLABEL2 = C VAL1 = 
+"APV140 VLE-IG" VAL2 = "APV140 VLE-IG" VAL3 = "APV140 VLE-IG" VAL4 = 
+"APV140 VLE-IG" VAL5 = "APV140 VLE-IG" VAL6 = "APV140 VLE-IG" VAL7 = 
+"APV140 VLE-IG" VAL8 = "APV140 VLE-IG" VAL9 = "APV140 VLE-IG" VAL10 = 
+"APV140 VLE-IG" VAL11 = "APV140 VLE-IG" VAL12 = "APV140 VLE-IG" /  PARAMNAME2
+ = NRTL CID1 = "ETHYL-01" CID2 = DIETHY UNITROW2 = 0 TUNITROW2 = 22 
+TUNITLABEL2 = C VAL1 = "APV140 VLE-IG" VAL2 = "APV140 VLE-IG" VAL3 = 
+"APV140 VLE-IG" VAL4 = "APV140 VLE-IG" VAL5 = "APV140 VLE-IG" VAL6 = 
+"APV140 VLE-IG" VAL7 = "APV140 VLE-IG" VAL8 = "APV140 VLE-IG" VAL9 = 
+"APV140 VLE-IG" VAL10 = "APV140 VLE-IG" VAL11 = "APV140 VLE-IG" VAL12 = 
+"APV140 VLE-IG" \ \ PARAM DEFTUNIT = C \ ? PROPERTIES PARAMETERS BINARY 
+"T-DEPENDENT" "PRKBV-1" ? ; "METCBAR_MOLE" ; \ PROP-LIST PARAMNAME = PRKBV 
+SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = C BDBANK = ( "APV140 EOS-LIT" 
+) NEL = 5 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "PRLIJ-1" ? ; 
+"METCBAR_MOLE" ; \ PROP-LIST PARAMNAME = PRLIJ SETNO = 1 UNITROW = 0 TUNITROW
+ = 22 TUNITLABEL = C NEL = 8 \ ? PROPERTIES "ATTR-COMPS" ? ? POLYMERS ? ? 
+"STREAM-CLASS" SUBSTREAMS ? \ DEF-SUBS-CLA SUBSTREAMS = MIXED \ \ 
+DEF-SUBS-CLA SUBSTREAMS = CISOLID \ \ DEF-SUBS-CLA SUBSTREAMS = NC \ \ 
+DEF-SUBS-CLA SUBSTREAMS = NCPSD \ \ DEF-SUBS-CLA SUBSTREAMS = CIPSD \ ? 
+"STREAM-CLASS" "STREAM-CLASS" ? \ DEFINITION SCLASS = CONVEN \ \ DEFINITION 
+SCLASS = MIXNC \ \ DEFINITION SCLASS = MIXCISLD \ \ DEFINITION SCLASS = 
+MIXNCPSD \ \ DEFINITION SCLASS = MIXCIPSD \ \ DEFINITION SCLASS = MIXCINC \ 
+\ DEFINITION SCLASS = MCINCPSD \ \ HEAT-DEFINE H-SCLASS = HEAT STREAM-ATTR = 
+HEAT \ \ HEAT-DEFINE H-SCLASS = LOAD STREAM-ATTR = LOAD \ ? "STREAM-CLASS" 
+"DEF-STREAMS" ? ? "STREAM-NAMES" ? ? "STREAM-GROUP" All ? \ DESCRIPTION 
+DESCRIPTION = "All streams" \ ? "STREAM-GROUP" Boundary ? \ DESCRIPTION 
+DESCRIPTION = "Boundary streams" \ ? "STREAM-GROUP" Charge ? \ DESCRIPTION 
+DESCRIPTION = "Charge streams" \ ? "STREAM-GROUP" Feeds ? \ DESCRIPTION 
+DESCRIPTION = "Feed streams" \ ? "STREAM-GROUP" Initial ? \ DESCRIPTION 
+DESCRIPTION = "Streams with user-specified values entered" \ ? "STREAM-GROUP" 
+Products ? \ DESCRIPTION DESCRIPTION = "Product streams" \ ? "STREAM-GROUP" 
+Tears ? \ DESCRIPTION DESCRIPTION = 
+"Tear streams manipulated by the convergence algorithms" \ ? STREAM MATERIAL 
+CATALYST ? ; "METCBAR_MOLE" ; \ SUBSTREAM SSID = MIXED TEMP = 298.15 <22> <1> 
+PRES = 1. <20> <5> BASIS = "MOLE-FLOW" TOTFLOW = 721.202472 <-89> <3> TOTAL
+ = 721.202472 <-89> <0> JUNK = 4 \ \ MOLE-FLOW SSID1 = MIXED CID = ETHYLOX 
+FLOW = 3.6E-05 <-89> <3> /  SSID1 = MIXED CID = WATER FLOW = 720. <-89> <3> 
+/  SSID1 = MIXED CID = "SULFU-01" FLOW = 1.2024 <-89> <3> /  SSID1 = MIXED 
+CID = "ETHYL-01" FLOW = 3.6E-05 <-89> <3> \ ? STREAM MATERIAL ETHYLENE ? ; 
+"METCBAR_MOLE" ; \ SUBSTREAM SSID = MIXED TEMP = 298.15 <22> <1> PRES = 1. 
+<20> <5> BASIS = "MOLE-FLOW" TOTFLOW = 351.360072 <-89> <3> TOTAL = 
+351.360072 <-89> <0> JUNK = 4 \ \ MOLE-FLOW SSID1 = MIXED CID = ETHYLOX FLOW
+ = 208.8 <-89> <3> /  SSID1 = MIXED CID = WATER FLOW = 142.56 <-89> <3> /  
+SSID1 = MIXED CID = "SULFU-01" FLOW = 3.6E-05 <-89> <3> /  SSID1 = MIXED CID
+ = "ETHYL-01" FLOW = 3.6E-05 <-89> <3> \ ? STREAM MATERIAL H2OIN ? ; 
+"METCBAR_MOLE" ; \ SUBSTREAM SSID = MIXED TEMP = 400. <22> <1> PRES = 1. <20> 
+<5> BASIS = "MASS-FRAC" FLOWBASE = MASS TOTFLOW = 5000. <-80> <3> TOTAL = 1. 
+<-89> <0> JUNK = 1 \ \ MOLE-FLOW SSID1 = MIXED CID = WATER FLOW = 1. <-3> <0> 
+\ ? STREAM MATERIAL HEATIN ? ; "METCBAR_MOLE" ; \ SUBSTREAM SSID = MIXED 
+TOTAL = 0. <0> <0> \ \ "SS-FLOWEMBED" SSXML = ( 
+"<tffString><GroupName>Default</GroupName><TemplateName>Full</TemplateN" 
+"ame><IsTemplateGroupDefaulted>false</IsTemplateGroupDefaulted><IsTempl" 
+"ateGlobalDefaulted>true</IsTemplateGlobalDefaulted><IncludesChildHiera" 
+"rchyStreams>false</IncludesChildHierarchyStreams><CommonShellSettings>" 
+"&lt;srcSettings$StreamIds=""HEATIN""$TemplateName=""Full""&gt;&lt;TFFTable" 
+"&gt;&lt;GeneralOptions&gt;Description,SourceAndDestination,StreamClass" 
+",MaximumErrorTolerance,CostFlow,PhaseLabel,ComponentAttributes,Particl" 
+"eSizeDistributions,Temperature,Pressure,MolarVaporFraction,MolarLiquid" 
+"Fraction,MolarSolidFraction,MolarEnthalpy,MolarEntropy,MolarDensity,Ma" 
+"ssVaporFraction,MassLiquidFraction,MassSolidFraction,MassEnthalpy,Mass" 
+"Entropy,MassDensity,EnthalpyFlow,AverageMolecularWeight,BatchPropertie" 
+"s&lt;/GeneralOptions&gt;&lt;ScopeOptions&gt;PhasesForMixedSubstream,To" 
+"talStream,Substreams,MoleFlows,MassFlows,MoleFractions,MassFractions,V" 
+"olumeFlows&lt;/ScopeOptions&gt;&lt;Properties&gt;&lt;Property$Type=""St" 
+"ateConditionProperty""$EngineName=""TEMP""$/&gt;&lt;Property$Type=""StateC" 
+"onditionProperty""$EngineName=""PRES""$/&gt;&lt;Property$Type=""StateCondi" 
+"tionProperty""$EngineName=""VFRAC""$/&gt;&lt;Property$Type=""StateConditio" 
+"nProperty""$EngineName=""LFRAC""$/&gt;&lt;Property$Type=""StateConditionPr" 
+"operty""$EngineName=""SFRAC""$/&gt;&lt;Property$Type=""StateConditionPrope" 
+"rty""$EngineName=""MASSVFRA""$/&gt;&lt;Property$Type=""StateConditionPrope" 
+"rty""$EngineName=""MASSLFRA""$/&gt;&lt;Property$Type=""StateConditionPrope" 
+"rty""$EngineName=""MASSSFRA""$/&gt;&lt;Property$Type=""StateConditionPrope" 
+"rty""$EngineName=""HMX""$/&gt;&lt;Property$Type=""StateConditionProperty""$" 
+"EngineName=""MASSHMX""$/&gt;&lt;Property$Type=""StateConditionProperty""$E" 
+"ngineName=""SMX""$/&gt;&lt;Property$Type=""StateConditionProperty""$Engine" 
+"Name=""MASSSMX""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineN" 
+"ame=""RHOMX""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineName" 
+"=""MASSRHOM""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineName" 
+"=""HFLMX""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""M" 
+"WMX""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""MOLEF" 
+"LOW""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""MOLEF" 
+"RAC""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""MASSF" 
+"LOW""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""MASSF" 
+"RAC""$/&gt;&lt;Property$Type=""StateConditionProperty""$EngineName=""VOLFL" 
+"MX""$/&gt;&lt;Property$Type=""BatchProperty""$EngineName=""cmole_cycle""$/&" 
+"gt;&lt;Property$Type=""BatchProperty""$EngineName=""cmole_time""$/&gt;&lt;" 
+"Property$Type=""BatchProperty""$EngineName=""cmass_cycle""$/&gt;&lt;Proper" 
+"ty$Type=""BatchProperty""$EngineName=""cmass_time""$/&gt;&lt;Property$Type" 
+"=""BatchProperty""$EngineName=""vol_cycle""$/&gt;&lt;Property$Type=""BatchP" 
+"roperty""$EngineName=""vol_time""$/&gt;&lt;Property$Type=""BatchProperty""$" 
+"EngineName=""enth_cycle""$/&gt;&lt;Property$Type=""BatchProperty""$EngineN" 
+"ame=""enth_time""$/&gt;&lt;Property$Type=""BatchProperty""$EngineName=""cyc" 
+"le_time""$/&gt;&lt;Property$Type=""BatchProperty""$EngineName=""oper_time""" 
+"$/&gt;&lt;Property$Type=""BatchProperty""$EngineName=""ntrain""$/&gt;&lt;/" 
+"Properties&gt;&lt;/TFFTable&gt;&lt;/srcSettings&gt;</CommonShellSettin" 
+"gs></tffString>" ) \ ? "EO-VARS" ? \ "SS-FLOWEMBED" SSXML = ( 
+"<tffString><GroupName>All</GroupName><TemplateName>Full</TemplateName>" 
+"<IsTemplateGroupDefaulted>false</IsTemplateGroupDefaulted><IsTemplateG" 
+"lobalDefaulted>true</IsTemplateGlobalDefaulted><IncludesChildHierarchy" 
+"Streams>false</IncludesChildHierarchyStreams></tffString>" ) \ ? BLOCK MIXER 
+MIXER ? ; "METCBAR_MOLE" ; ; TRIANGLE ; \ PARAM PRES = 1. <20> <5> VISITED = 
+1 \ ? BLOCK HEATX HEATX ? ; "METCBAR_MOLE" ; ; "GEN-HS" ; \ PARAM SPEC = 
+"T-COLD" VALUE = 328.15 <0> <0> SPECUN = K PROGRAM-MODE = DESIGN MIN-TAPP = 
+0.1 <31> <1> MODE = SHORTCUT \ \ FEEDS FHOT = H2OIN FCOLD = HEATIN \ \ 
+OUTLETS-HOT HOT-SID = H2OOUT \ \ OUTLETS-COLD COLD-SID = INRSTOIC \ \ 
+PRODUCTS PCOLD = INRSTOIC \ ? BLOCK RSTOIC RSTOIC ? ; "METCBAR_MOLE" ; ; 
+ICON1 ; \ PARAM TEMP = 328.15 <22> <1> PRES = 1. <20> <5> \ \ STOIC REACNO = 
+1 STOIC-CID = ETHYLOX STOIC-SSID = MIXED COEF = -1. <0> <0> \ \ STOIC REACNO
+ = 1 STOIC-CID = WATER STOIC-SSID = MIXED COEF = -1. <0> <0> \ \ STOIC1 
+REACNO1 = 1 STOIC-CID1 = "ETHYL-01" STOIC-SSID1 = MIXED COEF1 = 1. <0> <0> 
+\ \ CONVEX EXT-REACNO = 1 KEY-SSID = MIXED KEY-CID = ETHYLOX CONV = 0.8046295 
+<0> <0> \ \ PRODUCTS SID = OUTSTR \ \ FORCONTROL FCVAR1 = DIETHY \ \ 
+"SS-FLOWEMBED" SSXML = ( 
+"<tffString><GroupName>Boundary</GroupName><TemplateName>Full</Template" 
+"Name><IsTemplateGroupDefaulted>false</IsTemplateGroupDefaulted><IsTemp" 
+"lateGlobalDefaulted>true</IsTemplateGlobalDefaulted><IncludesChildHier" 
+"archyStreams>false</IncludesChildHierarchyStreams></tffString>" ) \ ? 
+"EO-CONV-OPTI" ? \ DMO-PARAMS MODE = DEFAULT \ \ DMO-PARAMS MODE = SIMULATION 
+\ \ DMO-PARAMS MODE = "PARAMETER-ESTIMATION" \ \ DMO-PARAMS MODE = 
+RECONCILIATION \ \ DMO-PARAMS MODE = OPTIMIZATION \ \ LSSQP-PARAMS MODE-L = 
+DEFAULT \ \ LSSQP-PARAMS MODE-L = SIMULATION \ \ LSSQP-PARAMS MODE-L = 
+"PARAMETER-ESTIMATION" \ \ LSSQP-PARAMS MODE-L = RECONCILIATION \ \ 
+LSSQP-PARAMS MODE-L = OPTIMIZATION \ \ NSOLVE-PARAM NSOLVE-MODE = DEFAULT \ 
+\ NSOLVE-PARAM NSOLVE-MODE = SIMULATION \ \ NSOLVE-PARAM NSOLVE-MODE = 
+"PARAMETER-ESTIMATION" \ \ XSLP-PARAMS XSLP-MODE = DEFAULT \ \ XSLP-PARAMS 
+XSLP-MODE = SIMULATION \ \ XSLP-PARAMS XSLP-MODE = "PARAMETER-ESTIMATION" \ 
+\ XSLP-PARAMS XSLP-MODE = RECONCILIATION \ \ XSLP-PARAMS XSLP-MODE = 
+OPTIMIZATION \ ? "CONV-OPTIONS" ? ? REPORT "BLOCK-REPORT" ? ? REPORT 
+"STREAM-REPOR" ? \ OPTIONS MOLEFLOW = MOLEFLOW \ ? REPORT "PROPERTY-REP" ? 
+\ OPTIONS PCES = PCES \ ? REPORT "BATCH-OPERAT" ? ; "METCBAR_MOLE" ; ? 
+REACTIONS POWERLAW "R-1" ? ; "METCBAR_MOLE" ; \ REAC-DATA R-D-REACNO = 1 
+R-D-RBASIS = "CAT-WT" PRE-EXP = 338. <0> <0> ACT-ENERGY = 79000. <39> <10> 
+T-EXP = 0. <0> <0> \ \ STOIC REACNO = 1 STOIC-CID = ETHYLOX STOIC-SUBS = 
+MIXED COEF = -1. <0> <0> EXPONENT = 1. <0> <0> /  REACNO = 1 STOIC-CID = 
+WATER STOIC-SUBS = MIXED COEF = -1. <0> <0> \ \ STOIC1 REACNO1 = 1 STOIC-CID1
+ = "ETHYL-01" STOIC-SUBS1 = MIXED COEF1 = 1. <0> <0> EXPONENT1 = 0. <0> <0> 
+\ \ FORCONTROL FCVAR1 = DIETHY \ ? "STREAM-LIB" ? ; "METCBAR_MOLE" ; 
+
+ GRAPHICS_BACKUP
+PFS V 5.00
+$CONFIG
+paramdata APV140 ENRTL-RK
+paramdata APV140 VLE-IG
+paramdata APV140 VLE-RK
+paramdata APV140 VLE-HOC
+paramdata APV140 LLE-LIT
+paramdata APV140 LLE-ASPEN
+paramdata APV140 VLE-LIT
+paramdata APV140 BINARY
+paramdata APV140 HENRY-AP
+paramdata APV140 PITZER
+paramdata APV140 EOS-LIT
+paramdata APV140 SRK-ASPEN
+paramdata APV140 PC-SAFT
+paramdata APV140 POLYPCSF
+paramdata APV140 HYSYS
+paramdata APESV140 AP-EOS
+paramdata NISTV140 NIST-HOC
+paramdata NISTV140 NIST-IG
+paramdata NISTV140 NIST-RK
+paramdata NISTV140 NIST-EOS
+purebank APV140 PURE40
+purebank APV140 AQUEOUS
+purebank APV140 SOLIDS
+purebank APV140 INORGANIC
+purebank APESV140 AP-EOS
+purebank NISTV140 NIST-TRC
+regdbank 0
+ftn_check 1
+autoblockid 1
+autostreamid 1
+showblockid 1
+showstreamid 1
+autoplacement 1
+grid 2
+gridresolution 0.100000
+scale 0
+blockprefix B
+labelscale 1.000000
+3DOn 1
+qwformat %.0f
+wformat %.0f
+tempformat %.0f
+presformat %.0f
+flowformat %.0f
+strmqwformat %.0f
+strmwformat %.0f
+vflowformat %.0f
+mflowformat %.0f
+vfracformat %.2f
+pseudobatch 0
+partial 1
+animation 1
+runanyway 0
+globalqw 0
+globalw 0
+globaltemp 0
+globalpres 0
+globalflow 0
+globalstrmqw 0
+globalstrmw 0
+globalvflow 0
+globalmflow 0
+globalvfrac 0
+globalshowcalcerror 1
+globalshowcalcwarning 1
+globalshowdisabled 1
+tooldrawvisible 0
+browserheight 7530
+browserwidth 10725
+browsertreewidth 2450
+polyplusenabled 1
+dynaplusenabled 1
+bfracenabled 1
+rtfenabled 1
+rspenabled 1
+initializeicarus 17
+pinchenabled 0
+linklimit 5000
+material_color 0
+material_style 0
+material_width 1
+heat_color 0
+heat_style 1
+heat_width 1
+heat_termid Q
+work_color 0
+work_style 2
+work_width 1
+work_termid W
+connections_color 9
+connections_style 3
+connections_width 1
+measurements_color 4
+measurements_style 4
+measurements_width 1
+power_color 10
+power_style 5
+power_width 1
+power_termid I
+displayeoconn 0
+displaycalcs 0
+displaytransfers 0
+displaymeas 0
+displaydesignspecs 0
+displaycalccons 0
+displaymeascons 0
+displayothercons 0
+displayeomeas 1
+displayeomeastype 2
+displayothermanipconn 0
+showeoviews 0
+eoautosave 1
+allow_system_userprops 0
+copy_estimation 1
+copy_retrieved 1
+purge_incomp_params 0
+set_default_biparams 0
+set_default_dataset1 0
+set_default_dataset0 1
+bestinput 0
+autosmrun 0
+genallpropset 0
+strmresformdefault 0
+roottype 1
+exchangerfile 1
+streamformat 1
+runsettingfile 1
+usermodelfile 1
+fortranfile 0
+timeout 1000
+auto_evaluate 0
+customglobaldatapropset1 0 | Custom1 | * | %.2f | 0 | 6
+customglobaldatapropset2 0 | Custom2 | * | %.2f | 1 | 7
+customglobaldatapropset3 0 | Custom3 | * | %.2f | 2 | 8
+customglobaldatapropset4 0 | Custom4 | * | %.2f | 4 | 9
+customglobaldatapropset5 0 | Custom5 | * | %.2f | 5 | 10
+customglobaldatapropset6 0 | Custom6 | * | %.2f | 6 | 11
+customglobaldatapropset7 0 | Custom7 | * | %.2f | 7 | 12
+economics_active 0
+ignoreEOVarNameFixupsOnImport 1
+tpsaupgrade 1
+#
+$_APWNSHELL_SETTINGS
+<FileRootSettings><CaseFileSettings>&lt;CaseFileSettings StreamSummaryFormSettings="&amp;lt;src&amp;gt;&amp;lt;ReferencedPaths&amp;gt;&amp;lt;Path&amp;gt;Top.appModelV8.Results Summary&amp;lt;/Path&amp;gt;&amp;lt;Path&amp;gt;Top.appModelV8.Blocks.RSTOIC&amp;lt;/Path&amp;gt;&amp;lt;Path&amp;gt;Top.appModelV8.Streams.HEATIN&amp;lt;/Path&amp;gt;&amp;lt;/ReferencedPaths&amp;gt;&amp;lt;ReferencedTemplates /&amp;gt;&amp;lt;/src&amp;gt;" xmlns="clr-namespace:AspenTech.AspenPlus.Infrastructure;assembly=AspenTech.AspenPlus.Infrastructure" /&gt;</CaseFileSettings><CommonShellSettings>&lt;CommonShellSettings xmlns="http://schemas.aspentech.com/xaml/presentation/visualisation/commonshell" xmlns:atapi="clr-namespace:AspenTech.AspenPlus.Infrastructure;assembly=AspenTech.AspenPlus.Infrastructure" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:atapmaa="clr-namespace:AspenTech.AspenPlus.Modules.ApwnApplication;assembly=ApwnShell" xmlns:atapie="clr-namespace:AspenTech.AspenPlus.Infrastructure.Events;assembly=AspenTech.AspenPlus.Infrastructure" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:apmab="clr-namespace:AspenPlus.Modules.ApwnBrowser;assembly=ApwnShell" xmlns:cxv="http://schemas.aspentech.com/xaml/presentation/cxsviewmodel" xmlns:apmas="clr-namespace:AspenPlus.Modules.ApwnSimulation;assembly=ApwnShell"&gt;&lt;CommonShellSettings.CurrentWorkspace&gt;&lt;ShellWorkspace ActivationBarState="&amp;lt;DashboardPanel IsExpanded=&amp;quot;false&amp;quot; IsTurnedOff=&amp;quot;false&amp;quot; Version=&amp;quot;40&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Item Type=&amp;quot;AspenTech.ActivationDashboard.EconomicAnalysis.DashboardItem&amp;quot;&amp;gt;&amp;amp;lt;!--This is the current state of Economics Analysis Dashboard--&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;Root&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;OnOffState Value=&amp;quot;Off&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;CapitalCost Value=&amp;quot;&amp;quot; Units=&amp;quot;USD&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;UtilityCost Value=&amp;quot;&amp;quot; Units=&amp;quot;USD/Year&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;HasError&amp;amp;gt;false&amp;amp;lt;/HasError&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;_statusCode Value=&amp;quot;-1&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;Flags&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isRunCompleted Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isRunning Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_incompleteButActivated Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_incompleteButLoaded Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_incompleteButSized Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_incompleteButMapped Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_completeEvaluatedNotAutoRun Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isSimulationChanged Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isInStopping Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isOnOffButtonCanBeUsed Value=&amp;quot;true&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isResetDashboardButLeaveItOn Value=&amp;quot;true&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;/Flags&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;/Root&amp;amp;gt;&amp;lt;/Item&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Item Type=&amp;quot;AspenTech.ActivationDashboard.EnergyAnalysis.DashboardItem&amp;quot;&amp;gt;&amp;amp;lt;!--This is the current state of Energy Analysis Dashboard--&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;Root&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;IsExpanded&amp;amp;gt;false&amp;amp;lt;/IsExpanded&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;OnOff&amp;amp;gt;Off&amp;amp;lt;/OnOff&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;Status&amp;amp;gt;None&amp;amp;lt;/Status&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;PUS&amp;amp;gt;&amp;amp;lt;/PUS&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;Percent&amp;amp;gt;&amp;amp;lt;/Percent&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;Units&amp;amp;gt;MW&amp;amp;lt;/Units&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;/Root&amp;amp;gt;&amp;lt;/Item&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Item Type=&amp;quot;AspenTech.ActivationDashboard.EdrActivation.DashboardItem&amp;quot;&amp;gt;&amp;amp;lt;EDR&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;IsShowModelStatus&amp;amp;gt;false&amp;amp;lt;/IsShowModelStatus&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;IsShowRiskStatus&amp;amp;gt;false&amp;amp;lt;/IsShowRiskStatus&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;IsShowLegend&amp;amp;gt;false&amp;amp;lt;/IsShowLegend&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;DetailCount&amp;amp;gt;0&amp;amp;lt;/DetailCount&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;/EDR&amp;amp;gt;&amp;lt;/Item&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Item Type=&amp;quot;AspenTech.ActivationDashboard.GHGEmission.DashboardItem&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;/DashboardPanel&amp;gt;" Layout="&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;xamDockManager version=&amp;quot;21.1.20211.27&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;contentPanes&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;FlowsheetScreenFactory&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T23:25:40.9645761Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;ModelLibraryScreenFactoryKey&amp;quot; location=&amp;quot;DockedBottom&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T23:21:46.365192Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen12&amp;quot; location=&amp;quot;Document&amp;quot; lastDockableState=&amp;quot;Floating&amp;quot; lastFloatingSize=&amp;quot;1322,453&amp;quot; lastFloatingWindowRect=&amp;quot;676,423,1322,453&amp;quot; lastFloatingLocation=&amp;quot;680,447.96&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T23:20:12.4466957Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen2&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T23:19:52.894802Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen10&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T23:14:00.1514478Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen4&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T23:13:26.6167082Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen14&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T23:12:31.1774319Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen6&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T23:10:47.6127614Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen3&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T22:50:25.7905124Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen7&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T19:49:04.5849739Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen9&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T19:27:12.8064718Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen13&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T19:23:56.8792559Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;ControlPanelScreenFactory&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T19:08:52.8136515Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen1&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T18:52:05.2915267Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/contentPanes&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;panes&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;splitPane name=&amp;quot;Zab839525550f426796edd885ea1f441a&amp;quot; splitterOrientation=&amp;quot;Vertical&amp;quot; location=&amp;quot;DockedBottom&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;contentPane name=&amp;quot;ModelLibraryScreenFactoryKey&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;/splitPane&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;splitPane name=&amp;quot;Z9fd632e590e34d22a9b7ed54cc934e9b&amp;quot; splitterOrientation=&amp;quot;Vertical&amp;quot; location=&amp;quot;Floating&amp;quot; floatingLocation=&amp;quot;676,423&amp;quot; floatingSize=&amp;quot;1322,453&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;contentPane name=&amp;quot;_AnonymousScreen12&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;/splitPane&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/panes&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;documents splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;splitPane name=&amp;quot;Z8cb2d347846340ebb56a4c01e7158b39&amp;quot; splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;tabGroup name=&amp;quot;Z1d7560b01ddc44d2ae0ede81f3a61814&amp;quot; selectedIndex=&amp;quot;0&amp;quot; relativeSize=&amp;quot;162.627024325284,100&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;FlowsheetScreenFactory&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen2&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen4&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen14&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen10&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen3&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen6&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen7&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen13&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen9&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen1&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;ControlPanelScreenFactory&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;/tabGroup&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;tabGroup name=&amp;quot;Z4678d3776922498f8bbf366abc1f6a41&amp;quot; selectedIndex=&amp;quot;0&amp;quot; relativeSize=&amp;quot;37.3729756747154,100&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen12&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;/tabGroup&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;/splitPane&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/documents&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;/xamDockManager&amp;gt;" NavigationGroupToSelect="Simulation" IsNavigationPaneMinimized="False" IsRibbonMinimized="False"&gt;&lt;ShellWorkspace.Screens&gt;&lt;WorkspaceScreenData PaneName="FlowsheetScreenFactory" ScreenFactoryKey="FlowsheetScreenFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapi:StringScreenSubject subject="{assembly:Null}" fatherNodePath="{assembly:Null}" NavigationGroupKey="Simulation" /&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;ScreenState Zoom="1.760001" /&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="ModelLibraryScreenFactoryKey" ScreenFactoryKey="ModelLibraryScreenFactoryKey"&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;ScreenState /&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen12" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Results Summary.Streams" NavigationGroupKey="Simulation"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMStreamSum.MMStreamSum_Summar" FormKey="Results Summary.Streams" Header="Results Summary - Streams" ResultsOnly="True" PathKey="Top.appModelV8.Results Summary"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;Results Summary&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Results Summary&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Results Summary"&gt;&lt;apmab:ApwnPlotwizardRule.ProgId&gt;&lt;s:String&gt;WpfPLDISCURVES.RibbonPlotWizardMgr&lt;/s:String&gt;&lt;/apmab:ApwnPlotwizardRule.ProgId&gt;&lt;/apmab:ApwnPlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState FormSettings="&amp;lt;PageSettings&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Setting&amp;gt;&amp;amp;lt;srcSettings StreamIds=&amp;quot;CATALYST,ETHYLENE,H2OIN,H2OOUT,HEATIN,INRSTOIC,OUTSTR&amp;quot; TemplateName=&amp;quot;Full&amp;quot;&amp;amp;gt;&amp;amp;lt;TFFTable&amp;amp;gt;&amp;amp;lt;GeneralOptions&amp;amp;gt;Description,SourceAndDestination,StreamClass,MaximumErrorTolerance,CostFlow,PhaseLabel,ComponentAttributes,ParticleSizeDistributions,Temperature,Pressure,MolarVaporFraction,MolarLiquidFraction,MolarSolidFraction,MolarEnthalpy,MolarEntropy,MolarDensity,MassVaporFraction,MassLiquidFraction,MassSolidFraction,MassEnthalpy,MassEntropy,MassDensity,EnthalpyFlow,AverageMolecularWeight,BatchProperties&amp;amp;lt;/GeneralOptions&amp;amp;gt;&amp;amp;lt;ScopeOptions&amp;amp;gt;PhasesForMixedSubstream,TotalStream,Substreams,MoleFlows,MassFlows,MoleFractions,MassFractions,VolumeFlows&amp;amp;lt;/ScopeOptions&amp;amp;gt;&amp;amp;lt;Properties&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;TEMP&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;PRES&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;VFRAC&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;LFRAC&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;SFRAC&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;MASSVFRA&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;MASSLFRA&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;MASSSFRA&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;HMX&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;MASSHMX&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;SMX&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;MASSSMX&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;RHOMX&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;MASSRHOM&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;HFLMX&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;MWMX&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;MOLEFLOW&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;MOLEFRAC&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;MASSFLOW&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;MASSFRAC&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;StateConditionProperty&amp;quot; EngineName=&amp;quot;VOLFLMX&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;BatchProperty&amp;quot; EngineName=&amp;quot;cmole_cycle&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;BatchProperty&amp;quot; EngineName=&amp;quot;cmole_time&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;BatchProperty&amp;quot; EngineName=&amp;quot;cmass_cycle&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;BatchProperty&amp;quot; EngineName=&amp;quot;cmass_time&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;BatchProperty&amp;quot; EngineName=&amp;quot;vol_cycle&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;BatchProperty&amp;quot; EngineName=&amp;quot;vol_time&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;BatchProperty&amp;quot; EngineName=&amp;quot;enth_cycle&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;BatchProperty&amp;quot; EngineName=&amp;quot;enth_time&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;BatchProperty&amp;quot; EngineName=&amp;quot;cycle_time&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;BatchProperty&amp;quot; EngineName=&amp;quot;oper_time&amp;quot; /&amp;amp;gt;&amp;amp;lt;Property Type=&amp;quot;BatchProperty&amp;quot; EngineName=&amp;quot;ntrain&amp;quot; /&amp;amp;gt;&amp;amp;lt;/Properties&amp;amp;gt;&amp;amp;lt;/TFFTable&amp;amp;gt;&amp;amp;lt;/srcSettings&amp;amp;gt;&amp;lt;/Setting&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Setting /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Setting /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Setting /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Setting /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Setting /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Setting /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Setting /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Setting /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Setting /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Setting /&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;/PageSettings&amp;gt;"&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Results Summary" /&gt;&lt;cxv:CxvParameter Name="id" Value="Results Summary" /&gt;&lt;cxv:CxvParameter Name="main_summar" Value="Top.appModelV8" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen2" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Streams.ETHYLENE.Input" NavigationGroupKey="Simulation"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMMATERIAL.MMMATERIAL_INPUT" FormKey="Streams.ETHYLENE.Input" Header="ETHYLENE (MATERIAL) - Input" ResultsOnly="False" PathKey="Top.appModelV8.Streams.ETHYLENE"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;ETHYLENE&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Streams.ETHYLENE&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Streams.ETHYLENE"&gt;&lt;apmab:ApwnPlotwizardRule.ProgId&gt;&lt;s:String&gt;WpfPLDISCURVES.RibbonPlotWizardMgr&lt;/s:String&gt;&lt;/apmab:ApwnPlotwizardRule.ProgId&gt;&lt;/apmab:ApwnPlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Streams.ETHYLENE" /&gt;&lt;cxv:CxvParameter Name="id" Value="ETHYLENE" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;cxv:CxvParameter Name="SpecOpt1" Value="Temperature" /&gt;&lt;cxv:CxvParameter Name="SpecOpt2" Value="Pressure" /&gt;&lt;cxv:CxvParameter Name="SUBSTRID" Value="MIXED" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen10" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Blocks.RSTOIC.Stream Results" NavigationGroupKey="Simulation"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMBlkStrSum.MMBlkStrSum_SummMH" FormKey="Blocks.RSTOIC.Stream Results" Header="RSTOIC (RStoic) - Stream Results" ResultsOnly="True" PathKey="Top.appModelV8.Blocks.RSTOIC"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;RSTOIC&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Blocks.RSTOIC&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule IsHierarchy="True" ContextPath="Top.appModelV8.Blocks.RSTOIC"&gt;&lt;apmab:ApwnPlotwizardRule.ProgId&gt;&lt;s:String&gt;WpfPLSOLID.RibbonPlotWizardMgr&lt;/s:String&gt;&lt;/apmab:ApwnPlotwizardRule.ProgId&gt;&lt;/apmab:ApwnPlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Blocks.RSTOIC" /&gt;&lt;cxv:CxvParameter Name="id" Value="RSTOIC" /&gt;&lt;cxv:CxvParameter Name="main_summMH" Value="@main.@parent.@parent" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen4" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Results Summary.Run Status" NavigationGroupKey="Simulation"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMRun_Stat.MMRun_Status" FormKey="Results Summary.Run Status" Header="Results Summary - Run Status" ResultsOnly="True" PathKey="Top.appModelV8.Results Summary"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="extra_message_path"&gt;Run-Status&lt;/s:String&gt;&lt;s:String assembly:Key="id"&gt;Results Summary&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Results Summary&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Results Summary" /&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="extra_message_path" Value="Run-Status" /&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Results Summary" /&gt;&lt;cxv:CxvParameter Name="id" Value="Results Summary" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;cxv:CxvParameter Name="ParamVersionLabel" Value="Aspen Plus Version" /&gt;&lt;cxv:CxvParameter Name="smain" Value="Top.appModelV8.Results Summary.Run-Status" /&gt;&lt;cxv:CxvParameter Name="selected_tab" Value="tabStatus1" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen14" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Blocks.RSTOIC.Setup" NavigationGroupKey="Simulation"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMRSTOIC.MMRSTOIC_SETUP" FormKey="Blocks.RSTOIC.Setup" Header="RSTOIC (RStoic) - Setup" ResultsOnly="False" PathKey="Top.appModelV8.Blocks.RSTOIC"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;RSTOIC&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Blocks.RSTOIC&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule IsHierarchy="True" ContextPath="Top.appModelV8.Blocks.RSTOIC"&gt;&lt;apmab:ApwnPlotwizardRule.ProgId&gt;&lt;s:String&gt;WpfPLSOLID.RibbonPlotWizardMgr&lt;/s:String&gt;&lt;/apmab:ApwnPlotwizardRule.ProgId&gt;&lt;/apmab:ApwnPlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Blocks.RSTOIC" /&gt;&lt;cxv:CxvParameter Name="id" Value="RSTOIC" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;cxv:CxvParameter Name="SpecOpt2" Value="Pressure" /&gt;&lt;cxv:CxvParameter Name="SpecOpt1" Value="Temperature" /&gt;&lt;cxv:CxvParameter Name="cmdEditEnable" Value="1" /&gt;&lt;cxv:CxvParameter Name="cmdDeleteEnable" Value="1" /&gt;&lt;cxv:CxvParameter Name="cmdCopyEnable" Value="1" /&gt;&lt;cxv:CxvParameter Name="selected_tab" Value="tab1" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen6" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Streams" NavigationGroupKey="Simulation"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMGeneric.MMGeneric_List2D" FormKey="Streams" Header="Streams" ResultsOnly="False" PathKey="Top.appModelV8.Streams"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;Streams&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Streams&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Streams" /&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Streams" /&gt;&lt;cxv:CxvParameter Name="id" Value="Streams" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;cxv:CxvParameter Name="p_type" Value="Streams" /&gt;&lt;cxv:CxvParameter Name="p_IsActiveFieldUsed"&gt;&lt;cxv:CxvParameter.Value&gt;&lt;s:Boolean&gt;True&lt;/s:Boolean&gt;&lt;/cxv:CxvParameter.Value&gt;&lt;/cxv:CxvParameter&gt;&lt;cxv:CxvParameter Name="p_IsHideFieldUsed"&gt;&lt;cxv:CxvParameter.Value&gt;&lt;s:Boolean&gt;False&lt;/s:Boolean&gt;&lt;/cxv:CxvParameter.Value&gt;&lt;/cxv:CxvParameter&gt;&lt;cxv:CxvParameter Name="p_Enabled.CATALYST"&gt;&lt;cxv:CxvParameter.Value&gt;&lt;s:Boolean&gt;False&lt;/s:Boolean&gt;&lt;/cxv:CxvParameter.Value&gt;&lt;/cxv:CxvParameter&gt;&lt;cxv:CxvParameter Name="p_Enabled.ETHYLENE"&gt;&lt;cxv:CxvParameter.Value&gt;&lt;s:Boolean&gt;False&lt;/s:Boolean&gt;&lt;/cxv:CxvParameter.Value&gt;&lt;/cxv:CxvParameter&gt;&lt;cxv:CxvParameter Name="p_Enabled.H2OIN"&gt;&lt;cxv:CxvParameter.Value&gt;&lt;s:Boolean&gt;False&lt;/s:Boolean&gt;&lt;/cxv:CxvParameter.Value&gt;&lt;/cxv:CxvParameter&gt;&lt;cxv:CxvParameter Name="p_Enabled.H2OOUT"&gt;&lt;cxv:CxvParameter.Value&gt;&lt;s:Boolean&gt;False&lt;/s:Boolean&gt;&lt;/cxv:CxvParameter.Value&gt;&lt;/cxv:CxvParameter&gt;&lt;cxv:CxvParameter Name="p_Enabled.HEATIN"&gt;&lt;cxv:CxvParameter.Value&gt;&lt;s:Boolean&gt;False&lt;/s:Boolean&gt;&lt;/cxv:CxvParameter.Value&gt;&lt;/cxv:CxvParameter&gt;&lt;cxv:CxvParameter Name="p_Enabled.HEATOUT"&gt;&lt;cxv:CxvParameter.Value&gt;&lt;s:Boolean&gt;False&lt;/s:Boolean&gt;&lt;/cxv:CxvParameter.Value&gt;&lt;/cxv:CxvParameter&gt;&lt;cxv:CxvParameter Name="p_Enabled.OUTSTR"&gt;&lt;cxv:CxvParameter.Value&gt;&lt;s:Boolean&gt;False&lt;/s:Boolean&gt;&lt;/cxv:CxvParameter.Value&gt;&lt;/cxv:CxvParameter&gt;&lt;cxv:CxvParameter Name="p_Enabled.INRSTOIC"&gt;&lt;cxv:CxvParameter.Value&gt;&lt;s:Boolean&gt;False&lt;/s:Boolean&gt;&lt;/cxv:CxvParameter.Value&gt;&lt;/cxv:CxvParameter&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen3" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Streams.ETHYLENE" NavigationGroupKey="Simulation"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMMATERIAL.MMMATERIAL_INPUT" FormKey="Streams.ETHYLENE" Header="ETHYLENE (MATERIAL)" ResultsOnly="False" PathKey="Top.appModelV8.Streams.ETHYLENE"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;ETHYLENE&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Streams.ETHYLENE&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Streams.ETHYLENE"&gt;&lt;apmab:ApwnPlotwizardRule.ProgId&gt;&lt;s:String&gt;WpfPLDISCURVES.RibbonPlotWizardMgr&lt;/s:String&gt;&lt;/apmab:ApwnPlotwizardRule.ProgId&gt;&lt;/apmab:ApwnPlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Streams.ETHYLENE" /&gt;&lt;cxv:CxvParameter Name="id" Value="ETHYLENE" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;cxv:CxvParameter Name="SpecOpt1" Value="Temperature" /&gt;&lt;cxv:CxvParameter Name="SpecOpt2" Value="Pressure" /&gt;&lt;cxv:CxvParameter Name="SUBSTRID" Value="MIXED" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen7" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Reactions.R-1" NavigationGroupKey="Simulation"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMPOWERLAW.MMPOWERLAW_INPUT" FormKey="Reactions.R-1" Header="R-1 (POWERLAW)" ResultsOnly="False" PathKey="Top.appModelV8.Reactions.Reactions.R-1"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;R-1&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Reactions.Reactions.R-1&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Reactions.Reactions.R-1" /&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Reactions.Reactions.R-1" /&gt;&lt;cxv:CxvParameter Name="id" Value="R-1" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;cxv:CxvParameter Name="selected_tab" Value="tab0" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen9" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Streams.HEATIN.Results" NavigationGroupKey="Simulation"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMMATERIAL.MMMATERIAL_RESULT" FormKey="Streams.HEATIN.Results" Header="HEATIN (MATERIAL) - Results" ResultsOnly="True" PathKey="Top.appModelV8.Streams.HEATIN"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;HEATIN&lt;/s:String&gt;&lt;s:Int32 assembly:Key="IsStream"&gt;1&lt;/s:Int32&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Streams.HEATIN&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Streams.HEATIN"&gt;&lt;apmab:ApwnPlotwizardRule.ProgId&gt;&lt;s:String&gt;WpfPLDISCURVES.RibbonPlotWizardMgr&lt;/s:String&gt;&lt;/apmab:ApwnPlotwizardRule.ProgId&gt;&lt;/apmab:ApwnPlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="IsStream"&gt;&lt;cxv:CxvParameter.Value&gt;&lt;s:Int32&gt;1&lt;/s:Int32&gt;&lt;/cxv:CxvParameter.Value&gt;&lt;/cxv:CxvParameter&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Streams.HEATIN" /&gt;&lt;cxv:CxvParameter Name="id" Value="HEATIN" /&gt;&lt;cxv:CxvParameter Name="main_result" Value="@main.@parent.@parent" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen13" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Blocks.HEATX.Thermal Results" NavigationGroupKey="Simulation"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMHEATX.MMHEATX_RESULT" FormKey="Blocks.HEATX.Thermal Results" Header="HEATX (HeatX) - Thermal Results" ResultsOnly="True" PathKey="Top.appModelV8.Blocks.HEATX"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;HEATX&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Blocks.HEATX&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Blocks.HEATX" /&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Blocks.HEATX" /&gt;&lt;cxv:CxvParameter Name="id" Value="HEATX" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;cxv:CxvParameter Name="smain" Value="Top.appModelV8.Blocks.HEATX" /&gt;&lt;cxv:CxvParameter Name="selected_tab" Value="tabStatus" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="ControlPanelScreenFactory" ScreenFactoryKey="ControlPanelScreenFactory"&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;apmas:ControlPanelScreenState IsConvergencePaneExpanded="False" SelectedWatchItem="Overall Max-Error/Tol" Messages="&amp;lt;&amp;lt; Run reinitialized 18:09:55 Sun Mar 2, 2025&amp;gt;&amp;gt;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Processing input specifications ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;  *   WARNING IN THE &amp;quot;STREAM&amp;quot; PARAGRAPH WHICH BEGINS ON LINE 66&amp;#xD;&amp;#xA;      STREAM NAME: CATALYST&amp;#xD;&amp;#xA;      COMPONENT MOLE FLOWS OF SUBSTREAM: &amp;quot;MIXED&amp;quot;&amp;#xD;&amp;#xA;      ARE NORMALIZED TO THE TOTAL MOLE FLOW VALUE.&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;  *   WARNING IN THE &amp;quot;STREAM&amp;quot; PARAGRAPH WHICH BEGINS ON LINE 71&amp;#xD;&amp;#xA;      STREAM NAME: ETHYLENE&amp;#xD;&amp;#xA;      COMPONENT MOLE FLOWS OF SUBSTREAM: &amp;quot;MIXED&amp;quot;&amp;#xD;&amp;#xA;      ARE NORMALIZED TO THE TOTAL MOLE FLOW VALUE.&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;  Flowsheet Analysis :&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA; COMPUTATION ORDER FOR THE FLOWSHEET:&amp;#xD;&amp;#xA; B1 HEATX B3 CSTR RSTOIC&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Calculations begin ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;   Block: B1       Model: MIXER&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;   Block: HEATX    Model: HEATX&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;   Block: B3       Model: DUPL&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;   Block: CSTR     Model: RCSTR&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;   Block: RSTOIC   Model: RSTOIC&amp;#xD;&amp;#xA;  *   WARNING&amp;#xD;&amp;#xA;      COMPONENT &amp;quot;WATER&amp;quot; HAS ZERO FLOWRATE IN THE OUTLET STREAM.&amp;#xD;&amp;#xA;      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY&amp;#xD;&amp;#xA;      A FACTOR OF &amp;quot;0.8549188&amp;quot;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Generating block results ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;    Block: HEATX    Model: HEATX&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Simulation calculations completed ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;  ***  Warning(s) were issued during Input Translation ***&amp;#xD;&amp;#xA;  ***  Check the Run Status Results for more Information ***&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;               ***  Summary of Simulation Errors  ***&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;                   Physical&amp;#xD;&amp;#xA;                   Property         System        Simulation&amp;#xD;&amp;#xA;  Terminal Errors      0               0               0&amp;#xD;&amp;#xA;    Severe Errors      0               0               0&amp;#xD;&amp;#xA;           Errors      0               0               0&amp;#xD;&amp;#xA;         Warnings      0               0               1&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;lt;&amp;lt; Problem specifications modified 18:11:47 Sun Mar 2, 2025&amp;gt;&amp;gt;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Processing input specifications ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Finished processing new specifications&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Calculations begin ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;   Block: RSTOIC   Model: RSTOIC&amp;#xD;&amp;#xA;  *   WARNING&amp;#xD;&amp;#xA;      COMPONENT &amp;quot;WATER&amp;quot; HAS ZERO FLOWRATE IN THE OUTLET STREAM.&amp;#xD;&amp;#xA;      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY&amp;#xD;&amp;#xA;      A FACTOR OF &amp;quot;0.8046295&amp;quot;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Simulation calculations completed ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;  ***  Warning(s) were issued during Input Translation ***&amp;#xD;&amp;#xA;  ***  Check the Run Status Results for more Information ***&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;               ***  Summary of Simulation Errors  ***&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;                   Physical&amp;#xD;&amp;#xA;                   Property         System        Simulation&amp;#xD;&amp;#xA;  Terminal Errors      0               0               0&amp;#xD;&amp;#xA;    Severe Errors      0               0               0&amp;#xD;&amp;#xA;           Errors      0               0               0&amp;#xD;&amp;#xA;         Warnings      0               0               2&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;lt;&amp;lt; Problem specifications modified 18:12:17 Sun Mar 2, 2025&amp;gt;&amp;gt;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Processing input specifications ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Finished processing new specifications&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Calculations begin ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;   Block: RSTOIC   Model: RSTOIC&amp;#xD;&amp;#xA;  *   WARNING&amp;#xD;&amp;#xA;      COMPONENT &amp;quot;WATER&amp;quot; HAS ZERO FLOWRATE IN THE OUTLET STREAM.&amp;#xD;&amp;#xA;      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY&amp;#xD;&amp;#xA;      A FACTOR OF &amp;quot;0.8500000&amp;quot;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Simulation calculations completed ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;  ***  Warning(s) were issued during Input Translation ***&amp;#xD;&amp;#xA;  ***  Check the Run Status Results for more Information ***&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;               ***  Summary of Simulation Errors  ***&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;                   Physical&amp;#xD;&amp;#xA;                   Property         System        Simulation&amp;#xD;&amp;#xA;  Terminal Errors      0               0               0&amp;#xD;&amp;#xA;    Severe Errors      0               0               0&amp;#xD;&amp;#xA;           Errors      0               0               0&amp;#xD;&amp;#xA;         Warnings      0               0               3&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;lt;&amp;lt; Problem specifications modified 18:19:52 Sun Mar 2, 2025&amp;gt;&amp;gt;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Processing input specifications ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Finished processing new specifications&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Calculations begin ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;   Block: B1       Model: MIXER&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;   Block: HEATX    Model: HEATX&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;   Block: B3       Model: DUPL&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;   Block: CSTR     Model: RCSTR&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;   Block: RSTOIC   Model: RSTOIC&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Generating block results ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;    Block: HEATX    Model: HEATX&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Simulation calculations completed ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;  ***  Warning(s) were issued during Input Translation ***&amp;#xD;&amp;#xA;  ***  Check the Run Status Results for more Information ***&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;               ***  Summary of Simulation Errors  ***&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;                   Physical&amp;#xD;&amp;#xA;                   Property         System        Simulation&amp;#xD;&amp;#xA;  Terminal Errors      0               0               0&amp;#xD;&amp;#xA;    Severe Errors      0               0               0&amp;#xD;&amp;#xA;           Errors      0               0               0&amp;#xD;&amp;#xA;         Warnings      0               0               3&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Generating results ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Generating results ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;lt;&amp;lt; Run Saved &amp;gt;&amp;gt;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;lt;&amp;lt; Run Saved &amp;gt;&amp;gt;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;lt;&amp;lt; Problem specifications modified 18:22:18 Sun Mar 2, 2025&amp;gt;&amp;gt;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Processing input specifications ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;  *   WARNING IN A &amp;quot;RENAME&amp;quot; PARAGRAPH&amp;#xD;&amp;#xA;      ITEM OUTSTR2  COULD NOT BE RENAMED&amp;#xD;&amp;#xA;      TO OUTSTR&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Finished processing new specifications&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;  Flowsheet Analysis :&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA; COMPUTATION ORDER FOR THE FLOWSHEET:&amp;#xD;&amp;#xA; B1 HEATX RSTOIC&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Calculations begin ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;   Block: HEATX    Model: HEATX&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;   Block: RSTOIC   Model: RSTOIC&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Generating block results ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;    Block: HEATX    Model: HEATX&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;-&amp;gt;Simulation calculations completed ...&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;  ***  Warning(s) were issued during Input Translation ***&amp;#xD;&amp;#xA;  ***  Check the Run Status Results for more Information ***&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;               ***  Summary of Simulation Errors  ***&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;                   Physical&amp;#xD;&amp;#xA;                   Property         System        Simulation&amp;#xD;&amp;#xA;  Terminal Errors      0               0               0&amp;#xD;&amp;#xA;    Severe Errors      0               0               0&amp;#xD;&amp;#xA;           Errors      0               0               0&amp;#xD;&amp;#xA;         Warnings      0               0               4&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;reset scope&amp;gt;&amp;#xD;&amp;#xA;" /&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen1" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Blocks.MIXER" NavigationGroupKey="Simulation"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMMIXER.MMMIXER_INPUT" FormKey="Blocks.MIXER" Header="MIXER (Mixer)" ResultsOnly="False" PathKey="Top.appModelV8.Blocks.MIXER"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;MIXER&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Blocks.MIXER&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule IsHierarchy="True" ContextPath="Top.appModelV8.Blocks.MIXER"&gt;&lt;apmab:ApwnPlotwizardRule.ProgId&gt;&lt;s:String&gt;WpfPLSOLID.RibbonPlotWizardMgr&lt;/s:String&gt;&lt;/apmab:ApwnPlotwizardRule.ProgId&gt;&lt;/apmab:ApwnPlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Blocks.MIXER" /&gt;&lt;cxv:CxvParameter Name="id" Value="MIXER" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;cxv:CxvParameter Name="selected_tab" Value="tab0" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;/ShellWorkspace.Screens&gt;&lt;/ShellWorkspace&gt;&lt;/CommonShellSettings.CurrentWorkspace&gt;&lt;CommonShellSettings.SavedWorkspaces&gt;&lt;ShellWorkspaceFolder /&gt;&lt;/CommonShellSettings.SavedWorkspaces&gt;&lt;CommonShellSettings.NavigatorGroupWorkspaces&gt;&lt;ShellWorkspace Name="Properties" Layout="&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&amp;#xA;&amp;lt;xamDockManager version=&amp;quot;21.1.20211.27&amp;quot;&amp;gt;&amp;#xA;  &amp;lt;contentPanes&amp;gt;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen1&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2025-03-02T19:47:30.5316267Z&amp;quot; /&amp;gt;&amp;#xA;  &amp;lt;/contentPanes&amp;gt;&amp;#xA;  &amp;lt;documents splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xA;    &amp;lt;splitPane name=&amp;quot;Ze392c52599d64828908b3f476ac5b4fd&amp;quot; splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xA;      &amp;lt;tabGroup name=&amp;quot;Z36bde80b90aa4ba8b8f655ebc1f3a6be&amp;quot; selectedIndex=&amp;quot;0&amp;quot;&amp;gt;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen1&amp;quot; /&amp;gt;&amp;#xA;      &amp;lt;/tabGroup&amp;gt;&amp;#xA;    &amp;lt;/splitPane&amp;gt;&amp;#xA;  &amp;lt;/documents&amp;gt;&amp;#xA;&amp;lt;/xamDockManager&amp;gt;" NavigationGroupToSelect="Properties" IsNavigationPaneMinimized="False" IsRibbonMinimized="False"&gt;&lt;ShellWorkspace.Screens&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen1" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Components" NavigationGroupKey="Properties"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMCOMP_SPEC.MMCOMP_SPEC_INPUT" FormKey="Components" Header="Components" ResultsOnly="False" PathKey="Top.appModelV8.Components"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;Specifications&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Components.Specifications&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Components" /&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Components.Specifications" /&gt;&lt;cxv:CxvParameter Name="id" Value="Specifications" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;cxv:CxvParameter Name="NotNeedName" Value="NotNull" /&gt;&lt;cxv:CxvParameter Name="NotNeedType" Value="NotNull" /&gt;&lt;cxv:CxvParameter Name="selected_tab" Value="tab0" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;/ShellWorkspace.Screens&gt;&lt;/ShellWorkspace&gt;&lt;/CommonShellSettings.NavigatorGroupWorkspaces&gt;&lt;/CommonShellSettings&gt;</CommonShellSettings></FileRootSettings>
+$_END_APWNSHELL_SETTINGS
+#
+PFSVData
+# of PFS Objects = 11
+SIZE -6.00179 3.5974 0.495736 2.29956
+BLOCK
+ID: MIXER
+Version: 1
+ICON: "TRIANGLE"
+Flag 0
+Section GLOBAL
+At -3.500000 1.400000
+Label At 0.325000 0.375000
+Scale 1.000000 Modifier 0
+BLOCK
+ID: HEATX
+Version: 1
+ICON: "GEN-HS"
+Flag 0
+Section GLOBAL
+At -1.500000 1.400000
+Label At 0.275000 0.375000
+Annotation At -0.400000 -0.350000
+Scale 1.000000 Modifier 0
+BLOCK
+ID: RSTOIC
+Version: 1
+ICON: "ICON1"
+Flag 0
+Section GLOBAL
+At 1.700000 1.500000
+Label At 1.050000 0.300000
+Annotation At -0.450000 -0.550000
+Scale 1.000000 Modifier 0
+STREAM
+ID: CATALYST
+Version: 2
+Flag 0
+GLOBAL 117
+TYPE 0 TERMINAL 1
+At -6.001790 1.399189
+Label At 0.555604 0.000000
+ROUTE 0 0
+$ $ 0.0 0.0
+ROUTE 1 0
+r r -6.001790 1.399189 0
+x x -4.900000 1.399189 0
+y y -4.900000 1.398879 0
+x x -4.000306 1.398879 0
+t l -3.800306 1.398879 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: ETHYLENE
+Version: 2
+Flag 0
+GLOBAL 117
+TYPE 0 TERMINAL 1
+At -5.898269 0.495736
+Label At 0.600819 0.000000
+ROUTE 0 0
+$ $ 0.0 0.0
+ROUTE 1 0
+r r -5.898269 0.495736 0
+x x -4.875000 0.495736 0
+y y -4.875000 1.298879 0
+x x -4.050306 1.298879 0
+t l -3.850306 1.298879 0
+$ C 2.000000 0.0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: HEATIN
+Version: 2
+Flag 0
+GLOBAL 117
+TYPE 0 TERMINAL 0
+At -2.074779 1.399528
+Label At -0.193805 0.000000
+ROUTE 0 0
+r r -2.074779 1.399528 0
+x y -2.550000 1.399528 0
+y x -2.550000 1.398879 0
+x x -3.099694 1.398879 0
+t r -3.199694 1.398879 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+ROUTE 1 0
+r r -2.074779 1.399528 0
+x x -1.987168 1.399528 0
+t l -1.899557 1.399528 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: H2OOUT
+Version: 2
+Flag 0
+GLOBAL 114
+TYPE 0 TERMINAL 2
+At -1.702431 2.299563
+Label At 0.000000 -0.139098
+ROUTE 0 0
+r d -1.702431 2.299563 0
+y x -1.702431 1.975000 0
+x y -1.712764 1.975000 0
+y 0 -1.712764 1.850000 0
+t u -1.712764 1.650000 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+ROUTE 1 0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: H2OIN
+Version: 2
+Flag 0
+GLOBAL 117
+TYPE 0 TERMINAL 1
+At -0.503931 0.871081
+Label At -0.396462 0.000000
+ROUTE 0 0
+$ $ 0.0 0.0
+ROUTE 1 0
+r l -0.503931 0.871081 0
+x y -1.288236 0.871081 0
+y y -1.288236 0.949057 0
+t d -1.288236 1.149057 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: OUTSTR
+Version: 2
+Flag 0
+GLOBAL 117
+TYPE 0 TERMINAL 2
+At 3.597400 1.276847
+Label At -0.677663 -0.002503
+ROUTE 0 0
+r l 3.597400 1.276847 0
+x y 2.929221 1.276847 0
+y x 2.929221 1.274344 0
+x 0 2.350711 1.274344 0
+t r 2.150711 1.274344 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+ROUTE 1 0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: INRSTOIC
+Version: 2
+Flag 0
+GLOBAL 117
+TYPE 0 TERMINAL 0
+At -0.337500 1.399528
+Label At -0.075722 0.000000
+ROUTE 0 0
+r r -0.337500 1.399528 0
+x 0 -0.901443 1.399528 0
+t r -1.101443 1.399528 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+ROUTE 1 0
+r r -0.337500 1.399528 0
+x x 0.075000 1.399528 0
+y y 0.075000 1.725656 0
+x x 1.050342 1.725656 0
+t l 1.250342 1.725656 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+LEGEND
+Version: 2
+Dim: -7.48001 0.298758 -6.5015 0.10281
+Size: 0.010293
+Font: 1 0 =
+# of PFS Objects = 0
+VIEWPORT -8.199844 5.314885 3.839174 -1.657296
+LAYOUT
+TableFormat 1
+Pages 1 1 1 1
+PAGESETUP
+PAPERSIZE 
+PAPERSOURCE 
+ORIENTATION -1
+PRINTPAGENO 1 1
+LEFTMARGIN 0.5"
+RIGHTMARGIN 0.5"
+TOPMARGIN 0.5"
+BOTTOMMARGIN 0.5"
+VISIBILITY 0.030000
+PFDFLAG 255 255
+PFDMODE 0
+SCALE 0.010293
+$_ADS_FILE
+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
+$_END_ADS_FILE

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <base href="/">
+  <title>DSpace</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+  <meta name="google-site-verification" content="LGQ7gGABYz0xPamK4EkMSPltFyHqz_zzdtzDIo89a7g" />
+  <meta http-equiv="cache-control" content="no-store">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZYMPY53XG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-VZYMPY53XG');
+  </script>
+<link rel="stylesheet" href="styles.a8f0db15973f8229ea10.css"></head>
+
+<body>
+  <ds-app></ds-app>
+<script src="runtime-es2015.0325d248064a90c0cbcc.js" type="module"></script><script src="runtime-es5.0325d248064a90c0cbcc.js" nomodule defer></script><script src="polyfills-es5.6bc979cf161ba8694837.js" nomodule defer></script><script src="polyfills-es2015.9e760696f3297bb1eab7.js" type="module"></script><script src="main-es2015.f71a1b9c156a109410bb.js" type="module"></script><script src="main-es5.f71a1b9c156a109410bb.js" nomodule defer></script></body>
+
+<!-- do not include client bundle, it is injected with Zone already loaded -->
+
+</html>

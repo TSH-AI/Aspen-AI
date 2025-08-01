@@ -1,0 +1,169 @@
+;
+;Input Summary created by Aspen Plus Rel. 40.0 at 14:54:45 Wed Jul 16, 2025
+;Directory D:\×ÀÃæ\aspen ai-project1\NEWBKP\bkp_all  Filename D:\×ÀÃæ\aspen ai-project1\NEWBKP\inp_outputs\caso33-mixed-0-19.inp
+;
+
+
+DYNAMICS
+    DYNAMICS RESULTS=ON
+
+IN-UNITS MET DENSITY='kg/cum' DIFFUSIVITY='sqm/sec' ENERGY=kJ  &
+        ENTHALPY='J/kmol' ENTROPY='kJ/kmol-K' VOLUME-FLOW='cum/hr'  &
+        ENTHALPY-FLO='kJ/hr' FORCE=Newton MOLE-HEAT-CA='kJ/kmol-K'  &
+        HEAT-TRANS-C='kW/sqm-K' PRESSURE=bar SURFACE-TENS='N/m'  &
+        TEMPERATURE=C THERMAL-COND='kW/m-K' VISCOSITY=Pa-sec  &
+        VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
+        MASS-DENSITY='kg/cum' MOLE-ENTHALP='kJ/kmol'  &
+        MASS-ENTHALP='kJ/kg' MOLE-ENTROPY='kJ/kmol-K'  &
+        MASS-ENTROPY='kJ/kg-K' MOLE-VOLUME='cum/kmol'  &
+        MASS-HEAT-CA='kJ/kg-K' UA='kW/K' HEAT=kJ NUM-CONC='no/cum'  &
+        MASS-CONC='kg/cum' FLUX='cum/sqm-hr' MOLE-CONC='kmol/cum'  &
+        POWER-VOLUME='kW/cum' MASS-TRANS-C='kg/s-sqm-kg/cum'  &
+        SPECIFICAREA='sqm/cum' INVERSE-LENG='1/m'  &
+        PDROP-PER-HT='mbar/m' PDROP=bar NUM-CON-RATE='no/cum-hr'  &
+        VOL-HEAT-CAP='kJ/cum-K' HEAT-FLUX='kJ/hr-m'  &
+        INVERSE-PRES='1/bar' TEMP-VOLUME='cum-K/kmol'  &
+        VFLOW-LENGTH='sqm/hr' POP-DENSITY='no/m/cum'  &
+        INVERSE-HT-C='sqm-K/kW' VOL-ENTHALPY='kJ/cum'  &
+        MASS-VOLUME='cum/kg' INVERSE-VEL='sec/m' SHORT-LENGTH=mm  &
+        VOLUME-GFLOW='cum/hr' 
+
+DEF-STREAMS CONVEN ALL 
+
+MODEL-OPTION 
+
+DESCRIPTION "
+    General Simulation with Metric Units : 
+    C, bar, kg/hr, kmol/hr, Gcal/hr, cum/hr. 
+      
+    Property Method: None 
+      
+    Flow basis for input: Mole 
+      
+    Stream report composition: Mole flow 
+    "
+
+DATABANKS 'APV140 PURE39' / 'APV140 AQUEOUS' / 'APV140 SOLIDS' &
+         / 'APV140 INORGANIC' / NOASPENPCD
+
+PROP-SOURCES 'APV140 PURE39' / 'APV140 AQUEOUS' /  &
+        'APV140 SOLIDS' / 'APV140 INORGANIC'
+
+COMPONENTS 
+    AMMONIA H3N / 
+    WATER H2O 
+
+SOLVE 
+    RUN-MODE MODE=SIM 
+
+FLOWSHEET 
+    BLOCK C-1 IN=COUT OUT=D HIN 
+    BLOCK E-1 IN=HIN CIN OUT=HOUT COUT 
+
+PROPERTIES REFPROP 
+
+PROP-SET TXPORT RHOMX MUMX SIGMAMX UNITS='kg/cum'  &
+        SUBSTREAM=MIXED PHASE=V L 
+;  'Density, viscosity, and surface tension' 
+    
+
+PROP-SET TXPORT2 RHOMX MUMX SIGMAMX UNITS='kg/cum'  &
+        SUBSTREAM=MIXED PHASE=V L1 L2 
+;  'Density, viscosity, and surface tension' 
+    
+
+STREAM CIN 
+    SUBSTREAM MIXED TEMP=20. PRES=18.6326 MASS-FLOW=855.9603 
+    MASS-FRAC AMMONIA 0.2 / WATER 0.8 
+
+BLOCK E-1 HEATX 
+    PARAM CALC-TYPE=SIMULATION CALC-METHOD=TASCPLUS-RIG 
+    HETRAN-PARAM INPUT-FILE= & 
+    'E-1.EDR' 
+    FEEDS HOT=HIN COLD=CIN 
+    OUTLETS-HOT HOUT 
+    OUTLETS-COLD COUT 
+    HOT-SIDE SHELL-TUBE=SHELL DPPARMOPT=NO 
+    COLD-SIDE DPPARMOPT=NO 
+    TQ-PARAM CURVE=YES 
+
+BLOCK C-1 RADFRAC 
+    SUBOBJECTS INTERNALS = RECT AGO 
+    PARAM NSTAGE=36 ALGORITHM=STANDARD MAXOL=25 P-UPDATE=YES  &
+        P-FIX=TOP DAMPING=NONE 
+    PARAM2 STATIC-DP=YES OLD-SULZER=NO 
+    COL-CONFIG CONDENSER=TOTAL REBOILER=THERMOSYPHON  &
+        CA-CONFIG=INT-1 
+    RATESEP-ENAB CALC-MODE=RIG-RATE 
+    RATESEP-PARA RS-MAXIT=200 
+    FEEDS COUT 19 
+    PRODUCTS D 1 L / HIN 36 L 
+    P-SPEC 1 14.693739458 
+    COL-SPECS MASS-D=174.4041 MASS-L1=452.95913372 
+    THERMOSYPHON VFRAC=1. 
+    TRAY-REPORT BUBBLE-DEW=YES 
+    REPORT INT-PROFILE INT-AREA DIFF-COEFF MT-RATE MT-COEFF  &
+        HT-RATE HT-COEFF S-DIMLESS V-DIMLESS 
+    INTERNALS RECT STAGE1=2 STAGE2=18 INTERNAL=PACKING  &
+        SIZING=RATING RATE-BASE=YES P-UPDATE=YES DIAM=0.45  &
+        LIQ-FILM=FILM VAP-FILM=FILM LIQ-CORRF=YES  &
+        PACKTYPE=MELLAPAK VENDOR=SULZER PACK-MAT=STANDARD  &
+        PACK-SIZE="350Y" MTRFC-CORP=HANLEY-ST10  &
+        INTFA-CORP=HANLEY-ST10 FLOW-MODEL=MIXED PACK-HT=1.89  &
+        THETA=45 
+    PACK-RATE 1 2 18 MELLAPAK 
+    PACK-RATE2 1 
+    INTERNALS AGO STAGE1=19 STAGE2=35 INTERNAL=PACKING  &
+        SIZING=RATING RATE-BASE=YES P-UPDATE=YES DIAM=0.45  &
+        LIQ-FILM=FILM VAP-FILM=FILM LIQ-CORRF=YES  &
+        PACKTYPE=MELLAPAK VENDOR=SULZER PACK-MAT=STANDARD  &
+        PACK-SIZE="350Y" MTRFC-CORP=HANLEY-ST10  &
+        INTFA-CORP=HANLEY-ST10 FLOW-MODEL=MIXED PACK-HT=3.99  &
+        THETA=45 
+    PACK-RATE 2 19 35 MELLAPAK 
+    PACK-RATE2 2 
+
+EO-CONV-OPTI 
+
+STREAM-REPOR MOLEFLOW 
+
+PROPERTY-REP PCES 
+
+PROP-TABLE BINRY-1 FLASHCURVE 
+    IN-UNITS MET DENSITY='kg/cum' DIFFUSIVITY='sqm/sec' ENERGY=kJ  &
+        ENTHALPY='J/kmol' ENTROPY='kJ/kmol-K' VOLUME-FLOW='cum/hr'  &
+        ENTHALPY-FLO='kJ/hr' FORCE=Newton MOLE-HEAT-CA='kJ/kmol-K'  &
+        HEAT-TRANS-C='kW/sqm-K' PRESSURE='kg/sqcm'  &
+        SURFACE-TENS='N/m' TEMPERATURE=C THERMAL-COND='kW/m-K'  &
+        VISCOSITY=Pa-sec VOLUME=cum DELTA-T=C HEAD=meter  &
+        MOLE-DENSITY='kmol/cum' MASS-DENSITY='kg/cum'  &
+        MOLE-ENTHALP='kJ/kmol' MASS-ENTHALP='kJ/kg'  &
+        MOLE-ENTROPY='kJ/kmol-K' MASS-ENTROPY='kJ/kg-K'  &
+        MOLE-VOLUME='cum/kmol' MASS-HEAT-CA='kJ/kg-K' UA='kW/K'  &
+        HEAT=kJ NUM-CONC='no/cum' MASS-CONC='kg/cum'  &
+        FLUX='cum/sqm-hr' MOLE-CONC='kmol/cum'  &
+        POWER-VOLUME='kW/cum' MASS-TRANS-C='kg/s-sqm-kg/cum'  &
+        SPECIFICAREA='sqm/cum' INVERSE-LENG='1/m'  &
+        PDROP-PER-HT='mbar/m' PDROP=bar NUM-CON-RATE='no/cum-hr'  &
+        VOL-HEAT-CAP='kJ/cum-K' HEAT-FLUX='kJ/hr-m'  &
+        INVERSE-PRES='1/bar' TEMP-VOLUME='cum-K/kmol'  &
+        VFLOW-LENGTH='sqm/hr' POP-DENSITY='no/m/cum'  &
+        INVERSE-HT-C='sqm-K/kW' VOL-ENTHALPY='kJ/cum'  &
+        MASS-VOLUME='cum/kg' INVERSE-VEL='sec/m' SHORT-LENGTH=mm  &
+        VOLUME-GFLOW='cum/hr' 
+    PROPERTIES REFPROP FREE-WATER=STEAM-TA SOLU-WATER=3  &
+        TRUE-COMPS=YES 
+    MASS-FLOW AMMONIA 1 /  WATER  1  
+    STATE VFRAC=0.0 
+    ANALYSIS ANAL-TYPE=TXY 
+    VARY PRES 
+    RANGE LIST=15.0019 
+    VARY MASSFRAC COMP=AMMONIA 
+    RANGE VARVALUE=RANGE LOWER=0.0 UPPER=1.0 INCR=0.005 
+    PARAM NPHASE=3 
+    TABULATE PROPERTIES=TXPORT TXPORT2 
+;
+;
+;
+;
+;

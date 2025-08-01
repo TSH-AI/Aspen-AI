@@ -1,0 +1,57 @@
+;
+;Input Summary created by Aspen Plus Rel. 40.0 at 10:52:59 Thu Jul 17, 2025
+;Directory D:\×ÀÃæ\aspen ai-project1\NEWBKP\bkp_added  Filename D:\×ÀÃæ\aspen ai-project1\NEWBKP\inp_outputs\flash_example (2).inp
+;
+
+
+DYNAMICS
+    DYNAMICS RESULTS=ON
+
+IN-UNITS ENG SHORT-LENGTH=in 
+
+DEF-STREAMS CONVEN ALL 
+
+DESCRIPTION "
+    General Simulation with English Units : 
+    F, psi, lb/hr, lbmol/hr, Btu/hr, cuft/hr. 
+      
+    Property Method: None 
+      
+    Flow basis for input: Mole 
+      
+    Stream report composition: Mole flow 
+    "
+
+DATABANKS 'APV140 PURE25' / 'APV140 AQUEOUS' / 'APV140 SOLIDS' &
+         / 'APV140 INORGANIC' / NOASPENPCD
+
+PROP-SOURCES 'APV140 PURE25' / 'APV140 AQUEOUS' /  &
+        'APV140 SOLIDS' / 'APV140 INORGANIC'
+
+COMPONENTS 
+    WATER H2O / 
+    ETHANOL C2H6O-2 
+
+SOLVE 
+    RUN-MODE MODE=SIM 
+
+FLOWSHEET 
+    BLOCK FLASH IN=FEED OUT=VAPOR LIQUID 
+
+PROPERTIES PENG-ROB 
+
+STREAM FEED 
+    SUBSTREAM MIXED TEMP=100. PRES=50. MOLE-FLOW=48.7488 
+    MOLE-FRAC WATER 0.91095 / ETHANOL 0.08905 
+
+BLOCK FLASH FLASH2 
+    PARAM TEMP=150. PRES=20. 
+
+EO-CONV-OPTI 
+
+STREAM-REPOR MOLEFLOW MASSFLOW MOLEFRAC MASSFRAC 
+;
+;
+;
+;
+;
